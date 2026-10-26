@@ -3,38 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Crafteo WoW</title>
+    <title id="app-title">Calculadora de Crafteo WoW</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h1 id="app-title">Calculadora de Crafteo WoW</h1>
-        <select id="lang-selector">
-            <option value="es">Español</option>
-            <option value="en">English</option>
-            <option value="de">Deutsch</option>
-            <option value="fr">Français</option>
-            <option value="pt">Português</option>
-        </select>
-    </header>
+<body style="background: #121212; color: #e0e0e0; font-family: Arial, sans-serif; padding: 20px;">
+    
+    <div style="max-width: 800px; margin: 0 auto; background: #1e1e1e; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+        
+        <!-- Cabecera e Idioma -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h1 id="app-title" style="margin: 0; font-size: 1.5rem; color: #ffb100;">Calculadora de Crafteo WoW</h1>
+            <select id="lang-selector" style="padding: 5px; background: #2a2a2a; color: #fff; border: 1px solid #444; border-radius: 4px;">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+                <option value="fr">Français</option>
+                <option value="pt">Português</option>
+            </select>
+        </div>
 
-    <main>
-        <section class="controls">
-            <select id="realm-selector">
-            <option value="" id="opt-default-realm">Selecciona tu servidor...</option>
-            <option value="quelthalas">Quel'Thalas (US)</option>
-            <option value="ragnaros">Ragnaros (US)</option>
-            <option value="sanguino">Sanguino (EU - ES)</option>
-            <option value="dun-morogh">Dun Morogh (EU - FR)</option>
-            <option value="blackhand">Blackhand (EU - DE)</option>
-        </select>
-            <button id="calculate-btn">Calcular Ganancias</button>
-        </section>
+        <!-- Controles de Servidor y Receta -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+            <div>
+                <label style="display: block; font-size: 0.9em; margin-bottom: 5px; color: #aaa;">Servidor:</label>
+                <select id="realm-selector" style="width: 100%; padding: 10px; background: #2a2a2a; color: #fff; border: 1px solid #444; border-radius: 4px;">
+                    <option value="" id="opt-default-realm">Selecciona tu servidor...</option>
+                    <option value="quelthalas">Quel'Thalas (US)</option>
+                    <option value="ragnaros">Ragnaros (US)</option>
+                    <option value="sanguino">Sanguino (EU - ES)</option>
+                    <option value="dun-morogh">Dun Morogh (EU - FR)</option>
+                    <option value="blackhand">Blackhand (EU - DE)</option>
+                </select>
+            </div>
+            <div>
+                <label style="display: block; font-size: 0.9em; margin-bottom: 5px; color: #aaa;">Receta / Objeto:</label>
+                <select id="recipe-selector" style="width: 100%; padding: 10px; background: #2a2a2a; color: #fff; border: 1px solid #444; border-radius: 4px;">
+                    <option value="">Selecciona una receta...</option>
+                    <option value="flask_alacrity">Frasco de Pungente Alacridad (Ejemplo Alquimia)</option>
+                    <option value="gem_culminating">Rubí Culpable Deslumbrante (Ejemplo Joyería)</option>
+                </select>
+            </div>
+        </div>
 
-        <section id="results-container">
-            <p>Selecciona un servidor para comenzar...</p>
-        </section>
-    </main>
+        <button id="calculate-btn" style="background: #ffb100; color: #121212; border: none; padding: 12px 20px; font-weight: bold; border-radius: 4px; cursor: pointer; width: 100%; font-size: 1rem;">Calcular Ganancias</button>
+
+        <!-- Resultados -->
+        <div id="results-container" style="margin-top: 25px;">
+            <p id="default-text" style="color: #777; text-align: center;">Selecciona un servidor y una receta para comenzar...</p>
+        </div>
+
+    </div>
 
     <script src="script.js"></script>
 </body>
