@@ -1,11 +1,15 @@
 export default async function handler(req, res) {
     const clientId = process.env.BLIZZARD_CLIENT_ID;
     const clientSecret = process.env.BLIZZARD_CLIENT_SECRET;
-    const region = 'us'; // Cambiá a 'eu' si usas servidores de Europa
+
+    if (!clientId || !clientSecret) {
+        return res.status(500).json({ 
+            error: "Faltan las variables de entorno en Vercel. Asegurate de haber guardado BLIZZARD_CLIENT_ID y BLIZZARD_CLIENT_SECRET." 
+        });
+    }
 
     try {
-        // 1. Pedir token de acceso a Blizzard usando las claves secretas
-        const credentials = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+        const credentials = Buffer.from(`${clientId.trim()}:${clientSecret.trim()}`).toString('base64');
         const tokenResponse = await fetch(`https://oauth.battle.net/token`, {
             method: 'POST',
             headers: {
@@ -16,11 +20,18 @@ export default async function handler(req, res) {
         });
         
         const tokenData = await tokenResponse.json();
-        if (!tokenData.access_token) {
-            throw new Error('No se pudo autenticar con Blizzard');
+        
+        if (!tokenResponse.ok) {
+            return res.status(500).json({ 
+                error: `Blizzard rechazó las credenciales (Código HTTP ${tokenResponse.status})`, 
+                details: tokenData 
+            });
         }
 
-        // 2. Respuesta de éxito con el token listo para usar
+        if (!tokenData.access_token) {
+            return res.status(500).json({ error: 'No se recibió un token de acceso válido', details: tokenData });
+        }
+
         res.status(200).json({ 
             status: "¡Conexión exitosa con los servidores de Blizzard!", 
             token_sample: tokenData.access_token.substring(0, 10) + "..." 
