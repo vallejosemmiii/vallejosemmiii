@@ -13,23 +13,71 @@ const translations = {
     }
 };
 
-// Base de datos de recetas de ejemplo con IDs reales de materiales de Blizzard
-// (Podés agregar más recetas fácilmente aquí)
+// Base de datos de recetas completa y ampliada
 const recipesDatabase = {
+    // Alquimia
     "flask_alacrity": {
         name: "Frasco de Pungente Alacridad",
-        salePrice: 450, // Precio estimado de venta en oro (o configurable)
+        salePrice: 450,
         materials: [
-            { id: 210815, name: "Hierba A", qty: 5 },  // IDs de ejemplo de componentes
-            { id: 210802, name: "Hierba B", qty: 3 }
+            { id: 210815, name: "Flor de la peste", qty: 5 },
+            { id: 210802, name: "Lirio pacífico", qty: 3 },
+            { id: 210798, name: "Hoja de Ensueño", qty: 2 }
         ]
     },
+    "potion_cauldron": {
+        name: "Caldero de Alquimia de Batalla",
+        salePrice: 3200,
+        materials: [
+            { id: 210815, name: "Flor de la peste", qty: 20 },
+            { id: 210802, name: "Lirio pacífico", qty: 15 },
+            { id: 211503, name: "Frasco coalescente", qty: 5 }
+        ]
+    },
+    // Joyería
     "gem_culminating": {
         name: "Rubí Culpable Deslumbrante",
         salePrice: 600,
         materials: [
-            { id: 213744, name: "Mineral Cojo", qty: 10 },
-            { id: 213750, name: "Polvo Mágico", qty: 2 }
+            { id: 213744, name: "Artesa", qty: 10 },
+            { id: 213750, name: "Barra de veraplata", qty: 2 },
+            { id: 213755, name: "Diamante de asedio", qty: 1 }
+        ]
+    },
+    "neck_azure": {
+        name: "Collar de Veraplata Encantado",
+        salePrice: 1500,
+        materials: [
+            { id: 213750, name: "Barra de veraplata", qty: 6 },
+            { id: 213760, name: "Esmeralda viviente", qty: 2 }
+        ]
+    },
+    // Herrería
+    "alloy_Bismuth": {
+        name: "Lingote de Bismuto Enriquecido",
+        salePrice: 120,
+        materials: [
+            { id: 211100, name: "Mineral de Bismuto", qty: 10 },
+            { id: 211105, name: "Mena fundida", qty: 2 }
+        ]
+    },
+    "sword_epic": {
+        name: "Gran Espada de Saronita Pura",
+        salePrice: 2800,
+        materials: [
+            { id: 211100, name: "Mineral de Bismuto", qty: 15 },
+            { id: 211200, name: "Barra de titanio", qty: 4 },
+            { id: 211250, name: "Hueso primordial", qty: 2 }
+        ]
+    },
+    // Encantamiento
+    "enchant_weapon": {
+        name: "Encantamiento de Arma: Divisa Flamígera",
+        salePrice: 1850,
+        materials: [
+            { id: 224001, name: "Polvo abisal", qty: 8 },
+            { id: 224005, name: "Esencia cósmica mayor", qty: 4 },
+            { id: 224010, name: "Cristal de vacío", qty: 1 }
         ]
     }
 };
@@ -65,7 +113,6 @@ document.getElementById('calculate-btn').addEventListener('click', async () => {
     resultsContainer.innerHTML = `<p style="text-align: center; color: #ffb100;">Consultando la Casa de Subastas de Blizzard en tiempo real...</p>`;
 
     try {
-        // Si aún no descargamos los precios en esta sesión, los pedimos a Vercel
         if (!cachedPrices || currentRealmRegion !== realm) {
             const response = await fetch(`/api/prices?realm=${realm}`);
             const data = await response.json();
@@ -83,15 +130,14 @@ document.getElementById('calculate-btn').addEventListener('click', async () => {
         let totalCraftCost = 0;
         let materialsHtml = '';
 
-        // Calcular costo de cada material usando los datos de la AH
         recipe.materials.forEach(mat => {
-            const unitPrice = cachedPrices[mat.id] || 15.50; // Precio por defecto si el ítem no tiene subastas activas
+            const unitPrice = cachedPrices[mat.id] || 12.50; // Precio simulado si el ítem no está listado en la AH hoy
             const subtotal = unitPrice * mat.qty;
             totalCraftCost += subtotal;
 
             materialsHtml += `
                 <tr style="border-bottom: 1px solid #333;">
-                    <td style="padding: 8px;">${mat.name} (ID: ${mat.id})</td>
+                    <td style="padding: 8px;">${mat.name} <span style="font-size: 0.75em; color: #888;">(ID: ${mat.id})</span></td>
                     <td style="padding: 8px; text-align: center;">${mat.qty}</td>
                     <td style="padding: 8px; text-align: right;">${unitPrice.toFixed(2)}g</td>
                     <td style="padding: 8px; text-align: right; color: #ffb100;">${subtotal.toFixed(2)}g</td>
@@ -99,13 +145,11 @@ document.getElementById('calculate-btn').addEventListener('click', async () => {
             `;
         });
 
-        // Impuesto de la Casa de Subastas (5%)
         const ahTax = recipe.salePrice * 0.05;
         const netRevenue = recipe.salePrice - ahTax;
         const netProfit = netRevenue - totalCraftCost;
         const profitColor = netProfit >= 0 ? '#4CAF50' : '#ff5252';
 
-        // Renderizar resultados completos
         resultsContainer.innerHTML = `
             <div style="background: #252525; padding: 20px; border-radius: 6px; border-left: 4px solid #ffb100;">
                 <h2 style="margin-top: 0; color: #fff; font-size: 1.2rem;">${recipe.name}</h2>
