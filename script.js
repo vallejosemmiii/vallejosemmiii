@@ -54,7 +54,7 @@ document.getElementById('calculate-btn').addEventListener('click', async () => {
     resultsContainer.innerHTML = `<p>${currentLang === 'es' ? 'Conectando con los servidores de Blizzard...' : 'Connecting to Blizzard servers...'}</p>`;
 
     try {
-        const response = await fetch('/api/prices');
+        const response = await fetch(`/api/prices?realm=${realmSelector}`);
         const data = await response.json();
 
         if (data.error) {
@@ -65,9 +65,9 @@ document.getElementById('calculate-btn').addEventListener('click', async () => {
         resultsContainer.innerHTML = `
             <div style="background: #1e1e1e; padding: 15px; border-radius: 6px; border-left: 4px solid #4CAF50; color: #fff;">
                 <h3 style="margin-top: 0;">${currentLang === 'es' ? '¡Conexión establecida con éxito!' : 'Connection established successfully!'}</h3>
-                <p>Servidor seleccionado: <strong>${realmSelector.toUpperCase()}</strong></p>
+                <p>Servidor: <strong>${data.realm}</strong> (Región: <strong>${data.region}</strong>)</p>
                 <p>${data.status}</p>
-                <p style="color: #4CAF50; font-size: 0.9em;">Token de seguridad verificado correctamente con Blizzard vía Vercel.</p>
+                <p style="color: #4CAF50; font-size: 0.9em;">Precios de la Casa de Subastas sincronizados correctamente.</p>
             </div>
         `;
     } catch (err) {
