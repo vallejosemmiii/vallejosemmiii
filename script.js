@@ -60,41 +60,127 @@ const translations = {
         selectRecipeAlert: "Please select a recipe from the catalog.",
         errorTitle: "Error:",
         connectionError: "Could not connect to the backend server."
+    },
+    de: {
+        title: "WoW Handwerks-Rechner",
+        btn: "Live-Gewinn berechnen",
+        selectRealm: "Wähle deinen Server...",
+        defaultText: "Wähle einen Server und ein Rezept, um das Auktionshaus abzufragen...",
+        lblRealm: "Spielserver:",
+        lblSearch: "Rezept oder Gegenstand suchen:",
+        lblRecipeSelect: "Spezifisches Rezept auswählen:",
+        optDefaultRecipe: "Wähle ein Rezept aus dem Katalog...",
+        searchPlaceholder: "Bsp. Fläschchen, Edelstein...",
+        profAll: "Alle",
+        profAlchemy: "Alchemie",
+        profJC: "Juwelenschleifen",
+        profBS: "Schmiedekunst",
+        profEnc: "Verzauberkunst",
+        profLW: "Lederverarbeitung",
+        profTail: "Schneiderei",
+        profEng: "Ingenieurskunst",
+        tableMaterial: "Material / Komponente",
+        tableQty: "Menge",
+        tablePrice: "Stückpreis (AH)",
+        tableSubtotal: "Zwischensumme",
+        costMaterials: "Materialkosten",
+        netSale: "Nettoverkauf (-5%)",
+        netProfit: "Nettogewinn",
+        syncing: "Echtzeitpreise werden mit dem Blizzard-Auktionshaus synchronisiert...",
+        selectRealmAlert: "Bitte wähle zuerst einen Server aus.",
+        selectRecipeAlert: "Bitte wähle ein Rezept aus dem Katalog aus.",
+        errorTitle: "Fehler:",
+        connectionError: "Verbindung zum Backend-Server fehlgeschlagen."
+    },
+    fr: {
+        title: "Calculateur d'Artisanat WoW",
+        btn: "Calculer les Bénéfices en Direct",
+        selectRealm: "Sélectionnez votre royaume...",
+        defaultText: "Sélectionnez un royaume et une recette pour interroger l'Hôtel des Ventes...",
+        lblRealm: "Royaume de jeu:",
+        lblSearch: "Rechercher une recette ou un objet:",
+        lblRecipeSelect: "Sélectionner une recette spécifique:",
+        optDefaultRecipe: "Sélectionnez une recette dans le catalogue...",
+        searchPlaceholder: "Ex. Flacon, Gemme...",
+        profAll: "Toutes",
+        profAlchemy: "Alchimie",
+        profJC: "Joaillerie",
+        profBS: "Forge",
+        profEnc: "Enchantement",
+        profLW: "Travail du cuir",
+        profTail: "Couture",
+        profEng: "Ingénierie",
+        tableMaterial: "Matériau / Composant",
+        tableQty: "Quantité",
+        tablePrice: "Prix Unitaire (HDV)",
+        tableSubtotal: "Sous-total",
+        costMaterials: "Coût des Matériaux",
+        netSale: "Vente Nette (-5%)",
+        netProfit: "Bénéfice Net",
+        syncing: "Synchronisation des prix en temps réel avec l'Hôtel des Ventes Blizzard...",
+        selectRealmAlert: "Veuillez d'abord sélectionner un royaume.",
+        selectRecipeAlert: "Veuillez sélectionner une recette dans le catalogue.",
+        errorTitle: "Erreur :",
+        connectionError: "Impossible de se connecter au serveur backend."
+    },
+    pt: {
+        title: "Calculadora de Crafting WoW",
+        btn: "Calcular Lucros ao Vivo",
+        selectRealm: "Selecione seu reino...",
+        defaultText: "Selecione um reino e uma receita para consultar a Casa de Leilões...",
+        lblRealm: "Reino de Jogo:",
+        lblSearch: "Pesquisar Receita ou Item:",
+        lblRecipeSelect: "Selecionar Receita Específica:",
+        optDefaultRecipe: "Selecione uma receita do catálogo...",
+        searchPlaceholder: "Ex. Frasco, Gema, Bismuto...",
+        profAll: "Todas",
+        profAlchemy: "Alquimia",
+        profJC: "Joalheria",
+        profBS: "Ferraria",
+        profEnc: "Encantamento",
+        profLW: "Couraria",
+        profTail: "Alfaiataria",
+        profEng: "Engenharia",
+        tableMaterial: "Material / Componente",
+        tableQty: "Quantidade",
+        tablePrice: "Preço Unit. (AH)",
+        tableSubtotal: "Subtotal",
+        costMaterials: "Custo de Materiais",
+        netSale: "Venda Líquida (-5%)",
+        netProfit: "Lucro Líquido",
+        syncing: "Sincronizando preços em tempo real com a Casa de Leilões da Blizzard...",
+        selectRealmAlert: "Por favor, selecione um reino primeiro.",
+        selectRecipeAlert: "Por favor, selecione uma receita do catálogo.",
+        errorTitle: "Erro:",
+        connectionError: "Não foi possível conectar ao servidor backend."
     }
 };
 
 // Catálogo ampliado de The War Within
 const recipesDatabase = {
-    // Alquimia
     "flask_alacrity": { prof: "alchemy", name: "Frasco de Pungente Alacridad", salePrice: 450, materials: [{ id: 210815, name: "Flor de la peste", qty: 5 }, { id: 210802, name: "Lirio pacífico", qty: 3 }, { id: 210798, name: "Hoja de Ensueño", qty: 2 }] },
     "flask_tempered": { prof: "alchemy", name: "Frasco de Furia Templada", salePrice: 520, materials: [{ id: 210815, name: "Flor de la peste", qty: 6 }, { id: 211503, name: "Frasco coalescente", qty: 2 }] },
     "potion_cauldron": { prof: "alchemy", name: "Caldero de Alquimia de Batalla", salePrice: 3200, materials: [{ id: 210815, name: "Flor de la peste", qty: 20 }, { id: 210802, name: "Lirio pacífico", qty: 15 }, { id: 211503, name: "Frasco coalescente", qty: 5 }] },
     "potion_tauri": { prof: "alchemy", name: "Poción de Velocidad Ciclópea", salePrice: 210, materials: [{ id: 210802, name: "Lirio pacífico", qty: 4 }, { id: 210798, name: "Hoja de Ensueño", qty: 2 }] },
     
-    // Joyería
     "gem_culminating": { prof: "jewelcrafting", name: "Rubí Culpable Deslumbrante", salePrice: 600, materials: [{ id: 213744, name: "Artesa", qty: 10 }, { id: 213750, name: "Barra de veraplata", qty: 2 }, { id: 213755, name: "Diamante de asedio", qty: 1 }] },
     "neck_azure": { prof: "jewelcrafting", name: "Collar de Veraplata Encantado", salePrice: 1500, materials: [{ id: 213750, name: "Barra de veraplata", qty: 6 }, { id: 213760, name: "Esmeralda viviente", qty: 2 }] },
     "gem_quick": { prof: "jewelcrafting", name: "Ónix Sibilante Rápido", salePrice: 480, materials: [{ id: 213744, name: "Artesa", qty: 8 }, { id: 213760, name: "Esmeralda viviente", qty: 1 }] },
 
-    // Herrería
     "alloy_Bismuth": { prof: "blacksmithing", name: "Lingote de Bismuto Enriquecido", salePrice: 120, materials: [{ id: 211100, name: "Mineral de Bismuto", qty: 10 }, { id: 211105, name: "Mena fundida", qty: 2 }] },
     "sword_epic": { prof: "blacksmithing", name: "Gran Espada de Saronita Pura", salePrice: 2800, materials: [{ id: 211100, name: "Mineral de Bismuto", qty: 15 }, { id: 211200, name: "Barra de titanio", qty: 4 }, { id: 211250, name: "Hueso primordial", qty: 2 }] },
     "shield_heavy": { prof: "blacksmithing", name: "Pavés de Acero Real", salePrice: 1950, materials: [{ id: 211100, name: "Mineral de Bismuto", qty: 12 }, { id: 211200, name: "Barra de titanio", qty: 3 }] },
 
-    // Encantamiento
     "enchant_weapon": { prof: "enchanting", name: "Encantamiento de Arma: Divisa Flamígera", salePrice: 1850, materials: [{ id: 224001, name: "Polvo abisal", qty: 8 }, { id: 224005, name: "Esencia cósmica mayor", qty: 4 }, { id: 224010, name: "Cristal de vacío", qty: 1 }] },
     "enchant_ring": { prof: "enchanting", name: "Encantamiento de Anillo: Velocidad Radiante", salePrice: 950, materials: [{ id: 224001, name: "Polvo abisal", qty: 5 }, { id: 224005, name: "Esencia cósmica mayor", qty: 2 }] },
     "enchant_cloak": { prof: "enchanting", name: "Encantamiento de Capa: Gracia Alada", salePrice: 720, materials: [{ id: 224001, name: "Polvo abisal", qty: 4 }, { id: 224010, name: "Cristal de vacío", qty: 1 }] },
 
-    // Peletería
-    "armor_kit": { prof: "leatherworking", name: "Kit de Armadura Reforzado", saleName: "Kit de Armadura Reforzado", salePrice: 340, materials: [{ id: 218001, name: "Cuero basto", qty: 8 }, { id: 218005, name: "Escama endurecida", qty: 3 }] },
+    "armor_kit": { prof: "leatherworking", name: "Kit de Armadura Reforzado", salePrice: 340, materials: [{ id: 218001, name: "Cuero basto", qty: 8 }, { id: 218005, name: "Escama endurecida", qty: 3 }] },
     "boots_leather": { prof: "leatherworking", name: "Botas de Merodeador Sombrío", salePrice: 1600, materials: [{ id: 218001, name: "Cuero basto", qty: 12 }, { id: 218005, name: "Escama endurecida", qty: 4 }] },
 
-    // Sastrería
     "cloth_bolt": { prof: "tailoring", name: "Rollo de Tela Crepuscular", salePrice: 180, materials: [{ id: 219001, name: "Fibra crepuscular", qty: 10 }] },
     "robe_spellfire": { prof: "tailoring", name: "Vestimentas de Tejefuego", salePrice: 2400, materials: [{ id: 219001, name: "Fibra crepuscular", qty: 16 }, { id: 219005, name: "Seda tejida de éter", qty: 4 }] },
 
-    // Ingeniería
     "tinker_item": { prof: "engineering", name: "Micro-ajustador Térmico", salePrice: 750, materials: [{ id: 220001, name: "Tornillo de cobalto", qty: 6 }, { id: 220005, name: "Muelle de precisión", qty: 2 }] },
     "goggles_eng": { prof: "engineering", name: "Gafas de Espectro Óptico", salePrice: 2100, materials: [{ id: 220001, name: "Tornillo de cobalto", qty: 10 }, { id: 220005, name: "Muelle de precisión", qty: 4 }, { id: 211200, name: "Barra de titanio", qty: 2 }] }
 };
@@ -109,7 +195,7 @@ function getLang() {
 
 function updateUIStrings() {
     const lang = getLang();
-    const t = translations[lang];
+    const t = translations[lang] || translations.es;
 
     document.getElementById('app-title').textContent = t.title;
     document.getElementById('calculate-btn').textContent = t.btn;
@@ -137,7 +223,7 @@ function updateUIStrings() {
 
 function populateRecipes(filterProf = "all", searchTerm = "") {
     const lang = getLang();
-    const t = translations[lang];
+    const t = translations[lang] || translations.es;
     const selector = document.getElementById('recipe-selector');
     selector.innerHTML = `<option value="">${t.optDefaultRecipe}</option>`;
 
@@ -175,7 +261,7 @@ updateUIStrings();
 
 document.getElementById('calculate-btn').addEventListener('click', async () => {
     const lang = getLang();
-    const t = translations[lang];
+    const t = translations[lang] || translations.es;
     const realm = document.getElementById('realm-selector').value;
     const recipeKey = document.getElementById('recipe-selector').value;
     const resultsContainer = document.getElementById('results-container');
