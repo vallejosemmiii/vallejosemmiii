@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="app-title">Calculadora de Crafteo WoW - The War Within</title>
+    <title id="app-title">Calculadora de Crafteo WoW</title>
     <style>
         :root {
             --bg-color: #121212;
@@ -178,7 +178,6 @@
         .search-box {
             width: 100%;
             box-sizing: border-box;
-            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -196,7 +195,7 @@
         <!-- Servidor y Buscador -->
         <div class="controls-grid">
             <div class="control-group">
-                <label>Servidor de Juego:</label>
+                <label id="lbl-realm">Servidor de Juego:</label>
                 <select id="realm-selector" style="width: 100%;">
                     <option value="" id="opt-default-realm">Selecciona tu servidor...</option>
                     <option value="quelthalas">Quel'Thalas (US)</option>
@@ -207,28 +206,28 @@
                 </select>
             </div>
             <div class="control-group">
-                <label>Buscar Receta o Ítem:</label>
+                <label id="lbl-search">Buscar Receta o Ítem:</label>
                 <input type="text" id="recipe-search" class="search-box" placeholder="Ej. Frasco, Gema, Bismuto...">
             </div>
         </div>
 
         <!-- Filtros por Profesión -->
         <div class="professions-nav" id="professions-nav">
-            <button class="prof-btn active" data-prof="all">Todas</button>
-            <button class="prof-btn" data-prof="alchemy">Alquimia</button>
-            <button class="prof-btn" data-prof="jewelcrafting">Joyería</button>
-            <button class="prof-btn" data-prof="blacksmithing">Herrería</button>
-            <button class="prof-btn" data-prof="enchanting">Encantamiento</button>
-            <button class="prof-btn" data-prof="leatherworking">Peletería</button>
-            <button class="prof-btn" data-prof="tailoring">Sastrería</button>
-            <button class="prof-btn" data-prof="engineering">Ingeniería</button>
+            <button class="prof-btn active" data-prof="all" id="btn-prof-all">Todas</button>
+            <button class="prof-btn" data-prof="alchemy" id="btn-prof-alchemy">Alquimia</button>
+            <button class="prof-btn" data-prof="jewelcrafting" id="btn-prof-jc">Joyería</button>
+            <button class="prof-btn" data-prof="blacksmithing" id="btn-prof-bs">Herrería</button>
+            <button class="prof-btn" data-prof="enchanting" id="btn-prof-enc">Encantamiento</button>
+            <button class="prof-btn" data-prof="leatherworking" id="btn-prof-lw">Peletería</button>
+            <button class="prof-btn" data-prof="tailoring" id="btn-prof-tail">Sastrería</button>
+            <button class="prof-btn" data-prof="engineering" id="btn-prof-eng">Ingeniería</button>
         </div>
 
         <!-- Selector de Recetas -->
         <div class="control-group" style="margin-bottom: 20px;">
-            <label>Seleccionar Receta Específica:</label>
+            <label id="lbl-recipe-select">Seleccionar Receta Específica:</label>
             <select id="recipe-selector" style="width: 100%;">
-                <option value="">Selecciona una receta del catálogo...</option>
+                <option value="" id="opt-default-recipe">Selecciona una receta del catálogo...</option>
             </select>
         </div>
 
