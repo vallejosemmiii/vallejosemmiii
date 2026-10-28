@@ -352,6 +352,33 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
+        /* Estilos para la ventana modal legal (AdSense) */
+        .legal-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(6, 9, 19, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        .legal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        .legal-content h3 { color: var(--accent-gold); margin-top: 0; }
+
         @media (min-width: 768px) {
             body { padding: 30px; }
             .container { padding: 30px; border-radius: 18px; }
@@ -497,7 +524,7 @@
             <div id="session-list" style="overflow-x: auto;"></div>
         </div>
 
-        <!-- PIE DE PÁGINA CON BANNER DE AFILIADO MEJORADO -->
+        <!-- PIE DE PÁGINA CON AFILIADO Y ENLACES LEGALES (ADSENSE) -->
         <footer style="margin-top: 35px; border-top: 1px solid var(--border-color); padding-top: 20px; text-align: center; color: var(--text-muted); font-size: 0.78rem;">
             <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95)); border: 1px solid rgba(245, 158, 11, 0.4); padding: 18px; border-radius: 14px; margin-bottom: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(245, 158, 11, 0.05); position: relative; overflow: hidden;">
                 <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent-gold);"></div>
@@ -505,13 +532,59 @@
                 <p style="margin: 0 0 6px 0; color: var(--accent-gold); font-weight: 800; font-size: 0.95rem; letter-spacing: 0.5px;">⚡ ¿Cansado del Lag en las Bandas y Mazmorras?</p>
                 <p style="margin: 0 0 14px 0; color: #cbd5e1; font-size: 0.85rem;">Estabiliza tu conexión a los servidores de Blizzard con <strong style="color: #fff;">ExitLag</strong> y mejora tu rendimiento al tradear y craftear.</p>
                 
-                <a href="https://www.exitlag.com/refer/10374282" target="_blank" style="display: inline-block; background: linear-gradient(135deg, var(--accent-gold), #b45309); color: #060913; padding: 10px 20px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.88rem; box-shadow: 0 4px 15px var(--accent-glow); transition: transform 0.2s;">
+                <a href="https://www.exitlag.com/refer/10374282" target="_blank" style="display: inline-block; background: linear-gradient(135deg, var(--accent-gold), #b45309); color: #060913; padding: 10px 20px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 0.88rem; box-shadow: 0 4px 15px var(--accent-glow);">
                     🚀 Activar 20% de Descuento en ExitLag
                 </a>
             </div>
-            <p style="margin: 0;">WoW Crafting & Economy Hub no está afiliado a Blizzard Entertainment. Creado para la comunidad de goldmakers.</p>
+
+            <!-- ENLACES LEGALES OBLIGATORIOS PARA GOOGLE ADSENSE -->
+            <div style="margin-bottom: 12px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <a href="#" onclick="openLegal('privacy'); return false;" style="color: var(--text-muted); text-decoration: underline;">Política de Privacidad</a>
+                <a href="#" onclick="openLegal('terms'); return false;" style="color: var(--text-muted); text-decoration: underline;">Aviso Legal & Términos</a>
+            </div>
+
+            <p style="margin: 0;">WoW Crafting & Economy Hub no está afiliado a Blizzard Entertainment. World of Warcraft es una marca registrada de Blizzard Entertainment, Inc.</p>
         </footer>
     </div>
+
+    <!-- VENTANA MODAL PARA LAS POLÍTICAS LEGALES -->
+    <div id="legalModal" class="legal-modal">
+        <div class="legal-content">
+            <h3 id="legal-title">Título</h3>
+            <div id="legal-text">Contenido...</div>
+            <br>
+            <button onclick="closeLegal()" class="main-action-btn" style="padding: 8px;">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function openLegal(type) {
+            const modal = document.getElementById('legalModal');
+            const title = document.getElementById('legal-title');
+            const text = document.getElementById('legal-text');
+            
+            if (type === 'privacy') {
+                title.innerText = "Política de Privacidad";
+                text.innerHTML = `
+                    <p>En <strong>WoW Crafting & Economy Hub</strong> respetamos tu privacidad. Este sitio web utiliza servicios de terceros como Google AdSense para mostrar anuncios basados en tus visitas anteriores a este u otros sitios web.</p>
+                    <p>Las cookies de publicidad de Google permiten a Google y a sus socios mostrar anuncios a nuestros usuarios basados en su visita a sus sitios y/o a otros sitios de Internet.</p>
+                    <p>Los usuarios pueden inhabilitar la publicidad personalizada accediendo a la <a href="https://www.google.com/settings/ads" target="_blank" style="color: var(--accent-gold);">Configuración de anuncios</a>.</p>
+                `;
+            } else {
+                title.innerText = "Aviso Legal y Términos de Uso";
+                text.innerHTML = `
+                    <p><strong>1. Propiedad Intelectual:</strong> WoW Crafting & Economy Hub es una herramienta independiente creada por fans para la comunidad de World of Warcraft. No está afiliada, respaldada ni patrocinada por Blizzard Entertainment.</p>
+                    <p><strong>2. Uso de Datos:</strong> Las cotizaciones y cálculos mostrados se basan en estimaciones del mercado de la Casa de Subastas y pueden variar según el servidor y momento de juego.</p>
+                    <p><strong>3. Enlaces de Afiliados:</strong> Este sitio incluye enlaces de recomendación de pago (ExitLag) por los cuales el creador puede percibir una comisión sin costo adicional para el usuario.</p>
+                `;
+            }
+            modal.style.display = 'flex';
+        }
+
+        function closeLegal() {
+            document.getElementById('legalModal').style.display = 'none';
+        }
+    </script>
 
     <script src="script.js"></script>
 </body>
