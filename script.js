@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         es: {
-            title: "Calculadora de Crafteo WoW",
+            title: "WoW Crafting & Economy Hub",
             btn: "Calcular Ganancias en Vivo",
             selectRealm: "Selecciona tu servidor...",
             defaultText: "Selecciona un servidor y una receta para consultar la Casa de Subastas...",
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             connectionError: "No se pudo conectar con el servidor backend."
         },
         en: {
-            title: "WoW Crafting Calculator",
+            title: "WoW Crafting & Economy Hub",
             btn: "Calculate Live Profits",
             selectRealm: "Select your realm...",
             defaultText: "Select a realm and recipe to query the Auction House...",
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             connectionError: "Could not connect to the backend server."
         },
         de: {
-            title: "WoW Handwerks-Rechner",
+            title: "WoW Crafting & Economy Hub",
             btn: "Live-Gewinn berechnen",
             selectRealm: "Wähle deinen Server...",
             defaultText: "Wähle einen Server und ein Rezept, um das Auktionshaus abzufragen...",
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             connectionError: "Verbindung zum Backend-Server fehlgeschlagen."
         },
         fr: {
-            title: "Calculateur d'Artisanat WoW",
+            title: "WoW Crafting & Economy Hub",
             btn: "Calculer les Bénéfices en Direct",
             selectRealm: "Sélectionnez votre royaume...",
             defaultText: "Sélectionnez un royaume et une recette pour interroger l'Hôtel des Ventes...",
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             connectionError: "Impossible de se connecter au serveur backend."
         },
         pt: {
-            title: "Calculadora de Crafting WoW",
+            title: "WoW Crafting & Economy Hub",
             btn: "Calcular Lucros ao Vivo",
             selectRealm: "Selecione seu reino...",
             defaultText: "Selecione um reino e uma receita para consultar a Casa de Leilões...",
@@ -177,47 +177,116 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Catálogo masivo y ampliado de The War Within
+    // Catálogo con nombres traducidos en los 5 idiomas para recetas y materiales
     const recipesDatabase = {
-        "flask_alacrity": { prof: "alchemy", name: "Frasco de Pungente Alacridad", salePrice: 450, materials: [{ id: 210815, name: "Flor de la peste", qty: 5 }, { id: 210802, name: "Lirio pacífico", qty: 3 }, { id: 210798, name: "Hoja de Ensueño", qty: 2 }] },
-        "flask_tempered": { prof: "alchemy", name: "Frasco de Furia Templada", salePrice: 520, materials: [{ id: 210815, name: "Flor de la peste", qty: 6 }, { id: 211503, name: "Frasco coalescente", qty: 2 }] },
-        "potion_cauldron": { prof: "alchemy", name: "Caldero de Alquimia de Batalla", salePrice: 3200, materials: [{ id: 210815, name: "Flor de la peste", qty: 20 }, { id: 210802, name: "Lirio pacífico", qty: 15 }, { id: 211503, name: "Frasco coalescente", qty: 5 }] },
-        "potion_tauri": { prof: "alchemy", name: "Poción de Velocidad Ciclópea", salePrice: 210, materials: [{ id: 210802, name: "Lirio pacífico", qty: 4 }, { id: 210798, name: "Hoja de Ensueño", qty: 2 }] },
-        "potion_ultimate": { prof: "alchemy", name: "Poción de Poder Definitivo", salePrice: 650, materials: [{ id: 210815, name: "Flor de la peste", qty: 8 }, { id: 211503, name: "Frasco coalescente", qty: 3 }] },
-        
-        "gem_culminating": { prof: "jewelcrafting", name: "Rubí Culpable Deslumbrante", salePrice: 600, materials: [{ id: 213744, name: "Artesa", qty: 10 }, { id: 213750, name: "Barra de veraplata", qty: 2 }, { id: 213755, name: "Diamante de asedio", qty: 1 }] },
-        "neck_azure": { prof: "jewelcrafting", name: "Collar de Veraplata Encantado", salePrice: 1500, materials: [{ id: 213750, name: "Barra de veraplata", qty: 6 }, { id: 213760, name: "Esmeralda viviente", qty: 2 }] },
-        "gem_quick": { prof: "jewelcrafting", name: "Ónix Sibilante Rápido", salePrice: 480, materials: [{ id: 213744, name: "Artesa", qty: 8 }, { id: 213760, name: "Esmeralda viviente", qty: 1 }] },
-        "ring_master": { prof: "jewelcrafting", name: "Sello de Maestría Estelar", salePrice: 2200, materials: [{ id: 213750, name: "Barra de veraplata", qty: 8 }, { id: 213755, name: "Diamante de asedio", qty: 2 }] },
-
-        "alloy_Bismuth": { prof: "blacksmithing", name: "Lingote de Bismuto Enriquecido", salePrice: 120, materials: [{ id: 211100, name: "Mineral de Bismuto", qty: 10 }, { id: 211105, name: "Mena fundida", qty: 2 }] },
-        "sword_epic": { prof: "blacksmithing", name: "Gran Espada de Saronita Pura", salePrice: 2800, materials: [{ id: 211100, name: "Mineral de Bismuto", qty: 15 }, { id: 211200, name: "Barra de titanio", qty: 4 }, { id: 211250, name: "Hueso primordial", qty: 2 }] },
-        "shield_heavy": { prof: "blacksmithing", name: "Pavés de Acero Real", salePrice: 1950, materials: [{ id: 211100, name: "Mineral de Bismuto", qty: 12 }, { id: 211200, name: "Barra de titanio", qty: 3 }] },
-        "cuirass_plate": { prof: "blacksmithing", name: "Coraza de Batalla Inquebrantable", salePrice: 3500, materials: [{ id: 211100, name: "Mineral de Bismuto", qty: 20 }, { id: 211200, name: "Barra de titanio", qty: 6 }] },
-
-        "enchant_weapon": { prof: "enchanting", name: "Encantamiento de Arma: Divisa Flamígera", salePrice: 1850, materials: [{ id: 224001, name: "Polvo abisal", qty: 8 }, { id: 224005, name: "Esencia cósmica mayor", qty: 4 }, { id: 224010, name: "Cristal de vacío", qty: 1 }] },
-        "enchant_ring": { prof: "enchanting", name: "Encantamiento de Anillo: Velocidad Radiante", salePrice: 950, materials: [{ id: 224001, name: "Polvo abisal", qty: 5 }, { id: 224005, name: "Esencia cósmica mayor", qty: 2 }] },
-        "enchant_cloak": { prof: "enchanting", name: "Encantamiento de Capa: Gracia Alada", salePrice: 720, materials: [{ id: 224001, name: "Polvo abisal", qty: 4 }, { id: 224010, name: "Cristal de vacío", qty: 1 }] },
-        "enchant_chest": { prof: "enchanting", name: "Encantamiento de Pecho: Estadísticas Gloriosas", salePrice: 2400, materials: [{ id: 224001, name: "Polvo abisal", qty: 12 }, { id: 224010, name: "Cristal de vacío", qty: 2 }] },
-
-        "armor_kit": { prof: "leatherworking", name: "Kit de Armadura Reforzado", salePrice: 340, materials: [{ id: 218001, name: "Cuero basto", qty: 8 }, { id: 218005, name: "Escama endurecida", qty: 3 }] },
-        "boots_leather": { prof: "leatherworking", name: "Botas de Merodeador Sombrío", salePrice: 1600, materials: [{ id: 218001, name: "Cuero basto", qty: 12 }, { id: 218005, name: "Escama endurecida", qty: 4 }] },
-        "legs_scaled": { prof: "leatherworking", name: "Pantalones de Escama Feroz", salePrice: 2900, materials: [{ id: 218001, name: "Cuero basto", qty: 16 }, { id: 218005, name: "Escama endurecida", qty: 6 }] },
-
-        "cloth_bolt": { prof: "tailoring", name: "Rollo de Tela Crepuscular", salePrice: 180, materials: [{ id: 219001, name: "Fibra crepuscular", qty: 10 }] },
-        "robe_spellfire": { prof: "tailoring", name: "Vestimentas de Tejefuego", salePrice: 2400, materials: [{ id: 219001, name: "Fibra crepuscular", qty: 16 }, { id: 219005, name: "Seda tejida de éter", qty: 4 }] },
-        "mantle_weave": { prof: "tailoring", name: "Manto de Hilado Arcano", salePrice: 1850, materials: [{ id: 219001, name: "Fibra crepuscular", qty: 12 }, { id: 219005, name: "Seda tejida de éter", qty: 3 }] },
-
-        "tinker_item": { prof: "engineering", name: "Micro-ajustador Térmico", salePrice: 750, materials: [{ id: 220001, name: "Tornillo de cobalto", qty: 6 }, { id: 220005, name: "Muelle de precisión", qty: 2 }] },
-        "goggles_eng": { prof: "engineering", name: "Gafas de Espectro Óptico", salePrice: 2100, materials: [{ id: 220001, name: "Tornillo de cobalto", qty: 10 }, { id: 220005, name: "Muelle de precisión", qty: 4 }, { id: 211200, name: "Barra de titanio", qty: 2 }] },
-        "bomb_thermal": { prof: "engineering", name: "Carga Térmica Volátil", salePrice: 420, materials: [{ id: 220001, name: "Tornillo de cobalto", qty: 5 }, { id: 220005, name: "Muelle de precisión", qty: 1 }] }
+        "flask_alacrity": {
+            prof: "alchemy",
+            salePrice: 450,
+            names: { es: "Frasco de Pungente Alacridad", en: "Flask of Pungent Alacrity", de: "Fläschchen der beißenden Alacrity", fr: "Flacon d'alacrité piquante", pt: "Frasco de Alacridade Pungente" },
+            materials: [
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, qty: 5 },
+                { id: 210802, names: { es: "Lirio pacífico", namesEn: "Peacebloom", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, qty: 3 },
+                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, qty: 2 }
+            ]
+        },
+        "flask_tempered": {
+            prof: "alchemy",
+            salePrice: 520,
+            names: { es: "Frasco de Furia Templada", en: "Flask of Tempered Fury", de: "Fläschchen der geeichten Wut", fr: "Flacon de fureur tempérée", pt: "Frasco de Fúria Temperada" },
+            materials: [
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, qty: 6 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, qty: 2 }
+            ]
+        },
+        "potion_cauldron": {
+            prof: "alchemy",
+            salePrice: 3200,
+            names: { es: "Caldero de Alquimia de Batalla", en: "Battle Alchemist's Cauldron", de: "Kessel des Alchemisten", fr: "Chaudron d'alchimiste de bataille", pt: "Caldeirão do Alquimista de Batalha" },
+            materials: [
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, qty: 20 },
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, qty: 15 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, qty: 5 }
+            ]
+        },
+        "gem_culminating": {
+            prof: "jewelcrafting",
+            salePrice: 600,
+            names: { es: "Rubí Culpable Deslumbrante", en: "Culminating Blasphemite", de: "Gipfelnde Lästerung", fr: "Blasphémique culminante", pt: "Blasfêmia Culminante" },
+            materials: [
+                { id: 213744, names: { es: "Artesa", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, qty: 10 },
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, qty: 2 },
+                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx", de: "Onyx", fr: "Onyx", pt: "Ônix" }, qty: 1 }
+            ]
+        },
+        "neck_azure": {
+            prof: "jewelcrafting",
+            salePrice: 1500,
+            names: { es: "Collar de Veraplata Encantado", en: "Gilded Truesilver Necklace", de: "Vergoldete Echtsilberhalskette", fr: "Collier en vrai-argent doré", pt: "Colar de Veraprata Dourado" },
+            materials: [
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, qty: 6 },
+                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem", de: "Gipfelnder Edelstein", fr: "Gemme culminante", pt: "Gema Culminante" }, qty: 2 }
+            ]
+        },
+        "alloy_Bismuth": {
+            prof: "blacksmithing",
+            salePrice: 120,
+            names: { es: "Lingote de Bismuto Enriquecido", en: "Bismuth Alloy", de: "Bismutlegierung", fr: "Alliage de bismuth", pt: "Liga de Bismuto" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuth", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, qty: 10 },
+                { id: 211105, names: { es: "Mena fundida", namesEn: "Molten Slag", en: "Molten Slag", de: "Geschmolzene Schlacke", fr: "Scorie en fusion", pt: "Escória Fundida" }, qty: 2 }
+            ]
+        },
+        "sword_epic": {
+            prof: "blacksmithing",
+            salePrice: 2800,
+            names: { es: "Gran Espada de Saronita Pura", en: "Bismuth Greatsword", de: "Bismut-Großschwert", fr: "Grande épée en bismuth", pt: "Montante de Bismuto" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuth", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, qty: 15 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, qty: 4 }
+            ]
+        },
+        "enchant_weapon": {
+            prof: "enchanting",
+            salePrice: 1850,
+            names: { es: "Encantamiento de Arma: Divisa Flamígera", en: "Enchant Weapon - Authority", de: "Waffenverzauberung - Autorität", fr: "Ench. d'arme - Autorité", pt: "Encantar Arma - Autoridade" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, qty: 8 },
+                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, qty: 4 },
+                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust", de: "Eterniumstaub", fr: "Poussière d'éternium", pt: "Pó de Eternium" }, qty: 1 }
+            ]
+        },
+        "armor_kit": {
+            prof: "leatherworking",
+            salePrice: 340,
+            names: { es: "Kit de Armadura Reforzado", en: "Reinforced Armor Kit", de: "Verstärktes Rüstungsset", fr: "Kit d'armure renforcé", pt: "Kit de Armadura Reforçado" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, qty: 8 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, qty: 3 }
+            ]
+        },
+        "cloth_bolt": {
+            prof: "tailoring",
+            salePrice: 180,
+            names: { es: "Rollo de Tela Crepuscular", en: "Bolt of Weavecloth", de: "Stoffballen", fr: "Rouleau d'étoffe", pt: "Fardo de Tecido" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, qty: 10 }
+            ]
+        },
+        "tinker_item": {
+            prof: "engineering",
+            salePrice: 750,
+            names: { es: "Micro-ajustador Térmico", en: "Scope / Tinker Component", de: "Tüftler-Komponente", fr: "Composant d'ingénieur", pt: "Componente de Engenharia" },
+            materials: [
+                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt", de: "Bolzen", fr: "Boulon", pt: "Parafuso" }, qty: 6 },
+                { id: 220005, names: { es: "Muelle de precisión", en: "Spring", de: "Feder", fr: "Ressort", pt: "Mola" }, qty: 2 }
+            ]
+        }
     };
 
     let cachedPrices = null;
     let currentRealmRegion = null;
     let currentFilter = "all";
 
-    // Cargar favoritos desde localStorage
     function getFavorites() {
         try {
             return JSON.parse(localStorage.getItem('wow_favs')) || [];
@@ -287,12 +356,14 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const [key, recipe] of Object.entries(recipesDatabase)) {
             if (filterProf === "favorites" && !favs.includes(key)) continue;
             if (filterProf !== "all" && filterProf !== "favorites" && recipe.prof !== filterProf) continue;
-            if (searchTerm && !recipe.name.toLowerCase().includes(searchTerm.toLowerCase())) continue;
+            
+            const recipeName = recipe.names[lang] || recipe.names['es'];
+            if (searchTerm && !recipeName.toLowerCase().includes(searchTerm.toLowerCase())) continue;
 
             const isFav = favs.includes(key);
             const option = document.createElement('option');
             option.value = key;
-            option.textContent = `${isFav ? '⭐ ' : ''}[${recipe.prof.toUpperCase()}] ${recipe.name}`;
+            option.textContent = `${isFav ? '⭐ ' : ''}[${recipe.prof.toUpperCase()}] ${recipeName}`;
             selector.appendChild(option);
         }
     }
@@ -303,6 +374,15 @@ document.addEventListener('DOMContentLoaded', () => {
             updateUIStrings();
             const searchInput = document.getElementById('recipe-search');
             populateRecipes(currentFilter, searchInput ? searchInput.value : '');
+            
+            // Si hay una tarjeta activa, actualizarla al nuevo idioma
+            const recipeSel = document.getElementById('recipe-selector');
+            if (recipeSel && recipeSel.value && cachedPrices) {
+                const recipe = recipesDatabase[recipeSel.value];
+                const realm = document.getElementById('realm-selector').value;
+                const t = translations[getLang()] || translations.es;
+                renderCalculator(recipe, recipeSel.value, realm, cachedPrices, t);
+            }
         });
     }
 
@@ -348,7 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (resultsContainer) {
-                resultsContainer.innerHTML = `<p style="text-align: center; color: var(--accent); margin-top: 40px;">${t.syncing}</p>`;
+                resultsContainer.innerHTML = `<p style="text-align: center; color: var(--accent-gold); margin-top: 50px; font-size: 1.05rem;">${t.syncing}</p>`;
             }
 
             try {
@@ -358,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (data.error) {
                         if (resultsContainer) {
-                            resultsContainer.innerHTML = `<p style="color: var(--red);">${t.errorTitle} ${data.error}</p>`;
+                            resultsContainer.innerHTML = `<p style="color: var(--red); text-align: center;">${t.errorTitle} ${data.error}</p>`;
                         }
                         return;
                     }
@@ -382,6 +462,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const resultsContainer = document.getElementById('results-container');
         if (!resultsContainer) return;
 
+        const lang = getLang();
+        const recipeName = recipe.names[lang] || recipe.names['es'];
+
         const craftMultiplierSel = document.getElementById('craft-qty-multiplier');
         const multiplier = craftMultiplierSel ? parseInt(craftMultiplierSel.value) || 1 : 1;
 
@@ -395,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
         recipe.materials.forEach((mat, index) => {
             const unitPrice = prices[mat.id] || 15.00;
             const requiredQty = mat.qty * multiplier;
+            const matName = mat.names[lang] || mat.names['es'];
             
             const existingInput = document.getElementById(`owned-${index}`);
             const ownedQty = existingInput ? Math.max(0, parseInt(existingInput.value) || 0) : 0;
@@ -405,13 +489,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             materialsHtml += `
                 <tr>
-                    <td>${mat.name} <span style="font-size: 0.75em; color: var(--text-muted);">(ID: ${mat.id})</span></td>
+                    <td>${matName} <span style="font-size: 0.75em; color: var(--text-muted);">(ID: ${mat.id})</span></td>
                     <td style="text-align: center;">${requiredQty}</td>
                     <td style="text-align: center;">
                         <input type="number" min="0" value="${ownedQty}" class="input-owned" id="owned-${index}" data-index="${index}">
                     </td>
                     <td style="text-align: right;">${unitPrice.toFixed(2)}g</td>
-                    <td style="text-align: right; color: var(--accent);" id="subtotal-${index}">${subtotal.toFixed(2)}g</td>
+                    <td style="text-align: right; color: var(--accent-gold); font-weight: 600;" id="subtotal-${index}">${subtotal.toFixed(2)}g</td>
                 </tr>
             `;
         });
@@ -423,17 +507,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resultsContainer.innerHTML = `
             <div class="recipe-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <button class="fav-btn ${isFav ? 'active' : ''}" id="toggle-fav-btn" title="Guardar en Favoritas">⭐</button>
-                        <h2 style="margin: 0; color: #fff; font-size: 1.3rem;">${recipe.name} <span style="font-size: 0.8em; color: var(--accent);">(x${multiplier})</span></h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <button class="fav-btn ${isFav ? 'active' : ''}" id="toggle-fav-btn" title="Favorita">⭐</button>
+                        <h2 style="margin: 0; color: #fff; font-size: 1.4rem; font-weight: 700;">${recipeName} <span style="font-size: 0.85em; color: var(--accent-gold);">(x${multiplier})</span></h2>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <label style="font-size: 0.9em; color: var(--text-muted);">${t.salePriceLabel}</label>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <label style="font-size: 0.85em; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">${t.salePriceLabel}</label>
                         <input type="number" id="custom-sale-price" class="input-price" value="${salePrice}">
                     </div>
                 </div>
-                <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 15px;">Servidor / Realm: <strong>${realm.toUpperCase()}</strong> | AH Tax (5%): <strong id="ah-tax-display">${ahTax.toFixed(2)}g</strong></p>
+                <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 20px;">Realm: <strong>${realm.toUpperCase()}</strong> | AH Tax (5%): <strong id="ah-tax-display">${ahTax.toFixed(2)}g</strong></p>
 
                 <table>
                     <thead>
@@ -467,24 +551,21 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // Evento botón favorito
         document.getElementById('toggle-fav-btn').addEventListener('click', () => {
             toggleFavorite(recipeKey);
-            // Re-renderizar para actualizar el icono de estrella
             renderCalculator(recipe, recipeKey, realm, prices, t, customSalePrice);
         });
 
-        // Eventos dinámicos de inputs
         document.querySelectorAll('.input-owned').forEach(input => {
             input.addEventListener('input', () => {
-                recalculateLive(recipe, recipeKey, prices);
+                recalculateLive(recipe, prices);
             });
         });
 
         const customPriceInput = document.getElementById('custom-sale-price');
         if (customPriceInput) {
             customPriceInput.addEventListener('input', () => {
-                recalculateLive(recipe, recipeKey, prices);
+                recalculateLive(recipe, prices);
             });
         }
     }
@@ -504,7 +585,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function recalculateLive(recipe, recipeKey, prices) {
+    function recalculateLive(recipe, prices) {
         const craftMultiplierSel = document.getElementById('craft-qty-multiplier');
         const multiplier = craftMultiplierSel ? parseInt(craftMultiplierSel.value) || 1 : 1;
         let totalCraftCost = 0;
