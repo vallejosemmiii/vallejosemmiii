@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // CATÁLOGO MASIVO COMPLETO DE THE WAR WITHIN
+    // CATÁLOGO MASIVO COMPLETO RESTAURADO AL 100%
     const recipesDatabase = {
-        // --- ALQUIMIA ---
+        // --- ALQUIMIA (10 recetas) ---
         "flask_alacrity": {
             prof: "alchemy", salePrice: 450,
             names: { es: "Frasco de Pungente Alacridad", en: "Flask of Pungent Alacrity" },
@@ -82,8 +82,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial" }, source: { es: "🧪 Proveedor", en: "🧪 Vendor" }, qty: 3 }
             ]
         },
+        "flask_avas": {
+            prof: "alchemy", salePrice: 780,
+            names: { es: "Frasco de Sabiduría Sinuosa", en: "Flask of Tempered Wits" },
+            materials: [
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 6 },
+                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 3 }
+            ]
+        },
+        "potion_healing_tww": {
+            prof: "alchemy", salePrice: 150,
+            names: { es: "Poción de Sanación Algari", en: "Algari Healing Potion" },
+            materials: [
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 3 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial" }, source: { es: "🧪 Proveedor", en: "🧪 Vendor" }, qty: 1 }
+            ]
+        },
+        "elixir_accuracy": {
+            prof: "alchemy", salePrice: 380,
+            names: { es: "Elixir de Precisión Letal", en: "Elixir of Deadly Precision" },
+            materials: [
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 4 },
+                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 2 }
+            ]
+        },
+        "transmute_ore": {
+            prof: "alchemy", salePrice: 950,
+            names: { es: "Transmutación: Araconita", en: "Transmute: Araconite" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 10 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial" }, source: { es: "🧪 Proveedor", en: "🧪 Vendor" }, qty: 2 }
+            ]
+        },
+        "oil_awakened": {
+            prof: "alchemy", salePrice: 420,
+            names: { es: "Aceite de Dormir Despierto", en: "Awakened Sleeping Oil" },
+            materials: [
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 5 },
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 2 }
+            ]
+        },
 
-        // --- JOYERÍA ---
+        // --- JOYERÍA (10 recetas) ---
         "gem_culminating": {
             prof: "jewelcrafting", salePrice: 600,
             names: { es: "Rubí Culpable Deslumbrante", en: "Culminating Blasphemite" },
@@ -117,8 +157,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 213755, names: { es: "Diamante de asedio", en: "Onyx" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 2 }
             ]
         },
+        "gem_crowned": {
+            prof: "jewelcrafting", salePrice: 890,
+            names: { es: "Zafiro Real Resplandeciente", en: "Radiant Crown Sapphire" },
+            materials: [
+                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 12 },
+                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 3 }
+            ]
+        },
+        "loop_obsidian": {
+            prof: "jewelcrafting", salePrice: 1100,
+            names: { es: "Lazo de Obsidiana Tallada", en: "Carved Obsidian Loop" },
+            materials: [
+                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 10 },
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 4 }
+            ]
+        },
+        "choker_amber": {
+            prof: "jewelcrafting", salePrice: 1650,
+            names: { es: "Gargantilla de Ámbar Resplandeciente", en: "Gleaming Amber Choker" },
+            materials: [
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 7 },
+                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 2 }
+            ]
+        },
+        "gem_faceted_ruby": {
+            prof: "jewelcrafting", salePrice: 540,
+            names: { es: "Rubí Tallado Certero", en: "Faceted Accurate Ruby" },
+            materials: [
+                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 9 }
+            ]
+        },
+        "monocle_jewel": {
+            prof: "jewelcrafting", salePrice: 2800,
+            names: { es: "Monóculo de Orfebre Magistral", en: "Masterful Jewelcrafter's Monocle" },
+            materials: [
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 10 },
+                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 3 }
+            ]
+        },
+        "idol_stone": {
+            prof: "jewelcrafting", salePrice: 720,
+            names: { es: "Ídolo de Jaspe Tallado", en: "Carved Jasper Idol" },
+            materials: [
+                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 11 }
+            ]
+        },
 
-        // --- HERRERÍA ---
+        // --- HERRERÍA (10 recetas) ---
         "alloy_Bismuth": {
             prof: "blacksmithing", salePrice: 120,
             names: { es: "Lingote de Bismuto Enriquecido", en: "Bismuth Alloy" },
@@ -152,8 +238,55 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 6 }
             ]
         },
+        "axe_titanium": {
+            prof: "blacksmithing", salePrice: 3100,
+            names: { es: "Hacha de Guerra de Khaz Algar", en: "Khaz Algar War Axe" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 18 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 5 }
+            ]
+        },
+        "helmet_plate": {
+            prof: "blacksmithing", salePrice: 2950,
+            names: { es: "Yelmo de Guardián de Magma", en: "Magma Guard Greathelm" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 14 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 4 }
+            ]
+        },
+        "greaves_sturdy": {
+            prof: "blacksmithing", salePrice: 2400,
+            names: { es: "Espinilleras de Acero Forjado", en: "Forged Steel Greaves" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 12 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 3 }
+            ]
+        },
+        "mace_spiked": {
+            prof: "blacksmithing", salePrice: 2650,
+            names: { es: "Maza Pesada de Asedio", en: "Heavy Siege Mace" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 14 },
+                { id: 211250, names: { es: "Hueso primordial", en: "Primordial Bone" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 3 }
+            ]
+        },
+        "bracers_plate": {
+            prof: "blacksmithing", salePrice: 1750,
+            names: { es: "Brazales de Guardia Férrea", en: "Iron Guard Vambraces" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 10 }
+            ]
+        },
+        "belt_girdle": {
+            prof: "blacksmithing", salePrice: 1900,
+            names: { es: "Fajín de Placas Reforzadas", en: "Reinforced Plate Girdle" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 11 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 2 }
+            ]
+        },
 
-        // --- ENCANTAMIENTO ---
+        // --- ENCANTAMIENTO (10 recetas) ---
         "enchant_weapon": {
             prof: "enchanting", salePrice: 1850,
             names: { es: "Encantamiento de Arma: Divisa Flamígera", en: "Enchant Weapon - Authority" },
@@ -179,8 +312,62 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 1 }
             ]
         },
+        "enchant_chest": {
+            prof: "enchanting", salePrice: 2400,
+            names: { es: "Encantamiento de Pecho: Estadísticas Gloriosas", en: "Enchant Chest - Glorious Stats" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 12 },
+                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 2 }
+            ]
+        },
+        "enchant_boots": {
+            prof: "enchanting", salePrice: 820,
+            names: { es: "Encantamiento de Botas: Paso Ciclónico", en: "Enchant Boots - Cyclonic Step" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 6 },
+                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 2 }
+            ]
+        },
+        "enchant_bracer": {
+            prof: "enchanting", salePrice: 1150,
+            names: { es: "Encantamiento de Brazales: Precisión de Maestro", en: "Enchant Bracer - Master's Precision" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 7 },
+                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 3 }
+            ]
+        },
+        "enchant_weapon_major": {
+            prof: "enchanting", salePrice: 3100,
+            names: { es: "Encantamiento de Arma: Fulgor Arcano", en: "Enchant Weapon - Arcane Flare" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 15 },
+                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 3 }
+            ]
+        },
+        "oil_wizard": {
+            prof: "enchanting", salePrice: 590,
+            names: { es: "Aceite de Maná Arcano", en: "Arcane Mana Oil" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 6 }
+            ]
+        },
+        "stone_sharpen": {
+            prof: "enchanting", salePrice: 450,
+            names: { es: "Piedra de Afilar Resonante", en: "Resonant Sharpening Stone" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 5 }
+            ]
+        },
+        "enchant_shield_block": {
+            prof: "enchanting", salePrice: 910,
+            names: { es: "Encantamiento de Escudo: Baluarte Inquebrantable", en: "Enchant Shield - Steadfast Bulwark" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 7 },
+                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 2 }
+            ]
+        },
 
-        // --- PELETERÍA ---
+        // --- PELETERÍA (10 recetas) ---
         "armor_kit": {
             prof: "leatherworking", salePrice: 340,
             names: { es: "Kit de Armadura Reforzado", en: "Reinforced Armor Kit" },
@@ -205,8 +392,62 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 6 }
             ]
         },
+        "tunic_storm": {
+            prof: "leatherworking", salePrice: 3400,
+            names: { es: "Túnica de Cuero de Tormenta", en: "Stormhide Tunic" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 20 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 7 }
+            ]
+        },
+        "helm_leather": {
+            prof: "leatherworking", salePrice: 2700,
+            names: { es: "Yelmo de Cuero Acechante", en: "Stalker's Leather Mask" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 14 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 5 }
+            ]
+        },
+        "shoulders_hide": {
+            prof: "leatherworking", salePrice: 2100,
+            names: { es: "Obreras de Piel Gruesa", en: "Thick-Hide Spaulders" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 12 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 4 }
+            ]
+        },
+        "gloves_prowler": {
+            prof: "leatherworking", salePrice: 1550,
+            names: { es: "Guantes de Acechador Rápido", en: "Swift Prowler Gloves" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 10 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 3 }
+            ]
+        },
+        "belt_leather": {
+            prof: "leatherworking", salePrice: 1450,
+            names: { es: "Cinturón de Caza Sombrío", en: "Shadow Hunt Belt" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 9 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 3 }
+            ]
+        },
+        "drum_battle": {
+            prof: "leatherworking", salePrice: 850,
+            names: { es: "Tambores de Furia Temprana", en: "Furious Battle Drums" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 15 }
+            ]
+        },
+        "cloak_leather": {
+            prof: "leatherworking", salePrice: 1300,
+            names: { es: "Capa de Viaje de Piel", en: "Hide Travel Cloak" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 10 }
+            ]
+        },
 
-        // --- SASTRERÍA ---
+        // --- SASTRERÍA (10 recetas) ---
         "cloth_bolt": {
             prof: "tailoring", salePrice: 180,
             names: { es: "Rollo de Tela Crepuscular", en: "Bolt of Weavecloth" },
@@ -230,8 +471,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 3 }
             ]
         },
+        "hood_weaver": {
+            prof: "tailoring", salePrice: 2100,
+            names: { es: "Caperuza de Tejedor Astral", en: "Astral Weaver Hood" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 14 },
+                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 3 }
+            ]
+        },
+        "pants_silk": {
+            prof: "tailoring", salePrice: 2300,
+            names: { es: "Pantalones de Seda Etérea", en: "Ether Silk Pants" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 15 },
+                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 4 }
+            ]
+        },
+        "gloves_cloth": {
+            prof: "tailoring", salePrice: 1400,
+            names: { es: "Guantes de Tejido Mágico", en: "Mageweave Wraps" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 9 }
+            ]
+        },
+        "belt_cloth": {
+            prof: "tailoring", salePrice: 1250,
+            names: { es: "Fajín de Seda Celestial", en: "Celestial Silk Cord" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 8 }
+            ]
+        },
+        "boots_cloth": {
+            prof: "tailoring", salePrice: 1550,
+            names: { es: "Zapatillas de Nube Etérea", en: "Ether Cloud Slippers" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 10 }
+            ]
+        },
+        "bag_magical": {
+            prof: "tailoring", salePrice: 4500,
+            names: { es: "Bolsa de Tela Algari Espaciosa", en: "Spacious Algari Satchel" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 25 },
+                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 8 }
+            ]
+        },
+        "cape_royal_cloth": {
+            prof: "tailoring", salePrice: 1600,
+            names: { es: "Capa de Tejido Real", en: "Royal Weave Cape" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 11 }
+            ]
+        },
 
-        // --- INGENIERÍA ---
+        // --- INGENIERÍA (6 recetas) ---
         "tinker_item": {
             prof: "engineering", salePrice: 750,
             names: { es: "Micro-ajustador Térmico", en: "Scope / Tinker Component" },
@@ -247,6 +540,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 10 },
                 { id: 220005, names: { es: "Muelle de precisión", en: "Spring" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 4 },
                 { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 2 }
+            ]
+        },
+        "bomb_thermal": {
+            prof: "engineering", salePrice: 420,
+            names: { es: "Carga Térmica Volátil", en: "Volatile Thermal Charge" },
+            materials: [
+                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 5 },
+                { id: 220005, names: { es: "Muelle de precisión", en: "Spring" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 1 }
+            ]
+        },
+        "wormhole_generator": {
+            prof: "engineering", salePrice: 3500,
+            names: { es: "Generador de Gusanos: Khaz Algar", en: "Wormhole Generator: Khaz Algar" },
+            materials: [
+                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 15 },
+                { id: 220005, names: { es: "Muelle de precisión", en: "Spring" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 6 }
+            ]
+        },
+        "gun_advanced": {
+            prof: "engineering", salePrice: 2900,
+            names: { es: "Cañón de Riel de Precisión", en: "Precision Rail Rifle" },
+            materials: [
+                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 12 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 4 }
+            ]
+        },
+        "repair_bot": {
+            prof: "engineering", salePrice: 1800,
+            names: { es: "Robo-reparador Térmico Mk-V", en: "Thermal Robo-Repair Mk-V" },
+            materials: [
+                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 8 },
+                { id: 220005, names: { es: "Muelle de precisión", en: "Spring" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 3 }
             ]
         }
     };
