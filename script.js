@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // CATÁLOGO MASIVO COMPLETO RESTAURADO Y AMPLIADO DE THE WAR WITHIN
+    // CATÁLOGO MASIVO COMPLETO DE THE WAR WITHIN
     const recipesDatabase = {
         // --- ALQUIMIA ---
         "flask_alacrity": {
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilter = "all";
     let craftingSession = [];
 
-    // Cargar configuraciones guardadas en localStorage
+    // Cargar configuraciones guardadas
     const savedTheme = localStorage.getItem('wow_theme') || 'goblin';
     document.body.className = `theme-${savedTheme}`;
     document.getElementById('theme-selector').value = savedTheme;
@@ -267,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedRegion = localStorage.getItem('wow_region');
     if (savedRegion) document.getElementById('region-selector').value = savedRegion;
 
-    // Cambiar Tema
     document.getElementById('theme-selector').addEventListener('change', (e) => {
         const theme = e.target.value;
         document.body.className = `theme-${theme}`;
@@ -344,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     populateRecipes();
 
-    // RENDERIZAR CALCULADORA CON ROI Y MÉTRICAS DE LOTE
+    // RENDERIZAR CALCULADORA
     function renderCalculator(recipe, recipeKey, realm, prices, t, customSalePrice = null) {
         const resultsContainer = document.getElementById('results-container');
         if (!resultsContainer) return;
@@ -489,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSessionUI();
     });
 
-    // PRESUPUESTO CON ALERTA DE FAVORITOS
+    // PRESUPUESTO
     document.getElementById('btn-run-budget')?.addEventListener('click', async () => {
         const realm = document.getElementById('realm-selector').value;
         const budget = parseFloat(document.getElementById('budget-input').value) || 0;
@@ -548,6 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const flipRecipes = [
                 { key: "alloy_Bismuth", name: "Lingote de Bismuto Enriquecido (Aleación)" },
+                { key: "cloth_bolt", name: "Rollo de Tela Crepuscular" },
                 { key: "armor_kit", name: "Kit de Armadura Reforzado" }
             ];
 
