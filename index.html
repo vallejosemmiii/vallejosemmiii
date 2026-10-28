@@ -18,7 +18,6 @@
             --red: #ef4444;
         }
 
-        /* Temas Dinámicos */
         body.theme-alliance { --accent-gold: #3b82f6; --accent-glow: rgba(59, 130, 246, 0.25); }
         body.theme-horde { --accent-gold: #dc2626; --accent-glow: rgba(220, 38, 38, 0.25); }
         body.theme-fel { --accent-gold: #10b981; --accent-glow: rgba(16, 185, 129, 0.25); }
@@ -52,7 +51,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 20px;
             flex-wrap: wrap;
@@ -65,13 +64,42 @@
             color: var(--accent-gold);
             font-weight: 800;
             letter-spacing: -0.5px;
-            transition: color 0.3s;
         }
 
         .header-controls {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .donate-btn {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3);
+            transition: all 0.2s;
+        }
+        .donate-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+        .ad-banner {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px dashed var(--border-color);
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 25px;
         }
 
         select, input {
@@ -195,10 +223,7 @@
             transition: all 0.2s ease;
         }
 
-        .main-action-btn:hover { 
-            filter: brightness(1.1); 
-            transform: translateY(-2px);
-        }
+        .main-action-btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
         .recipe-card {
             background: rgba(10, 15, 30, 0.6);
@@ -231,11 +256,7 @@
         th:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
         th:last-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
 
-        td {
-            padding: 14px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
+        td { padding: 14px; border-bottom: 1px solid var(--border-color); }
         tr:hover td { background: rgba(255, 255, 255, 0.015); }
 
         .summary-grid {
@@ -259,10 +280,7 @@
             font-weight: 700;
         }
 
-        .summary-box strong {
-            font-size: 1.25rem;
-            font-weight: 800;
-        }
+        .summary-box strong { font-size: 1.25rem; font-weight: 800; }
 
         .badge-thermometer {
             display: inline-block;
@@ -277,11 +295,7 @@
         .badge-yellow { background: rgba(245, 158, 11, 0.15); color: var(--accent-gold); border: 1px solid rgba(245, 158, 11, 0.4); }
         .badge-red { background: rgba(239, 68, 68, 0.15); color: var(--red); border: 1px solid rgba(239, 68, 68, 0.4); }
 
-        .action-row-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
+        .action-row-buttons { display: flex; gap: 15px; margin-top: 25px; }
 
         .secondary-btn {
             background: var(--bg-input);
@@ -294,12 +308,7 @@
             font-size: 0.9rem;
             transition: all 0.2s;
         }
-
-        .secondary-btn:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-            background: var(--accent-glow);
-        }
+        .secondary-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); background: var(--accent-glow); }
 
         .input-owned {
             width: 70px;
@@ -349,11 +358,13 @@
         <header>
             <h1 id="app-title">WoW Crafting & Economy Hub</h1>
             <div class="header-controls">
+                <!-- Tu enlace de Ko-fi ya está conectado aquí -->
+                <a href="https://ko-fi.com/vallejosemmiiii" target="_blank" class="donate-btn">☕ Invítame un Café</a>
                 <select id="theme-selector" title="Tema Visual">
-                    <option value="goblin">🟡 Goblin Gold</option>
-                    <option value="alliance">🔵 Alliance Blue</option>
-                    <option value="horde">🔴 Horde Red</option>
-                    <option value="fel">🟢 Fel Green</option>
+                    <option value="goblin">🟡 Goblin</option>
+                    <option value="alliance">🔵 Alliance</option>
+                    <option value="horde">🔴 Horde</option>
+                    <option value="fel">🟢 Fel</option>
                 </select>
                 <select id="lang-selector">
                     <option value="es">Español</option>
@@ -362,7 +373,10 @@
             </div>
         </header>
 
-        <!-- Navegación de Pestañas -->
+        <div class="ad-banner">
+            <span>[Espacio Publicitario / Anuncio de Google AdSense]</span>
+        </div>
+
         <div class="nav-tabs">
             <button class="tab-btn active" data-tab="tab-calculator">🧮 Calculadora & ROI</button>
             <button class="tab-btn" data-tab="tab-budget">💰 Presupuesto & Favoritos</button>
@@ -370,7 +384,6 @@
             <button class="tab-btn" data-tab="tab-session">📊 Sesión de Crafteo</button>
         </div>
 
-        <!-- Configuración de Servidor y Región -->
         <div class="realm-config-grid">
             <div class="control-group">
                 <label>Región:</label>
@@ -394,7 +407,6 @@
             </div>
         </div>
 
-        <!-- PESTAÑA 1: CALCULADORA -->
         <div id="tab-calculator" class="tab-content active">
             <div class="controls-grid">
                 <div class="control-group">
@@ -438,7 +450,6 @@
             </div>
         </div>
 
-        <!-- PESTAÑA 2: PRESUPUESTO & FAVORITOS -->
         <div id="tab-budget" class="tab-content">
             <div class="control-group" style="margin-bottom: 20px;">
                 <label>Ingresa tu Oro Disponible (Golds):</label>
@@ -448,13 +459,11 @@
             <div id="budget-results" style="margin-top: 25px;"></div>
         </div>
 
-        <!-- PESTAÑA 3: FLIPS -->
         <div id="tab-flips" class="tab-content">
             <button id="btn-run-flips" class="main-action-btn">Escanear Oportunidades de Flip y Transformación</button>
             <div id="flips-results" style="margin-top: 25px;"></div>
         </div>
 
-        <!-- PESTAÑA 4: SESIÓN -->
         <div id="tab-session" class="tab-content">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                 <h3 style="margin: 0; color: var(--accent-gold);">Resumen de la Jornada de Crafteo</h3>
