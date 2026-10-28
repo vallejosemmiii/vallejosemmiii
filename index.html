@@ -3,176 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="app-title">Calculadora de Crafteo WoW</title>
+    <title id="app-title">WoW Crafting & Economy Hub</title>
     <style>
         :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --card-hover: #252525;
-            --accent: #ffb100;
-            --accent-hover: #e09b00;
-            --text-main: #e0e0e0;
-            --text-muted: #888;
-            --border: #333;
-            --green: #4CAF50;
-            --red: #ff5252;
+            --bg-main: #0b0f19;
+            --bg-card: #131b2e;
+            --bg-input: #1a233a;
+            --border-color: #2a3858;
+            --accent-gold: #f39c12;
+            --accent-glow: rgba(243, 156, 18, 0.2);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --green: #10b981;
+            --red: #ef4444;
         }
 
         body {
-            background: var(--bg-color);
+            background-color: var(--bg-main);
             color: var(--text-main);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 15px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
         }
 
         h1 {
             margin: 0;
-            font-size: 1.6rem;
-            color: var(--accent);
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         select, input {
-            background: #2a2a2a;
-            color: #fff;
-            border: 1px solid var(--border);
-            padding: 10px;
-            border-radius: 6px;
+            background: var(--bg-input);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 12px 14px;
+            border-radius: 8px;
             font-size: 0.95rem;
             outline: none;
+            transition: all 0.2s ease;
         }
 
         select:focus, input:focus {
-            border-color: var(--accent);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
         .controls-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 20px;
+            margin-bottom: 25px;
         }
 
         .control-group label {
             display: block;
-            font-size: 0.85em;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .professions-nav {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .prof-btn {
-            background: #2a2a2a;
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            padding: 8px 14px;
-            border-radius: 20px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 9px 16px;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.2s;
         }
 
-        .prof-btn:hover, .prof-btn.active {
-            background: var(--accent);
-            color: #121212;
-            border-color: var(--accent);
-            font-weight: bold;
+        .prof-btn:hover {
+            color: var(--text-main);
+            border-color: var(--accent-gold);
+        }
+
+        .prof-btn.active {
+            background: var(--accent-gold);
+            color: #0b0f19;
+            border-color: var(--accent-gold);
+            font-weight: 700;
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .main-action-btn {
-            background: var(--accent);
-            color: #121212;
+            background: linear-gradient(135deg, #f39c12, #d35400);
+            color: #fff;
             border: none;
-            padding: 14px 20px;
-            font-weight: bold;
-            border-radius: 6px;
+            padding: 15px;
+            font-weight: 700;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
             font-size: 1.1rem;
-            transition: background 0.2s;
+            letter-spacing: 0.5px;
+            transition: transform 0.1s ease, filter 0.2s;
         }
 
         .main-action-btn:hover {
-            background: var(--accent-hover);
+            filter: brightness(1.1);
+        }
+
+        .main-action-btn:active {
+            transform: scale(0.99);
         }
 
         #results-container {
-            margin-top: 30px;
+            margin-top: 35px;
         }
 
         .recipe-card {
-            background: var(--card-hover);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 5px solid var(--accent);
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent-gold);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.95rem;
-            margin: 15px 0;
+            margin: 20px 0;
         }
 
         th {
-            background: #2f2f2f;
+            background: #1a233a;
             color: var(--text-muted);
             text-align: left;
-            padding: 10px;
+            padding: 12px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
         }
 
+        th:first-child { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+        th:last-child { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+
         td {
-            padding: 10px;
-            border-bottom: 1px solid var(--border);
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .summary-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            background: #151515;
-            padding: 15px;
-            border-radius: 6px;
+            gap: 20px;
+            background: #0b0f19;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
         .summary-box span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .summary-box strong {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
         .search-box {
@@ -181,37 +210,40 @@
         }
 
         .input-owned {
-            width: 60px;
-            padding: 4px 8px;
+            width: 65px;
+            padding: 6px;
             text-align: center;
-            background: #1a1a1a;
-            border: 1px solid var(--border);
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
             color: #fff;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-weight: 600;
         }
 
         .input-price {
-            width: 100px;
-            padding: 6px;
-            background: #1a1a1a;
-            border: 1px solid var(--border);
-            color: var(--accent);
-            font-weight: bold;
-            border-radius: 4px;
+            width: 110px;
+            padding: 8px;
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            color: var(--accent-gold);
+            font-weight: 700;
+            border-radius: 6px;
             text-align: right;
         }
 
         .fav-btn {
             background: transparent;
             border: none;
-            color: #666;
-            font-size: 1.4rem;
+            color: var(--text-muted);
+            font-size: 1.5rem;
             cursor: pointer;
             vertical-align: middle;
-            transition: color 0.2s;
+            transition: color 0.2s, transform 0.2s;
         }
+        .fav-btn:hover { transform: scale(1.1); }
         .fav-btn.active {
-            color: #ffb100;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px var(--accent-glow);
         }
     </style>
 </head>
@@ -219,7 +251,7 @@
     
     <div class="container">
         <header>
-            <h1 id="app-title">Calculadora de Crafteo WoW</h1>
+            <h1 id="app-title">WoW Crafting & Economy Hub</h1>
             <select id="lang-selector">
                 <option value="es">Español</option>
                 <option value="en">English</option>
@@ -229,7 +261,7 @@
             </select>
         </header>
 
-        <!-- Servidor, Cantidad y Buscador -->
+        <!-- Controles Principales -->
         <div class="controls-grid">
             <div class="control-group">
                 <label id="lbl-realm">Servidor de Juego:</label>
@@ -272,7 +304,7 @@
         </div>
 
         <!-- Selector de Recetas -->
-        <div class="control-group" style="margin-bottom: 20px;">
+        <div class="control-group" style="margin-bottom: 25px;">
             <label id="lbl-recipe-select">Seleccionar Receta Específica:</label>
             <select id="recipe-selector" style="width: 100%;">
                 <option value="" id="opt-default-recipe">Selecciona una receta del catálogo...</option>
@@ -283,7 +315,7 @@
 
         <!-- Resultados -->
         <div id="results-container">
-            <p id="default-text" style="color: var(--text-muted); text-align: center; margin-top: 40px;">Selecciona un servidor y una receta para consultar la Casa de Subastas...</p>
+            <p id="default-text" style="color: var(--text-muted); text-align: center; margin-top: 50px; font-size: 1.05rem;">Selecciona un servidor y una receta para consultar la Casa de Subastas...</p>
         </div>
     </div>
 
