@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             profEnc: "Encantamento",
             profLW: "Couraria",
             profTail: "Alfaiataria",
-            profEng: "Engenharia",
+            profEng: "Ingeniería",
             tableMaterial: "Material / Componente",
             tableQty: "Necessário",
             tableOwned: "Possui",
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             costMaterials: "Custo de Materiais",
             netSale: "Venda Líquida (-5%)",
             netProfit: "Lucro Líquido",
-            salePriceLabel: "Preço de Venda (AH):",
+            salePriceLabel: "Preço de Venta (AH):",
             syncing: "Sincronizando preços em tempo real com a Casa de Leilões da Blizzard...",
             selectRealmAlert: "Por favor, selecione um reino primeiro.",
             selectRecipeAlert: "Por favor, selecione uma receita do catálogo.",
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Catálogo Verdaderamente Masivo de The War Within con drops, zonas y proveedores
+    // Catálogo Ultra Masivo con decenas de recetas de The War Within y fuentes de obtención
     const recipesDatabase = {
         // --- ALQUIMIA ---
         "flask_alacrity": {
@@ -222,6 +222,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, source: { es: "🧪 Proveedor de Alquimia (Dornogal)", en: "🧪 Alchemy Vendor (Dornogal)", de: "🧪 Alchemiehändler", fr: "🧪 Vendeur d'alchimie", pt: "🧪 Vendedor de Alquimia" }, qty: 3 }
             ]
         },
+        "flask_avas": {
+            prof: "alchemy", salePrice: 780,
+            names: { es: "Frasco de Sabiduría Sinuosa", en: "Flask of Tempered Wits", de: "Fläschchen des gewitzten Verstandes", fr: "Flacon d'esprit tempéré", pt: "Frasco de Intelecto Temperado" },
+            materials: [
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería: Isla Dorn / Hallowfall", en: "🌱 Herbalism: Isle of Dorn / Hallowfall", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 6 },
+                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, source: { es: "🌱 Herboristería: Val'sharah", en: "🌱 Herbalism: Val'sharah", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 3 }
+            ]
+        },
 
         // --- JOYERÍA ---
         "gem_culminating": {
@@ -255,6 +263,14 @@ document.addEventListener('DOMContentLoaded', () => {
             materials: [
                 { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 8 },
                 { id: 213755, names: { es: "Diamante de asedio", en: "Onyx", de: "Onyx", fr: "Onyx", pt: "Ônix" }, source: { es: "👾 Drop: Elementales (Azj-Kahet)", en: "👾 Drop: Elementals (Azj-Kahet)", de: "👾 Drop: Elementare", fr: "👾 Butin : Élémentaires", pt: "👾 Drop: Elementais" }, qty: 2 }
+            ]
+        },
+        "gem_crowned": {
+            prof: "jewelcrafting", salePrice: 890,
+            names: { es: "Zafiro Real Resplandeciente", en: "Radiant Crown Sapphire", de: "Strahlender Kronensaphir", fr: "Saphir de couronne radiant", pt: "Safira de Coroa Radiante" },
+            materials: [
+                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, source: { es: "⛏️ Minería: The Ringing Deeps", en: "⛏️ Mining: The Ringing Deeps", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 12 },
+                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem", de: "Gipfelnder Edelstein", fr: "Gemme culminante", pt: "Gema Culminante" }, source: { es: "⛏️ Minería: Khaz Algar", en: "⛏️ Mining: Khaz Algar", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 3 }
             ]
         },
 
@@ -292,6 +308,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 6 }
             ]
         },
+        "axe_titanium": {
+            prof: "blacksmithing", salePrice: 3100,
+            names: { es: "Hacha de Guerra de Khaz Algar", en: "Khaz Algar War Axe", de: "Kriegsaxt von Khaz Algar", fr: "Hache de guerre de Khaz Algar", pt: "Machado de Guerra de Khaz Algar" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería: Khaz Algar", en: "⛏️ Mining: Khaz Algar", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 18 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 5 }
+            ]
+        },
 
         // --- ENCANTAMIENTO ---
         "enchant_weapon": {
@@ -327,6 +351,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust", de: "Eterniumstaub", fr: "Poussière d'éternium", pt: "Pó de Eternium" }, source: { es: "✨ Desencantar equipo épico", en: "✨ Disenchanting Epic Gear", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 2 }
             ]
         },
+        "enchant_boots": {
+            prof: "enchanting", salePrice: 820,
+            names: { es: "Encantamiento de Botas: Paso Ciclónico", en: "Enchant Boots - Cyclonic Step", de: "Stiefelverzauberung - Zyklonenschritt", fr: "Ench. de bottes - Pas cyclonique", pt: "Encantar Botas - Passo Ciclônico" },
+            materials: [
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar equipo verde", en: "✨ Disenchanting Green Gear", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 6 },
+                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, source: { es: "✨ Desencantar equipo azul", en: "✨ Disenchanting Blue Gear", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 2 }
+            ]
+        },
 
         // --- PELETERÍA ---
         "armor_kit": {
@@ -353,6 +385,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 6 }
             ]
         },
+        "tunic_storm": {
+            prof: "leatherworking", salePrice: 3400,
+            names: { es: "Túnica de Cuero de Tormenta", en: "Stormhide Tunic", de: "Sturmhauttunika", fr: "Tunique en cuir de tempête", pt: "Túnica de Couro da Tempestade" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 20 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 7 }
+            ]
+        },
 
         // --- SASTRERÍA ---
         "cloth_bolt": {
@@ -376,6 +416,14 @@ document.addEventListener('DOMContentLoaded', () => {
             materials: [
                 { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop: Humanoides", en: "👾 Drop: Humanoids", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 12 },
                 { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk", de: "Ätherseide", fr: "Soie éthérée", pt: "Seda Etérea" }, source: { es: "👾 Drop: Lanzadores de hechizos", en: "👾 Drop: Spellcasters", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 3 }
+            ]
+        },
+        "hood_weaver": {
+            prof: "tailoring", salePrice: 2100,
+            names: { es: "Caperuza de Tejedor Astral", en: "Astral Weaver Hood", de: "Astralwirker-Kapuze", fr: "Capuche de tisserand astral", pt: "Capuz do Tecelão Astral" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop: Humanoides", en: "👾 Drop: Humanoids", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 14 },
+                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk", de: "Ätherseide", fr: "Soie éthérée", pt: "Seda Etérea" }, source: { es: "👾 Drop: Lanzadores", en: "👾 Drop: Casters", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 3 }
             ]
         },
 
