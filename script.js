@@ -507,13 +507,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // BOTÓN: FLIPS / ARBITRAJE
+    // BOTÓN: FLIPS / ARBITRAJE MASIVO
     document.getElementById('btn-run-flips')?.addEventListener('click', async () => {
         const realm = document.getElementById('realm-selector').value;
         const resultsEl = document.getElementById('flips-results');
 
         if (!realm) return alert('Selecciona un servidor primero.');
-        resultsEl.innerHTML = '<p style="color: var(--accent-gold); text-align: center;">Buscando oportunidades de transformación directa de materiales...</p>';
+        resultsEl.innerHTML = '<p style="color: var(--accent-gold); text-align: center;">Escaneando el mercado en busca de oportunidades de arbitraje y flips...</p>';
 
         try {
             if (!cachedPrices || currentRealmRegion !== realm) {
@@ -523,19 +523,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentRealmRegion = realm;
             }
 
-            let html = '<table><thead><tr><th>Transformación / Flip</th><th style="text-align:right;">Costo Base</th><th style="text-align:right;">Ganancia de Flip</th></tr></thead><tbody>';
-            
-            const flipKey = "alloy_Bismuth";
-            const rec = recipesDatabase[flipKey];
-            let cost = 0;
-            rec.materials.forEach(m => cost += (cachedPrices[m.id] || 12) * m.qty);
-            const profit = (rec.salePrice * 0.95) - cost;
+            // Lista de recetas de transformación directa (Flips / Refinamiento)
+            const flipRecipes = [
+                { key: "alloy_Bismuth", name: "Lingote de Bismuto Enriquecido (Aleación)" },
+                { key: "cloth_bolt", name: "Rollo de Tela Crepuscular (Transformación)" },
+                { key: "tinker_item", name: "Micro-ajustador Térmico (Ingeniería rápida)" },
+                { key: "armor_kit", name: "Kit de Armadura Reforzado (Peletería rápida)" }
+            ];
 
-            html += `<tr><td><strong>Transformación: Minería a Lingote de Bismuto Enriquecido</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:${profit >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight:700;">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}g</td></tr>`;
+            let html = '<table><thead><tr><th>Operación de Flip / Transformación</th><th style="text-align:right;">Costo de Materiales</th><th style="text-align:right;">Venta Neta (-5%)</th><th style="text-align:right;">Ganancia Limpia</th></tr></thead><tbody>';
+            let foundCount = 0;
+
+            flipRecipes.forEach(flip => {
+                const rec = recipesDatabase[flip.key];
+                if (!rec) return;
+
+                let cost = 0;
+                rec.materials.forEach(m => {
+                    cost += (cachedPrices[m.id] || 15) * m.qty;
+                });
+
+                const netRev = rec.salePrice * 0.95;
+                const profit = netRev - cost;
+
+                if (profit > 0) foundCount++;
+
+                html += `
+                    <tr>
+                        <td><strong>${flip.name}</strong></td>
+                        <td style="text-align:right; color: var(--red);">${cost.toFixed(2)}g</td>
+                        <td style="text-align:right;">${netRev.toFixed(2)}g</td>
+                        <td style="text-align:right; color: ${profit >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight: 700;">
+                            ${profit >= 0 ? '+' : ''}${profit.toFixed(2)}g
+                        </td>
+                    </tr>
+                `;
+            });
+
             html += '</tbody></table>';
             resultsEl.innerHTML = html;
         } catch (err) {
-            resultsEl.innerHTML = '<p style="color: var(--red); text-align: center;">Error al conectar con el servidor.</p>';
+            resultsEl.innerHTML = '<p style="color: var(--red); text-align: center;">Error al escanear los precios del servidor.</p>';
         }
     });
 
