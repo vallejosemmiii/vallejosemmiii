@@ -66,8 +66,8 @@
 
         .controls-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 15px;
             margin-bottom: 20px;
         }
 
@@ -200,6 +200,19 @@
             border-radius: 4px;
             text-align: right;
         }
+
+        .fav-btn {
+            background: transparent;
+            border: none;
+            color: #666;
+            font-size: 1.4rem;
+            cursor: pointer;
+            vertical-align: middle;
+            transition: color 0.2s;
+        }
+        .fav-btn.active {
+            color: #ffb100;
+        }
     </style>
 </head>
 <body>
@@ -216,7 +229,7 @@
             </select>
         </header>
 
-        <!-- Servidor y Buscador -->
+        <!-- Servidor, Cantidad y Buscador -->
         <div class="controls-grid">
             <div class="control-group">
                 <label id="lbl-realm">Servidor de Juego:</label>
@@ -230,14 +243,25 @@
                 </select>
             </div>
             <div class="control-group">
+                <label id="lbl-craft-qty">Cantidad a Craftear:</label>
+                <select id="craft-qty-multiplier" style="width: 100%;">
+                    <option value="1">x1 Lote</option>
+                    <option value="5">x5 Lotes</option>
+                    <option value="10">x10 Lotes</option>
+                    <option value="20">x20 Lotes</option>
+                    <option value="50">x50 Lotes</option>
+                </select>
+            </div>
+            <div class="control-group">
                 <label id="lbl-search">Buscar Receta o Ítem:</label>
-                <input type="text" id="recipe-search" class="search-box" placeholder="Ej. Frasco, Gema, Bismuto...">
+                <input type="text" id="recipe-search" class="search-box" placeholder="Ej. Frasco, Gema...">
             </div>
         </div>
 
         <!-- Filtros por Profesión -->
         <div class="professions-nav" id="professions-nav">
             <button class="prof-btn active" data-prof="all" id="btn-prof-all">Todas</button>
+            <button class="prof-btn" data-prof="favorites" id="btn-prof-fav">⭐ Favoritas</button>
             <button class="prof-btn" data-prof="alchemy" id="btn-prof-alchemy">Alquimia</button>
             <button class="prof-btn" data-prof="jewelcrafting" id="btn-prof-jc">Joyería</button>
             <button class="prof-btn" data-prof="blacksmithing" id="btn-prof-bs">Herrería</button>
