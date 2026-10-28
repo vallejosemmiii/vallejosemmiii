@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // CATÁLOGO MASIVO COMPLETO RESTAURADO Y AMPLIADO DE THE WAR WITHIN
+    // CATÁLOGO MASIVO COMPLETO DE THE WAR WITHIN
     const recipesDatabase = {
         // --- ALQUIMIA ---
         "flask_alacrity": {
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     populateRecipes();
 
-    // RENDERIZAR RESULTADO DE CRAFTEO CON TERMÓMETRO Y ACCIONES
+    // RENDERIZAR CALCULADORA
     function renderCalculator(recipe, recipeKey, realm, prices, t, customSalePrice = null) {
         const resultsContainer = document.getElementById('results-container');
         if (!resultsContainer) return;
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSessionUI();
     });
 
-    // PRESUPUESTO
+    // BOTÓN: PRESUPUESTO
     document.getElementById('btn-run-budget')?.addEventListener('click', async () => {
         const realm = document.getElementById('realm-selector').value;
         const budget = parseFloat(document.getElementById('budget-input').value) || 0;
@@ -477,31 +477,37 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!realm) return alert('Selecciona un servidor primero.');
         resultsEl.innerHTML = '<p style="color: var(--accent-gold); text-align: center;">Analizando recetas según tu presupuesto...</p>';
 
-        if (!cachedPrices || currentRealmRegion !== realm) {
-            const res = await fetch(`/api/prices?realm=${realm}`);
-            const data = await res.json();
-            cachedPrices = data.prices;
-            currentRealmRegion = realm;
-        }
-
-        let html = '<table><thead><tr><th>Receta</th><th style="text-align:right;">Costo Crafteo</th><th style="text-align:right;">Ganancia Est.</th></tr></thead><tbody>';
-        const lang = getLang();
-
-        for (const [key, recipe] of Object.entries(recipesDatabase)) {
-            let cost = 0;
-            recipe.materials.forEach(m => cost += (cachedPrices[m.id] || 15) * m.qty);
-            const netRev = recipe.salePrice * 0.95;
-            const profit = netRev - cost;
-
-            if (cost <= budget && profit > 0) {
-                html += `<tr><td><strong>${recipe.names[lang] || recipe.names.es}</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:var(--green); font-weight:700;">+${profit.toFixed(2)}g</td></tr>`;
+        try {
+            if (!cachedPrices || currentRealmRegion !== realm) {
+                const res = await fetch(`/api/prices?realm=${realm}`);
+                const data = await res.json();
+                cachedPrices = data.prices;
+                currentRealmRegion = realm;
             }
+
+            let html = '<table><thead><tr><th>Receta</th><th style="text-align:right;">Costo Crafteo</th><th style="text-align:right;">Ganancia Est.</th></tr></thead><tbody>';
+            const lang = getLang();
+            let matched = 0;
+
+            for (const [key, recipe] of Object.entries(recipesDatabase)) {
+                let cost = 0;
+                recipe.materials.forEach(m => cost += (cachedPrices[m.id] || 15) * m.qty);
+                const netRev = recipe.salePrice * 0.95;
+                const profit = netRev - cost;
+
+                if (cost <= budget && profit > 0) {
+                    matched++;
+                    html += `<tr><td><strong>${recipe.names[lang] || recipe.names.es}</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:var(--green); font-weight:700;">+${profit.toFixed(2)}g</td></tr>`;
+                }
+            }
+            html += '</tbody></table>';
+            resultsEl.innerHTML = matched > 0 ? html : '<p style="color: var(--text-muted); text-align: center;">No se encontraron recetas rentables con ese presupuesto.</p>';
+        } catch (err) {
+            resultsEl.innerHTML = '<p style="color: var(--red); text-align: center;">Error al conectar con el servidor.</p>';
         }
-        html += '</tbody></table>';
-        resultsEl.innerHTML = html;
     });
 
-    // FLIPS / ARBITRAJE
+    // BOTÓN: FLIPS / ARBITRAJE
     document.getElementById('btn-run-flips')?.addEventListener('click', async () => {
         const realm = document.getElementById('realm-selector').value;
         const resultsEl = document.getElementById('flips-results');
@@ -509,27 +515,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!realm) return alert('Selecciona un servidor primero.');
         resultsEl.innerHTML = '<p style="color: var(--accent-gold); text-align: center;">Buscando oportunidades de transformación directa de materiales...</p>';
 
-        if (!cachedPrices || currentRealmRegion !== realm) {
-            const res = await fetch(`/api/prices?realm=${realm}`);
-            const data = await res.json();
-            cachedPrices = data.prices;
-            currentRealmRegion = realm;
+        try {
+            if (!cachedPrices || currentRealmRegion !== realm) {
+                const res = await fetch(`/api/prices?realm=${realm}`);
+                const data = await res.json();
+                cachedPrices = data.prices;
+                currentRealmRegion = realm;
+            }
+
+            let html = '<table><thead><tr><th>Transformación / Flip</th><th style="text-align:right;">Costo Base</th><th style="text-align:right;">Ganancia de Flip</th></tr></thead><tbody>';
+            
+            const flipKey = "alloy_Bismuth";
+            const rec = recipesDatabase[flipKey];
+            let cost = 0;
+            rec.materials.forEach(m => cost += (cachedPrices[m.id] || 12) * m.qty);
+            const profit = (rec.salePrice * 0.95) - cost;
+
+            html += `<tr><td><strong>Transformación: Minería a Lingote de Bismuto Enriquecido</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:${profit >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight:700;">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}g</td></tr>`;
+            html += '</tbody></table>';
+            resultsEl.innerHTML = html;
+        } catch (err) {
+            resultsEl.innerHTML = '<p style="color: var(--red); text-align: center;">Error al conectar con el servidor.</p>';
         }
-
-        let html = '<table><thead><tr><th>Transformación / Flip</th><th style="text-align:right;">Costo Base</th><th style="text-align:right;">Ganancia de Flip</th></tr></thead><tbody>';
-        
-        const flipKey = "alloy_Bismuth";
-        const rec = recipesDatabase[flipKey];
-        let cost = 0;
-        rec.materials.forEach(m => cost += (cachedPrices[m.id] || 12) * m.qty);
-        const profit = (rec.salePrice * 0.95) - cost;
-
-        html += `<tr><td><strong>Transformación: Minería a Lingote de Bismuto Enriquecido</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:${profit >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight:700;">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}g</td></tr>`;
-        html += '</tbody></table>';
-        resultsEl.innerHTML = html;
     });
 
-    // Botón Calcular Principal
+    // BOTÓN: CALCULAR PRINCIPAL
     document.getElementById('calculate-btn')?.addEventListener('click', async () => {
         const realm = document.getElementById('realm-selector').value;
         const recipeKey = document.getElementById('recipe-selector').value;
@@ -538,13 +548,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!realm) return alert(t.selectRealmAlert);
         if (!recipeKey) return alert(t.selectRecipeAlert);
 
-        if (!cachedPrices || currentRealmRegion !== realm) {
-            const res = await fetch(`/api/prices?realm=${realm}`);
-            const data = await res.json();
-            cachedPrices = data.prices;
-            currentRealmRegion = realm;
-        }
+        try {
+            if (!cachedPrices || currentRealmRegion !== realm) {
+                const res = await fetch(`/api/prices?realm=${realm}`);
+                const data = await res.json();
+                cachedPrices = data.prices;
+                currentRealmRegion = realm;
+            }
 
-        renderCalculator(recipesDatabase[recipeKey], recipeKey, realm, cachedPrices, t);
+            renderCalculator(recipesDatabase[recipeKey], recipeKey, realm, cachedPrices, t);
+        } catch (err) {
+            document.getElementById('results-container').innerHTML = '<p style="color: var(--red); text-align: center;">No se pudo conectar con el servidor backend.</p>';
+        }
     });
 });
