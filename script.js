@@ -11,707 +11,242 @@ document.addEventListener('DOMContentLoaded', () => {
             lblRecipeSelect: "Seleccionar Receta Específica:",
             optDefaultRecipe: "Selecciona una receta del catálogo...",
             searchPlaceholder: "Ej. Frasco, Gema, Bismuto...",
-            profAll: "Todas",
-            profFav: "⭐ Favoritas",
-            profAlchemy: "Alquimia",
-            profJC: "Joyería",
-            profBS: "Herrería",
-            profEnc: "Encantamiento",
-            profLW: "Peletería",
-            profTail: "Sastrería",
-            profEng: "Ingeniería",
-            tableMaterial: "Material / Componente",
-            tableQty: "Necesario",
-            tableOwned: "Tienes",
-            tablePrice: "Precio Unit. (AH)",
-            tableSubtotal: "Subtotal",
-            costMaterials: "Costo de Materiales",
-            netSale: "Venta Neta (-5%)",
-            netProfit: "Ganancia Neta",
-            salePriceLabel: "Precio de Venta (AH):",
+            profAll: "Todas", profFav: "⭐ Favoritas", profAlchemy: "Alquimia", profJC: "Joyería",
+            profBS: "Herrería", profEnc: "Encantamiento", profLW: "Peletería", profTail: "Sastrería", profEng: "Ingeniería",
+            tableMaterial: "Material / Componente", tableQty: "Necesario", tableOwned: "Tienes", tablePrice: "Precio Unit. (AH)", tableSubtotal: "Subtotal",
+            costMaterials: "Costo de Materiales", netSale: "Venta Neta (-5%)", netProfit: "Ganancia Neta", salePriceLabel: "Precio de Venta (AH):",
             syncing: "Sincronizando precios en tiempo real con la Casa de Subastas de Blizzard...",
-            selectRealmAlert: "Por favor, selecciona un servidor primero.",
-            selectRecipeAlert: "Por favor, selecciona una receta del catálogo.",
-            errorTitle: "Error:",
-            connectionError: "No se pudo conectar con el servidor backend."
+            selectRealmAlert: "Por favor, selecciona un servidor primero.", selectRecipeAlert: "Por favor, selecciona una receta del catálogo.",
+            copiedText: "¡Lista de compras copiada al portapapeles!",
+            addedSession: "¡Añadido a la sesión de crafteo!"
         },
         en: {
             title: "WoW Crafting & Economy Hub",
             btn: "Calculate Live Profits",
             selectRealm: "Select your realm...",
             defaultText: "Select a realm and recipe to query the Auction House...",
-            lblRealm: "Game Realm:",
-            lblCraftQty: "Craft Quantity:",
-            lblSearch: "Search Recipe or Item:",
-            lblRecipeSelect: "Select Specific Recipe:",
-            optDefaultRecipe: "Select a recipe from the catalog...",
-            searchPlaceholder: "Ex. Flask, Gem, Bismuth...",
-            profAll: "All",
-            profFav: "⭐ Favorites",
-            profAlchemy: "Alchemy",
-            profJC: "Jewelcrafting",
-            profBS: "Blacksmithing",
-            profEnc: "Enchanting",
-            profLW: "Leatherworking",
-            profTail: "Tailoring",
-            profEng: "Engineering",
-            tableMaterial: "Material / Component",
-            tableQty: "Required",
-            tableOwned: "Owned",
-            tablePrice: "Unit Price (AH)",
-            tableSubtotal: "Subtotal",
-            costMaterials: "Materials Cost",
-            netSale: "Net Sale (-5%)",
-            netProfit: "Net Profit",
-            salePriceLabel: "Sale Price (AH):",
-            syncing: "Synchronizing real-time prices with the Blizzard Auction House...",
-            selectRealmAlert: "Please select a realm first.",
-            selectRecipeAlert: "Please select a recipe from the catalog.",
-            errorTitle: "Error:",
-            connectionError: "Could not connect to the backend server."
-        },
-        de: {
-            title: "WoW Crafting & Economy Hub",
-            btn: "Live-Gewinn berechnen",
-            selectRealm: "Wähle deinen Server...",
-            defaultText: "Wähle einen Server und ein Rezept, um das Auktionshaus abzufragen...",
-            lblRealm: "Spielserver:",
-            lblCraftQty: "Herstellungsmenge:",
-            lblSearch: "Rezept oder Gegenstand suchen:",
-            lblRecipeSelect: "Spezifisches Rezept auswählen:",
-            optDefaultRecipe: "Wähle ein Rezept aus dem Katalog...",
-            searchPlaceholder: "Bsp. Fläschchen, Edelstein...",
-            profAll: "Alle",
-            profFav: "⭐ Favoriten",
-            profAlchemy: "Alchemie",
-            profJC: "Juwelenschleifen",
-            profBS: "Schmiedekunst",
-            profEnc: "Verzauberkunst",
-            profLW: "Lederverarbeitung",
-            profTail: "Schneiderei",
-            profEng: "Ingenieurskunst",
-            tableMaterial: "Material / Komponente",
-            tableQty: "Benötigt",
-            tableOwned: "Vorrat",
-            tablePrice: "Stückpreis (AH)",
-            tableSubtotal: "Zwischensumme",
-            costMaterials: "Materialkosten",
-            netSale: "Nettoverkauf (-5%)",
-            netProfit: "Nettogewinn",
-            salePriceLabel: "Verkaufspreis (AH):",
-            syncing: "Echtzeitpreise werden mit dem Blizzard-Auktionshaus synchronisiert...",
-            selectRealmAlert: "Bitte wähle zuerst einen Server aus.",
-            selectRecipeAlert: "Bitte wähle ein Rezept aus dem Katalog aus.",
-            errorTitle: "Fehler:",
-            connectionError: "Verbindung zum Backend-Server fehlgeschlagen."
-        },
-        fr: {
-            title: "WoW Crafting & Economy Hub",
-            btn: "Calculer les Bénéfices en Direct",
-            selectRealm: "Sélectionnez votre royaume...",
-            defaultText: "Sélectionnez un royaume et une recette pour interroger l'Hôtel des Ventes...",
-            lblRealm: "Royaume de jeu:",
-            lblCraftQty: "Quantité à fabriquer:",
-            lblSearch: "Rechercher une recette ou un objet:",
-            lblRecipeSelect: "Sélectionner une recette spécifique:",
-            optDefaultRecipe: "Sélectionnez une recette dans le catalogue...",
-            searchPlaceholder: "Ex. Flacon, Gemme...",
-            profAll: "Toutes",
-            profFav: "⭐ Favoris",
-            profAlchemy: "Alchimie",
-            profJC: "Joaillerie",
-            profBS: "Forge",
-            profEnc: "Enchantement",
-            profLW: "Travail du cuir",
-            profTail: "Couture",
-            profEng: "Ingénierie",
-            tableMaterial: "Matériau / Composant",
-            tableQty: "Requis",
-            tableOwned: "En stock",
-            tablePrice: "Prix Unitaire (HDV)",
-            tableSubtotal: "Sous-total",
-            costMaterials: "Coût des Matériaux",
-            netSale: "Vente Neta (-5%)",
-            netProfit: "Bénéfice Net",
-            salePriceLabel: "Prix de Vente (HDV):",
-            syncing: "Synchronisation des prix en temps réel avec l'Hôtel des Ventes Blizzard...",
-            selectRealmAlert: "Veuillez d'abord sélectionner un royaume.",
-            selectRecipeAlert: "Veuillez sélectionner une recette dans le catalogue.",
-            errorTitle: "Erreur :",
-            connectionError: "Impossible de se connecter au serveur backend."
-        },
-        pt: {
-            title: "WoW Crafting & Economy Hub",
-            btn: "Calcular Lucros ao Vivo",
-            selectRealm: "Selecione seu reino...",
-            defaultText: "Selecione um reino e uma receita para consultar a Casa de Leilões...",
-            lblRealm: "Reino de Jogo:",
-            lblCraftQty: "Quantidade a Produzir:",
-            lblSearch: "Pesquisar Receita ou Item:",
-            lblRecipeSelect: "Selecionar Receita Específica:",
-            optDefaultRecipe: "Selecione uma receita do catálogo...",
-            searchPlaceholder: "Ex. Frasco, Gema, Bismuto...",
-            profAll: "Todas",
-            profFav: "⭐ Favoritos",
-            profAlchemy: "Alquimia",
-            profJC: "Joalheria",
-            profBS: "Ferraria",
-            profEnc: "Encantamento",
-            profLW: "Couraria",
-            profTail: "Alfaiataria",
-            profEng: "Engenharia",
-            tableMaterial: "Material / Componente",
-            tableQty: "Necessário",
-            tableOwned: "Possui",
-            tablePrice: "Preço Unit. (AH)",
-            tableSubtotal: "Subtotal",
-            costMaterials: "Custo de Materiais",
-            netSale: "Venda Líquida (-5%)",
-            netProfit: "Lucro Líquido",
-            salePriceLabel: "Preço de Venta (AH):",
-            syncing: "Sincronizando preços em tempo real com a Casa de Leilões da Blizzard...",
-            selectRealmAlert: "Por favor, selecione um reino primeiro.",
-            selectRecipeAlert: "Por favor, selecione uma receita del catálogo.",
-            errorTitle: "Erro:",
-            connectionError: "Não foi possível conectar ao servidor backend."
+            lblRealm: "Game Realm:", lblCraftQty: "Craft Quantity:", lblSearch: "Search Recipe or Item:",
+            lblRecipeSelect: "Select Specific Recipe:", optDefaultRecipe: "Select a recipe from the catalog...", searchPlaceholder: "Ex. Flask, Gem...",
+            profAll: "All", profFav: "⭐ Favorites", profAlchemy: "Alchemy", profJC: "Jewelcrafting",
+            profBS: "Blacksmithing", profEnc: "Enchanting", profLW: "Leatherworking", profTail: "Tailoring", profEng: "Engineering",
+            tableMaterial: "Material / Component", tableQty: "Required", tableOwned: "Owned", tablePrice: "Unit Price (AH)", tableSubtotal: "Subtotal",
+            costMaterials: "Materials Cost", netSale: "Net Sale (-5%)", netProfit: "Net Profit", salePriceLabel: "Sale Price (AH):",
+            syncing: "Synchronizing real-time prices with Blizzard Auction House...",
+            selectRealmAlert: "Please select a realm first.", selectRecipeAlert: "Please select a recipe from the catalog.",
+            copiedText: "Shopping list copied to clipboard!", addedSession: "Added to crafting session!"
         }
     };
 
-    // Catálogo Ultra Expandido de The War Within (~65+ recetas profesionales con fuentes y drops)
+    // CATÁLOGO MASIVO COMPLETO RESTAURADO Y AMPLIADO DE THE WAR WITHIN
     const recipesDatabase = {
-        // --- ALQUIMIA (10 recetas) ---
+        // --- ALQUIMIA ---
         "flask_alacrity": {
             prof: "alchemy", salePrice: 450,
-            names: { es: "Frasco de Pungente Alacridad", en: "Flask of Pungent Alacrity", de: "Fläschchen der beißenden Alacrity", fr: "Flacon d'alacrité piquante", pt: "Frasco de Alacridade Pungente" },
+            names: { es: "Frasco de Pungente Alacridad", en: "Flask of Pungent Alacrity" },
             materials: [
-                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería: Isla Dorn", en: "🌱 Herbalism: Isle of Dorn", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 5 },
-                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, source: { es: "🌱 Herboristería general", en: "🌱 General Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 3 },
-                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, source: { es: "🌱 Herboristería: Val'sharah", en: "🌱 Herbalism: Val'sharah", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 2 }
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb" }, source: { es: "🌱 Herboristería: Isla Dorn", en: "🌱 Herbalism" }, qty: 5 },
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom" }, source: { es: "🌱 Herboristería general", en: "🌱 Herbalism" }, qty: 3 },
+                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf" }, source: { es: "🌱 Herboristería: Val'sharah", en: "🌱 Herbalism" }, qty: 2 }
             ]
         },
         "flask_tempered": {
             prof: "alchemy", salePrice: 520,
-            names: { es: "Frasco de Furia Templada", en: "Flask of Tempered Fury", de: "Fläschchen der geeichten Wut", fr: "Flacon de fureur tempérée", pt: "Frasco de Fúria Temperada" },
+            names: { es: "Frasco de Furia Templada", en: "Flask of Tempered Fury" },
             materials: [
-                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería: Isla Dorn", en: "🌱 Herbalism: Isle of Dorn", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 6 },
-                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, source: { es: "🧪 Proveedor de Alquimia (Dornogal)", en: "🧪 Alchemy Vendor (Dornogal)", de: "🧪 Alchemiehändler", fr: "🧪 Vendeur d'alchimie", pt: "🧪 Vendedor de Alquimia" }, qty: 2 }
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 6 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial" }, source: { es: "🧪 Proveedor de Alquimia", en: "🧪 Alchemy Vendor" }, qty: 2 }
             ]
         },
         "potion_cauldron": {
             prof: "alchemy", salePrice: 3200,
-            names: { es: "Caldero de Alquimia de Batalla", en: "Battle Alchemist's Cauldron", de: "Kessel des Alchemisten", fr: "Chaudron d'alchimiste de bataille", pt: "Caldeirão do Alquimista de Batalha" },
+            names: { es: "Caldero de Alquimia de Batalla", en: "Battle Alchemist's Cauldron" },
             materials: [
-                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería: Isla Dorn", en: "🌱 Herbalism: Isle of Dorn", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 20 },
-                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, source: { es: "🌱 Herboristería general", en: "🌱 General Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 15 },
-                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, source: { es: "🧪 Proveedor de Alquimia", en: "🧪 Alchemy Vendor", de: "🧪 Alchemiehändler", fr: "🧪 Vendeur", pt: "🧪 Vendedor" }, qty: 5 }
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 20 },
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 15 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial" }, source: { es: "🧪 Proveedor", en: "🧪 Vendor" }, qty: 5 }
             ]
         },
         "potion_tauri": {
             prof: "alchemy", salePrice: 210,
-            names: { es: "Poción de Velocidad Ciclópea", en: "Cyclopean Speed Potion", de: "Trank der zyklopischen Geschwindigkeit", fr: "Potion de vitesse cyclopéenne", pt: "Poção de Velocidade Ciclópica" },
+            names: { es: "Poción de Velocidad Ciclópea", en: "Cyclopean Speed Potion" },
             materials: [
-                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 4 },
-                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 2 }
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 4 },
+                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 2 }
             ]
         },
         "potion_ultimate": {
             prof: "alchemy", salePrice: 650,
-            names: { es: "Poción de Poder Definitivo", en: "Ultimate Power Potion", de: "Trank der ultimativen Macht", fr: "Potion de puissance ultime", pt: "Poção de Poder Supremo" },
+            names: { es: "Poción de Poder Definitivo", en: "Ultimate Power Potion" },
             materials: [
-                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 8 },
-                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, source: { es: "🧪 Proveedor", en: "🧪 Vendor", de: "🧪 Händler", fr: "🧪 Vendeur", pt: "🧪 Vendedor" }, qty: 3 }
-            ]
-        },
-        "flask_avas": {
-            prof: "alchemy", salePrice: 780,
-            names: { es: "Frasco de Sabiduría Sinuosa", en: "Flask of Tempered Wits", de: "Fläschchen des gewitzten Verstandes", fr: "Flacon d'esprit tempéré", pt: "Frasco de Intelecto Temperado" },
-            materials: [
-                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 6 },
-                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 3 }
-            ]
-        },
-        "potion_healing_tww": {
-            prof: "alchemy", salePrice: 150,
-            names: { es: "Poción de Sanación Algari", en: "Algari Healing Potion", de: "Algarische Heiltrank", fr: "Potion de soins algari", pt: "Poção de Cura Algari" },
-            materials: [
-                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 3 },
-                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, source: { es: "🧪 Proveedor", en: "🧪 Vendor", de: "🧪 Händler", fr: "🧪 Vendeur", pt: "🧪 Vendedor" }, qty: 1 }
-            ]
-        },
-        "elixir_accuracy": {
-            prof: "alchemy", salePrice: 380,
-            names: { es: "Elixir de Precisión Letal", en: "Elixir of Deadly Precision", de: "Elixier der tödlichen Präzision", fr: "Elixir de précision mortelle", pt: "Elixir de Precisão Letal" },
-            materials: [
-                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 4 },
-                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 2 }
-            ]
-        },
-        "transmute_ore": {
-            prof: "alchemy", salePrice: 950,
-            names: { es: "Transmutación: Araconita", en: "Transmute: Araconite", de: "Transmutieren: Araconit", fr: "Transmutation : Araconite", pt: "Transmutar: Araconita" },
-            materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 10 },
-                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, source: { es: "🧪 Proveedor", en: "🧪 Vendor", de: "🧪 Händler", fr: "🧪 Vendeur", pt: "🧪 Vendedor" }, qty: 2 }
-            ]
-        },
-        "oil_awakened": {
-            prof: "alchemy", salePrice: 420,
-            names: { es: "Aceite de Dormir Despierto", en: "Awakened Sleeping Oil", de: "Erwachtes Schlaföl", fr: "Huile de sommeil éveillé", pt: "Óleo do Sono Desperto" },
-            materials: [
-                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 5 },
-                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 2 }
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb" }, source: { es: "🌱 Herboristería", en: "🌱 Herbalism" }, qty: 8 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial" }, source: { es: "🧪 Proveedor", en: "🧪 Vendor" }, qty: 3 }
             ]
         },
 
-        // --- JOYERÍA (10 recetas) ---
+        // --- JOYERÍA ---
         "gem_culminating": {
             prof: "jewelcrafting", salePrice: 600,
-            names: { es: "Rubí Culpable Deslumbrante", en: "Culminating Blasphemite", de: "Gipfelnde Lästerung", fr: "Blasphémique culminante", pt: "Blasfêmia Culminante" },
+            names: { es: "Rubí Culpable Deslumbrante", en: "Culminating Blasphemite" },
             materials: [
-                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, source: { es: "⛏️ Minería: The Ringing Deeps", en: "⛏️ Mining: The Ringing Deeps", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 10 },
-                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 2 },
-                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx", de: "Onyx", fr: "Onyx", pt: "Ônix" }, source: { es: "👾 Drop: Elementales", en: "👾 Drop: Elementals", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 1 }
+                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth" }, source: { es: "⛏️ Minería: The Ringing Deeps", en: "⛏️ Mining" }, qty: 10 },
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 2 },
+                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx" }, source: { es: "👾 Drop: Elementales", en: "👾 Drop" }, qty: 1 }
             ]
         },
         "neck_azure": {
             prof: "jewelcrafting", salePrice: 1500,
-            names: { es: "Collar de Veraplata Encantado", en: "Gilded Truesilver Necklace", de: "Vergoldete Echtsilberhalskette", fr: "Collier en vrai-argent doré", pt: "Colar de Veraprata Dourado" },
+            names: { es: "Collar de Veraplata Encantado", en: "Gilded Truesilver Necklace" },
             materials: [
-                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 6 },
-                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem", de: "Gipfelnder Edelstein", fr: "Gemme culminante", pt: "Gema Culminante" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 2 }
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 6 },
+                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 2 }
             ]
         },
         "gem_quick": {
             prof: "jewelcrafting", salePrice: 480,
-            names: { es: "Ónix Sibilante Rápido", en: "Quick Sibilant Onyx", de: "Schneller zischender Onyx", fr: "Onyx sibilant rapide", pt: "Ônix Sibilante Rápido" },
+            names: { es: "Ónix Sibilante Rápido", en: "Quick Sibilant Onyx" },
             materials: [
-                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 8 },
-                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem", de: "Gipfelnder Edelstein", fr: "Gemme culminante", pt: "Gema Culminante" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 1 }
+                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 8 },
+                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 1 }
             ]
         },
         "ring_master": {
             prof: "jewelcrafting", salePrice: 2200,
-            names: { es: "Sello de Maestría Estelar", en: "Stellar Mastery Signet", de: "Siegel der Meisterschaft", fr: "Chevalière de maîtrise stellaire", pt: "Sinete de Maestria Estelar" },
+            names: { es: "Sello de Maestría Estelar", en: "Stellar Mastery Signet" },
             materials: [
-                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 8 },
-                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx", de: "Onyx", fr: "Onyx", pt: "Ônix" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 2 }
-            ]
-        },
-        "gem_crowned": {
-            prof: "jewelcrafting", salePrice: 890,
-            names: { es: "Zafiro Real Resplandeciente", en: "Radiant Crown Sapphire", de: "Strahlender Kronensaphir", fr: "Saphir de couronne radiant", pt: "Safira de Coroa Radiante" },
-            materials: [
-                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 12 },
-                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem", de: "Gipfelnder Edelstein", fr: "Gemme culminante", pt: "Gema Culminante" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 3 }
-            ]
-        },
-        "loop_obsidian": {
-            prof: "jewelcrafting", salePrice: 1100,
-            names: { es: "Lazo de Obsidiana Tallada", en: "Carved Obsidian Loop", de: "Geschnitzte Obsidian-Schleife", fr: "Boucle en obsidienne sculptée", pt: "Laço de Obsidiana Tallada" },
-            materials: [
-                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 10 },
-                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 4 }
-            ]
-        },
-        "choker_amber": {
-            prof: "jewelcrafting", salePrice: 1650,
-            names: { es: "Gargantilla de Ámbar Resplandeciente", en: "Gleaming Amber Choker", de: "Schimmernde Bernsteinhalskette", fr: "Ras-de-cou en ambre scintillant", pt: "Gargantilha de Âmbar Cintilante" },
-            materials: [
-                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 7 },
-                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx", de: "Onyx", fr: "Onyx", pt: "Ônix" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 2 }
-            ]
-        },
-        "gem_faceted_ruby": {
-            prof: "jewelcrafting", salePrice: 540,
-            names: { es: "Rubí Tallado Certero", en: "Faceted Accurate Ruby", de: "Facettierter präziser Rubin", fr: "Rubis facetté précis", pt: "Rubi Lapidado Preciso" },
-            materials: [
-                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 9 }
-            ]
-        },
-        "monocle_jewel": {
-            prof: "jewelcrafting", salePrice: 2800,
-            names: { es: "Monóculo de Orfebre Magistral", en: "Masterful Jewelcrafter's Monocle", de: "Meisterhaftes Monokel", fr: "Monocle de joaillier magistral", pt: "Monóculo do Joalheiro Magistral" },
-            materials: [
-                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 10 },
-                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx", de: "Onyx", fr: "Onyx", pt: "Ônix" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 3 }
-            ]
-        },
-        "idol_stone": {
-            prof: "jewelcrafting", salePrice: 720,
-            names: { es: "Ídolo de Jaspe Tallado", en: "Carved Jasper Idol", de: "Geschnitztes Jaspisidol", fr: "Idole en jaspe sculpté", pt: "Ídolo de Jaspe Tallado" },
-            materials: [
-                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 11 }
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 8 },
+                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 2 }
             ]
         },
 
-        // --- HERRERÍA (10 recetas) ---
+        // --- HERRERÍA ---
         "alloy_Bismuth": {
             prof: "blacksmithing", salePrice: 120,
-            names: { es: "Lingote de Bismuto Enriquecido", en: "Bismuth Alloy", de: "Bismutlegierung", fr: "Alliage de bismuth", pt: "Liga de Bismuto" },
+            names: { es: "Lingote de Bismuto Enriquecido", en: "Bismuth Alloy" },
             materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería: Khaz Algar", en: "⛏️ Mining: Khaz Algar", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 10 },
-                { id: 211105, names: { es: "Mena fundida", en: "Molten Slag", de: "Geschmolzene Schlacke", fr: "Scorie en fusion", pt: "Escória Fundida" }, source: { es: "👾 Drop: Mobs mecánicos", en: "👾 Drop: Mechanical Mobs", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 2 }
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería: Khaz Algar", en: "⛏️ Mining" }, qty: 10 },
+                { id: 211105, names: { es: "Mena fundida", en: "Molten Slag" }, source: { es: "👾 Drop: Mobs mecánicos", en: "👾 Drop" }, qty: 2 }
             ]
         },
         "sword_epic": {
             prof: "blacksmithing", salePrice: 2800,
-            names: { es: "Gran Espada de Saronita Pura", en: "Bismuth Greatsword", de: "Bismut-Großschwert", fr: "Grande épée en bismuth", pt: "Montante de Bismuto" },
+            names: { es: "Gran Espada de Saronita Pura", en: "Bismuth Greatsword" },
             materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 15 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 4 },
-                { id: 211250, names: { es: "Hueso primordial", en: "Primordial Bone", de: "Urknochen", fr: "Os primordial", pt: "Osso Primordial" }, source: { es: "👾 Drop: Bestias", en: "👾 Drop: Beasts", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 2 }
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 15 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 4 },
+                { id: 211250, names: { es: "Hueso primordial", en: "Primordial Bone" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 2 }
             ]
         },
         "shield_heavy": {
             prof: "blacksmithing", salePrice: 1950,
-            names: { es: "Pavés de Acero Real", en: "Royal Steel Pavise", de: "Königlicher Stahlschild", fr: "Pavois en acier royal", pt: "Pavês de Aço Real" },
+            names: { es: "Pavés de Acero Real", en: "Royal Steel Pavise" },
             materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 12 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 3 }
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 12 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 3 }
             ]
         },
         "cuirass_plate": {
             prof: "blacksmithing", salePrice: 3500,
-            names: { es: "Coraza de Batalla Inquebrantable", en: "Unbreakable Battle Cuirass", de: "Unzerbrechlicher Kürass", fr: "Cuirasse de bataille incassable", pt: "Couraça de Batalha Indestrutível" },
+            names: { es: "Coraza de Batalla Inquebrantable", en: "Unbreakable Battle Cuirass" },
             materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 20 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 6 }
-            ]
-        },
-        "axe_titanium": {
-            prof: "blacksmithing", salePrice: 3100,
-            names: { es: "Hacha de Guerra de Khaz Algar", en: "Khaz Algar War Axe", de: "Kriegsaxt von Khaz Algar", fr: "Hache de guerre de Khaz Algar", pt: "Machado de Guerra de Khaz Algar" },
-            materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 18 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 5 }
-            ]
-        },
-        "helmet_plate": {
-            prof: "blacksmithing", salePrice: 2950,
-            names: { es: "Yelmo de Guardián de Magma", en: "Magma Guard Greathelm", de: "Großhelm der Magmawache", fr: "Grand heaume de garde-magma", pt: "Grande Elmo do Guardião de Magma" },
-            materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 14 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 4 }
-            ]
-        },
-        "greaves_sturdy": {
-            prof: "blacksmithing", salePrice: 2400,
-            names: { es: "Espinilleras de Acero Forjado", en: "Forged Steel Greaves", de: "Geschmiedete Stahlschienen", fr: "Grèves en acier forgé", pt: "Grevas de Aço Forjado" },
-            materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 12 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 3 }
-            ]
-        },
-        "mace_spiked": {
-            prof: "blacksmithing", salePrice: 2650,
-            names: { es: "Maza Pesada de Asedio", en: "Heavy Siege Mace", de: "Schwere Belagerungsstreitkolben", fr: "Masse d'armes de siège lourde", pt: "Maça Pesada de Cerco" },
-            materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 14 },
-                { id: 211250, names: { es: "Hueso primordial", en: "Primordial Bone", de: "Urknochen", fr: "Os primordial", pt: "Osso Primordial" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 3 }
-            ]
-        },
-        "bracers_plate": {
-            prof: "blacksmithing", salePrice: 1750,
-            names: { es: "Brazales de Guardia Férrea", en: "Iron Guard Vambraces", de: "Armschienen der Eisengarde", fr: "Avant-bras de garde de fer", pt: "Braçadeiras da Guarda de Ferro" },
-            materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 10 }
-            ]
-        },
-        "belt_girdle": {
-            prof: "blacksmithing", salePrice: 1900,
-            names: { es: "Fajín de Placas Reforzadas", en: "Reinforced Plate Girdle", de: "Verstärkter Plattengürtel", fr: "Gantelet en plates renforcées", pt: "Cinturão de Placas Reforçado" },
-            materials: [
-                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería", en: "⛏️ Mining", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 11 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 2 }
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore" }, source: { es: "⛏️ Minería", en: "⛏️ Mining" }, qty: 20 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 6 }
             ]
         },
 
-        // --- ENCANTAMIENTO (10 recetas) ---
+        // --- ENCANTAMIENTO ---
         "enchant_weapon": {
             prof: "enchanting", salePrice: 1850,
-            names: { es: "Encantamiento de Arma: Divisa Flamígera", en: "Enchant Weapon - Authority", de: "Waffenverzauberung - Autorität", fr: "Ench. d'arme - Autorité", pt: "Encantar Arma - Autoridade" },
+            names: { es: "Encantamiento de Arma: Divisa Flamígera", en: "Enchant Weapon - Authority" },
             materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar verde", en: "✨ Disenchanting Green", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 8 },
-                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, source: { es: "✨ Desencantar azul", en: "✨ Disenchanting Blue", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 4 },
-                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust", de: "Eterniumstaub", fr: "Poussière d'éternium", pt: "Pó de Eternium" }, source: { es: "✨ Desencantar épico", en: "✨ Disenchanting Epic", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 1 }
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar verde", en: "✨ Disenchanting" }, qty: 8 },
+                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal" }, source: { es: "✨ Desencantar azul", en: "✨ Disenchanting" }, qty: 4 },
+                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust" }, source: { es: "✨ Desencantar épico", en: "✨ Disenchanting" }, qty: 1 }
             ]
         },
         "enchant_ring": {
             prof: "enchanting", salePrice: 950,
-            names: { es: "Encantamiento de Anillo: Velocidad Radiante", en: "Enchant Ring - Radiant Speed", de: "Ringverzauberung - Strahlende Tempo", fr: "Ench. d'anneau - Vitesse radiante", pt: "Encantar Anel - Velocidade Radiante" },
+            names: { es: "Encantamiento de Anillo: Velocidad Radiante", en: "Enchant Ring - Radiant Speed" },
             materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 5 },
-                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 2 }
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 5 },
+                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 2 }
             ]
         },
         "enchant_cloak": {
             prof: "enchanting", salePrice: 720,
-            names: { es: "Encantamiento de Capa: Gracia Alada", en: "Enchant Cloak - Winged Grace", de: "Umhangverzauberung - Gekonnter Sprung", fr: "Ench. de cape - Grâce ailée", pt: "Encantar Capa - Graça Alada" },
+            names: { es: "Encantamiento de Capa: Gracia Alada", en: "Enchant Cloak - Winged Grace" },
             materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 4 },
-                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust", de: "Eterniumstaub", fr: "Poussière d'éternium", pt: "Pó de Eternium" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 1 }
-            ]
-        },
-        "enchant_chest": {
-            prof: "enchanting", salePrice: 2400,
-            names: { es: "Encantamiento de Pecho: Estadísticas Gloriosas", en: "Enchant Chest - Glorious Stats", de: "Brustverzauberung - Glorreiche Werte", fr: "Ench. de torse - Statistiques glorieuses", pt: "Encantar Peitoral - Atributos Gloriosos" },
-            materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 12 },
-                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust", de: "Eterniumstaub", fr: "Poussière d'éternium", pt: "Pó de Eternium" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 2 }
-            ]
-        },
-        "enchant_boots": {
-            prof: "enchanting", salePrice: 820,
-            names: { es: "Encantamiento de Botas: Paso Ciclónico", en: "Enchant Boots - Cyclonic Step", de: "Stiefelverzauberung - Zyklonenschritt", fr: "Ench. de bottes - Pas cyclonique", pt: "Encantar Botas - Passo Ciclônico" },
-            materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 6 },
-                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 2 }
-            ]
-        },
-        "enchant_bracer": {
-            prof: "enchanting", salePrice: 1150,
-            names: { es: "Encantamiento de Brazales: Precisión de Maestro", en: "Enchant Bracer - Master's Precision", de: "Armschienenverzauberung - Präzision", fr: "Ench. de bracers - Précision de maître", pt: "Encantar Braçadeiras - Precisão" },
-            materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 7 },
-                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 3 }
-            ]
-        },
-        "enchant_weapon_major": {
-            prof: "enchanting", salePrice: 3100,
-            names: { es: "Encantamiento de Arma: Fulgor Arcano", en: "Enchant Weapon - Arcane Flare", de: "Waffenverzauberung - Arkanes Leuchten", fr: "Ench. d'arme - Éclat arcanique", pt: "Encantar Arma - Clarão Arcano" },
-            materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 15 },
-                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust", de: "Eterniumstaub", fr: "Poussière d'éternium", pt: "Pó de Eternium" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 3 }
-            ]
-        },
-        "oil_wizard": {
-            prof: "enchanting", salePrice: 590,
-            names: { es: "Aceite de Maná Arcano", en: "Arcane Mana Oil", de: "Arkanes Manaanöle", fr: "Huile de mana arcanique", pt: "Óleo de Mana Arcano" },
-            materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 6 }
-            ]
-        },
-        "stone_sharpen": {
-            prof: "enchanting", salePrice: 450,
-            names: { es: "Piedra de Afilar Resonante", en: "Resonant Sharpening Stone", de: "Resonierender Wetzstein", fr: "Pierre à aiguiser résonnante", pt: "Pedra de Afiar Ressonante" },
-            materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 5 }
-            ]
-        },
-        "enchant_shield_block": {
-            prof: "enchanting", salePrice: 910,
-            names: { es: "Encantamiento de Escudo: Baluarte Inquebrantable", en: "Enchant Shield - Steadfast Bulwark", de: "Schildverzauberung - Fester Hort", fr: "Ench. de bouclier - Rempart inébranlable", pt: "Encantar Escudo - Baluarte Firme" },
-            materials: [
-                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 7 },
-                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 2 }
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 4 },
+                { id: 224010, names: { es: "Cristal de vacío", en: "Eternium Dust" }, source: { es: "✨ Desencantar", en: "✨ Disenchanting" }, qty: 1 }
             ]
         },
 
-        // --- PELETERÍA (10 recetas) ---
+        // --- PELETERÍA ---
         "armor_kit": {
             prof: "leatherworking", salePrice: 340,
-            names: { es: "Kit de Armadura Reforzado", en: "Reinforced Armor Kit", de: "Verstärktes Rüstungsset", fr: "Kit d'armure renforcé", pt: "Kit de Armadura Reforçado" },
+            names: { es: "Kit de Armadura Reforzado", en: "Reinforced Armor Kit" },
             materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello: Bestias", en: "🔪 Skinning: Beasts", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 8 },
-                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 3 }
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello: Bestias", en: "🔪 Skinning" }, qty: 8 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 3 }
             ]
         },
         "boots_leather": {
             prof: "leatherworking", salePrice: 1600,
-            names: { es: "Botas de Merodeador Sombrío", en: "Shadow Prowler Boots", de: "Stiefel des Schattenpürschers", fr: "Bottes de rôdeur de l'ombre", pt: "Botas de Prowlador Sombrio" },
+            names: { es: "Botas de Merodeador Sombrío", en: "Shadow Prowler Boots" },
             materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 12 },
-                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 4 }
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 12 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 4 }
             ]
         },
         "legs_scaled": {
             prof: "leatherworking", salePrice: 2900,
-            names: { es: "Pantalones de Escama Feroz", en: "Fierce Scaled Leggings", de: "Gamaschen der wilden Schuppen", fr: "Jambières en écaille féroce", pt: "Perneiras de Escama Feroz" },
+            names: { es: "Pantalones de Escama Feroz", en: "Fierce Scaled Leggings" },
             materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 16 },
-                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 6 }
-            ]
-        },
-        "tunic_storm": {
-            prof: "leatherworking", salePrice: 3400,
-            names: { es: "Túnica de Cuero de Tormenta", en: "Stormhide Tunic", de: "Sturmhauttunika", fr: "Tunique en cuir de tempête", pt: "Túnica de Couro da Tempestade" },
-            materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 20 },
-                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 7 }
-            ]
-        },
-        "helm_leather": {
-            prof: "leatherworking", salePrice: 2700,
-            names: { es: "Yelmo de Cuero Acechante", en: "Stalker's Leather Mask", de: "Lederner Pirschermaske", fr: "Masque en cuir de traqueur", pt: "Máscara de Couro do Espreitador" },
-            materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 14 },
-                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 5 }
-            ]
-        },
-        "shoulders_hide": {
-            prof: "leatherworking", salePrice: 2100,
-            names: { es: "Obreras de Piel Gruesa", en: "Thick-Hide Spaulders", de: "Dichtbehaarte Schulterstücke", fr: "Epaulières en cuir épais", pt: "Spalts de Couro Grosso" },
-            materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 12 },
-                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 4 }
-            ]
-        },
-        "gloves_prowler": {
-            prof: "leatherworking", salePrice: 1550,
-            names: { es: "Guantes de Acechador Rápido", en: "Swift Prowler Gloves", de: "Handschuhe des schnellen Pürschers", fr: "Gants de rôdeur leste", pt: "Luvas do Espreitador Ágil" },
-            materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 10 },
-                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 3 }
-            ]
-        },
-        "belt_leather": {
-            prof: "leatherworking", salePrice: 1450,
-            names: { es: "Cinturón de Caza Sombrío", en: "Shadow Hunt Belt", de: "Schattenjagd-Gürtel", fr: "Ceinturon de chasse de l'ombre", pt: "Cinto de Caça Sombria" },
-            materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 9 },
-                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 3 }
-            ]
-        },
-        "drum_battle": {
-            prof: "leatherworking", salePrice: 850,
-            names: { es: "Tambores de Furia Temprana", en: "Furious Battle Drums", de: "Wütende Kampftrommeln", fr: "Tambours de bataille furieux", pt: "Tambores de Batalha Furiosos" },
-            materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 15 }
-            ]
-        },
-        "cloak_leather": {
-            prof: "leatherworking", salePrice: 1300,
-            names: { es: "Capa de Viaje de Piel", en: "Hide Travel Cloak", de: "Reise-Hautumhang", fr: "Cape de voyage en peau", pt: "Capa de Viagem de Pele" },
-            materials: [
-                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello", en: "🔪 Skinning", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 10 }
+                { id: 218001, names: { es: "Cuero basto", en: "Leather" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 16 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale" }, source: { es: "🔪 Desuello", en: "🔪 Skinning" }, qty: 6 }
             ]
         },
 
-        // --- SASTRERÍA (10 recetas) ---
+        // --- SASTRERÍA ---
         "cloth_bolt": {
             prof: "tailoring", salePrice: 180,
-            names: { es: "Rollo de Tela Crepuscular", en: "Bolt of Weavecloth", de: "Stoffballen", fr: "Rouleau d'étoffe", pt: "Fardo de Tecido" },
+            names: { es: "Rollo de Tela Crepuscular", en: "Bolt of Weavecloth" },
             materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop: Humanoides", en: "👾 Drop: Humanoids", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 10 }
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop: Humanoides", en: "👾 Drop" }, qty: 10 }
             ]
         },
         "robe_spellfire": {
             prof: "tailoring", salePrice: 2400,
-            names: { es: "Vestimentas de Tejefuego", en: "Spellfire Robes", de: "Robe des Zauberfeuers", fr: "Robes de feu de sort", pt: "Vestimentas de Fogo Mágico" },
+            names: { es: "Vestimentas de Tejefuego", en: "Spellfire Robes" },
             materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop: Humanoides", en: "👾 Drop: Humanoids", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 16 },
-                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk", de: "Ätherseide", fr: "Soie éthérée", pt: "Seda Etérea" }, source: { es: "👾 Drop: Lanzadores", en: "👾 Drop: Casters", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 4 }
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 16 },
+                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 4 }
             ]
         },
         "mantle_weave": {
             prof: "tailoring", salePrice: 1850,
-            names: { es: "Manto de Hilado Arcano", en: "Arcane Spun Mantle", de: "Arkanes Gespinnst", fr: "Manteau tissé d'arcane", pt: "Manto de Tecido Arcano" },
+            names: { es: "Manto de Hilado Arcano", en: "Arcane Spun Mantle" },
             materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop: Humanoides", en: "👾 Drop: Humanoids", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 12 },
-                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk", de: "Ätherseide", fr: "Soie éthérée", pt: "Seda Etérea" }, source: { es: "👾 Drop: Lanzadores", en: "👾 Drop: Casters", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 3 }
-            ]
-        },
-        "hood_weaver": {
-            prof: "tailoring", salePrice: 2100,
-            names: { es: "Caperuza de Tejedor Astral", en: "Astral Weaver Hood", de: "Astralwirker-Kapuze", fr: "Capuche de tisserand astral", pt: "Capuz do Tecelão Astral" },
-            materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop: Humanoides", en: "👾 Drop: Humanoids", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 14 },
-                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk", de: "Ätherseide", fr: "Soie éthérée", pt: "Seda Etérea" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 3 }
-            ]
-        },
-        "pants_silk": {
-            prof: "tailoring", salePrice: 2300,
-            names: { es: "Pantalones de Seda Etérea", en: "Ether Silk Pants", de: "Ätherseide-Hose", fr: "Pantalon en soie éthérée", pt: "Calças de Seda Etérea" },
-            materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 15 },
-                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk", de: "Ätherseide", fr: "Soie éthérée", pt: "Seda Etérea" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 4 }
-            ]
-        },
-        "gloves_cloth": {
-            prof: "tailoring", salePrice: 1400,
-            names: { es: "Guantes de Tejido Mágico", en: "Mageweave Wraps", de: "Magiestoff-Wickel", fr: "Gants en tisse-mage", pt: "Invólucros de Magitrama" },
-            materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 9 }
-            ]
-        },
-        "belt_cloth": {
-            prof: "tailoring", salePrice: 1250,
-            names: { es: "Fajín de Seda Celestial", en: "Celestial Silk Cord", de: "Himmlische Seidenschnur", fr: "Cordon en soie céleste", pt: "Cordão de Seda Celestial" },
-            materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 8 }
-            ]
-        },
-        "boots_cloth": {
-            prof: "tailoring", salePrice: 1550,
-            names: { es: "Zapatillas de Nube Etérea", en: "Ether Cloud Slippers", de: "Ätherwolken-Hausschuhe", fr: "Pantoufles de nuage éthéré", pt: "Sapatilhas de Nuvem Etérea" },
-            materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 10 }
-            ]
-        },
-        "bag_magical": {
-            prof: "tailoring", salePrice: 4500,
-            names: { es: "Bolsa de Tela Algari Espaciosa", en: "Spacious Algari Satchel", de: "Geräumige algarische Tasche", fr: "Grand sac algari", pt: "Sacola Algari Espaçosa" },
-            materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 25 },
-                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk", de: "Ätherseide", fr: "Soie éthérée", pt: "Seda Etérea" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 8 }
-            ]
-        },
-        "cape_royal_cloth": {
-            prof: "tailoring", salePrice: 1600,
-            names: { es: "Capa de Tejido Real", en: "Royal Weave Cape", de: "Königlicher Webumhang", fr: "Cape à tissage royal", pt: "Capa de Tecido Real" },
-            materials: [
-                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop", en: "👾 Drop", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 11 }
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 12 },
+                { id: 219005, names: { es: "Seda tejida de éter", en: "Ether Silk" }, source: { es: "👾 Drop", en: "👾 Drop" }, qty: 3 }
             ]
         },
 
-        // --- INGENIERÍA (6 recetas) ---
+        // --- INGENIERÍA ---
         "tinker_item": {
             prof: "engineering", salePrice: 750,
-            names: { es: "Micro-ajustador Térmico", en: "Scope / Tinker Component", de: "Tüftler-Komponente", fr: "Composant d'ingénieur", pt: "Componente de Engenharia" },
+            names: { es: "Micro-ajustador Térmico", en: "Scope / Tinker Component" },
             materials: [
-                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt", de: "Bolzen", fr: "Boulon", pt: "Parafuso" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 6 },
-                { id: 220005, names: { es: "Muelle de precisión", en: "Spring", de: "Feder", fr: "Ressort", pt: "Mola" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 2 }
+                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 6 },
+                { id: 220005, names: { es: "Muelle de precisión", en: "Spring" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 2 }
             ]
         },
         "goggles_eng": {
             prof: "engineering", salePrice: 2100,
-            names: { es: "Gafas de Espectro Óptico", en: "Optical Spectrum Goggles", de: "Optische Spektrum-Schutzbrille", fr: "Lunettes à spectre optique", pt: "Óculos de Espectro Óptico" },
+            names: { es: "Gafas de Espectro Óptico", en: "Optical Spectrum Goggles" },
             materials: [
-                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt", de: "Bolzen", fr: "Boulon", pt: "Parafuso" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 10 },
-                { id: 220005, names: { es: "Muelle de precisión", en: "Spring", de: "Feder", fr: "Ressort", pt: "Mola" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 4 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 2 }
-            ]
-        },
-        "bomb_thermal": {
-            prof: "engineering", salePrice: 420,
-            names: { es: "Carga Térmica Volátil", en: "Volatile Thermal Charge", de: "Volatile Thermalladung", fr: "Charge thermique volatile", pt: "Carga Térmica Volátil" },
-            materials: [
-                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt", de: "Bolzen", fr: "Boulon", pt: "Parafuso" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 5 },
-                { id: 220005, names: { es: "Muelle de precisión", en: "Spring", de: "Feder", fr: "Ressort", pt: "Mola" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 1 }
-            ]
-        },
-        "wormhole_generator": {
-            prof: "engineering", salePrice: 3500,
-            names: { es: "Generador de Gusanos: Khaz Algar", en: "Wormhole Generator: Khaz Algar", de: "Wurmlochgenerator", fr: "Générateur de trou de ver", pt: "Gerador de Buraco de Minhoca" },
-            materials: [
-                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt", de: "Bolzen", fr: "Boulon", pt: "Parafuso" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 15 },
-                { id: 220005, names: { es: "Muelle de precisión", en: "Spring", de: "Feder", fr: "Ressort", pt: "Mola" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 6 }
-            ]
-        },
-        "gun_advanced": {
-            prof: "engineering", salePrice: 2900,
-            names: { es: "Cañón de Riel de Precisión", en: "Precision Rail Rifle", de: "Präzisions-Schienenkanone", fr: "Fusil à rail de précision", pt: "Rifle Ferroviário de Precisão" },
-            materials: [
-                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt", de: "Bolzen", fr: "Boulon", pt: "Parafuso" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 12 },
-                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 4 }
-            ]
-        },
-        "repair_bot": {
-            prof: "engineering", salePrice: 1800,
-            names: { es: "Robo-reparador Térmico Mk-V", en: "Thermal Robo-Repair Mk-V", de: "Thermischer Robo-Reparatur", fr: "Robo-réparateur thermique", pt: "Robô-Reparador Térmico" },
-            materials: [
-                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt", de: "Bolzen", fr: "Boulon", pt: "Parafuso" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 8 },
-                { id: 220005, names: { es: "Muelle de precisión", en: "Spring", de: "Feder", fr: "Ressort", pt: "Mola" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 3 }
+                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 10 },
+                { id: 220005, names: { es: "Muelle de precisión", en: "Spring" }, source: { es: "⚙️ Ingeniería", en: "⚙️ Engineering" }, qty: 4 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar" }, source: { es: "🔨 Fundición", en: "🔨 Smelting" }, qty: 2 }
             ]
         }
     };
@@ -719,71 +254,39 @@ document.addEventListener('DOMContentLoaded', () => {
     let cachedPrices = null;
     let currentRealmRegion = null;
     let currentFilter = "all";
+    let craftingSession = [];
+
+    // Manejo de Pestañas
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            const target = e.target.getAttribute('data-tab');
+            e.target.classList.add('active');
+            document.getElementById(target).classList.add('active');
+        });
+    });
 
     function getFavorites() {
-        try {
-            return JSON.parse(localStorage.getItem('wow_favs')) || [];
-        } catch (e) {
-            return [];
-        }
+        try { return JSON.parse(localStorage.getItem('wow_favs')) || []; } catch (e) { return []; }
     }
 
     function toggleFavorite(key) {
         let favs = getFavorites();
-        if (favs.includes(key)) {
-            favs = favs.filter(item => item !== key);
-        } else {
-            favs.push(key);
-        }
+        if (favs.includes(key)) { favs = favs.filter(i => i !== key); } else { favs.push(key); }
         localStorage.setItem('wow_favs', JSON.stringify(favs));
-        populateRecipes(currentFilter, document.getElementById('recipe-search').value);
+        populateRecipes(currentFilter, document.getElementById('recipe-search')?.value || '');
     }
 
-    function getLang() {
-        const langSel = document.getElementById('lang-selector');
-        return langSel ? langSel.value : 'es';
-    }
-
-    function updateUIStrings() {
-        const lang = getLang();
-        const t = translations[lang] || translations.es;
-
-        const setTxt = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
-        const setPlh = (id, val) => { const el = document.getElementById(id); if(el) el.placeholder = val; };
-
-        setTxt('app-title', t.title);
-        setTxt('calculate-btn', t.btn);
-        setTxt('opt-default-realm', t.selectRealm);
-        setTxt('opt-default-recipe', t.optDefaultRecipe);
-        setTxt('lbl-realm', t.lblRealm);
-        setTxt('lbl-craft-qty', t.lblCraftQty);
-        setTxt('lbl-search', t.lblSearch);
-        setTxt('lbl-recipe-select', t.lblRecipeSelect);
-        setPlh('recipe-search', t.searchPlaceholder);
-
-        setTxt('btn-prof-all', t.profAll);
-        setTxt('btn-prof-fav', t.profFav);
-        setTxt('btn-prof-alchemy', t.profAlchemy);
-        setTxt('btn-prof-jc', t.profJC);
-        setTxt('btn-prof-bs', t.profBS);
-        setTxt('btn-prof-enc', t.profEnc);
-        setTxt('btn-prof-lw', t.profLW);
-        setTxt('btn-prof-tail', t.profTail);
-        setTxt('btn-prof-eng', t.profEng);
-
-        const resultsContainer = document.getElementById('results-container');
-        if (resultsContainer && !resultsContainer.querySelector('.recipe-card')) {
-            setTxt('default-text', t.defaultText);
-        }
-    }
+    function getLang() { return document.getElementById('lang-selector')?.value || 'es'; }
 
     function populateRecipes(filterProf = "all", searchTerm = "") {
         const lang = getLang();
-        const t = translations[lang] || translations.es;
         const selector = document.getElementById('recipe-selector');
         if (!selector) return;
         
-        selector.innerHTML = `<option value="">${t.optDefaultRecipe}</option>`;
+        selector.innerHTML = `<option value="">Selecciona una receta del catálogo...</option>`;
         const favs = getFavorites();
 
         for (const [key, recipe] of Object.entries(recipesDatabase)) {
@@ -801,109 +304,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    const langSelector = document.getElementById('lang-selector');
-    if (langSelector) {
-        langSelector.addEventListener('change', () => {
-            updateUIStrings();
-            const searchInput = document.getElementById('recipe-search');
-            populateRecipes(currentFilter, searchInput ? searchInput.value : '');
-            
-            const recipeSel = document.getElementById('recipe-selector');
-            if (recipeSel && recipeSel.value && cachedPrices) {
-                const recipe = recipesDatabase[recipeSel.value];
-                const realm = document.getElementById('realm-selector').value;
-                const t = translations[getLang()] || translations.es;
-                renderCalculator(recipe, recipeSel.value, realm, cachedPrices, t);
-            }
-        });
-    }
-
+    // Filtros por profesión
     document.querySelectorAll('.prof-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('.prof-btn').forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
             currentFilter = e.target.getAttribute('data-prof');
-            const searchInput = document.getElementById('recipe-search');
-            populateRecipes(currentFilter, searchInput ? searchInput.value : '');
+            populateRecipes(currentFilter, document.getElementById('recipe-search')?.value || '');
         });
     });
 
-    const searchInput = document.getElementById('recipe-search');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            populateRecipes(currentFilter, e.target.value);
-        });
-    }
+    document.getElementById('recipe-search')?.addEventListener('input', (e) => {
+        populateRecipes(currentFilter, e.target.value);
+    });
 
     populateRecipes();
-    updateUIStrings();
 
-    const calcBtn = document.getElementById('calculate-btn');
-    if (calcBtn) {
-        calcBtn.addEventListener('click', async () => {
-            const lang = getLang();
-            const t = translations[lang] || translations.es;
-            const realmSel = document.getElementById('realm-selector');
-            const recipeSel = document.getElementById('recipe-selector');
-            const resultsContainer = document.getElementById('results-container');
-
-            const realm = realmSel ? realmSel.value : '';
-            const recipeKey = recipeSel ? recipeSel.value : '';
-
-            if (!realm) {
-                alert(t.selectRealmAlert);
-                return;
-            }
-            if (!recipeKey) {
-                alert(t.selectRecipeAlert);
-                return;
-            }
-
-            if (resultsContainer) {
-                resultsContainer.innerHTML = `<p style="text-align: center; color: var(--accent-gold); margin-top: 50px; font-size: 1.05rem;">${t.syncing}</p>`;
-            }
-
-            try {
-                if (!cachedPrices || currentRealmRegion !== realm) {
-                    const response = await fetch(`/api/prices?realm=${realm}`);
-                    const data = await response.json();
-
-                    if (data.error) {
-                        if (resultsContainer) {
-                            resultsContainer.innerHTML = `<p style="color: var(--red); text-align: center;">${t.errorTitle} ${data.error}</p>`;
-                        }
-                        return;
-                    }
-
-                    cachedPrices = data.prices;
-                    currentRealmRegion = realm;
-                }
-
-                const recipe = recipesDatabase[recipeKey];
-                renderCalculator(recipe, recipeKey, realm, cachedPrices, t);
-
-            } catch (err) {
-                if (resultsContainer) {
-                    resultsContainer.innerHTML = `<p style="color: var(--red); text-align: center;">${t.connectionError}</p>`;
-                }
-            }
-        });
-    }
-
+    // RENDERIZAR RESULTADO DE CRAFTEO CON TERMÓMETRO Y ACCIONES
     function renderCalculator(recipe, recipeKey, realm, prices, t, customSalePrice = null) {
         const resultsContainer = document.getElementById('results-container');
         if (!resultsContainer) return;
 
         const lang = getLang();
         const recipeName = recipe.names[lang] || recipe.names['es'];
-
-        const craftMultiplierSel = document.getElementById('craft-qty-multiplier');
-        const multiplier = craftMultiplierSel ? parseInt(craftMultiplierSel.value) || 1 : 1;
-
+        const multiplier = parseInt(document.getElementById('craft-qty-multiplier')?.value || 1);
         const salePrice = (customSalePrice !== null ? customSalePrice : recipe.salePrice) * multiplier;
+
         let totalCraftCost = 0;
         let materialsHtml = '';
-
+        let missingList = [];
         const favs = getFavorites();
         const isFav = favs.includes(recipeKey);
 
@@ -912,11 +341,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const requiredQty = mat.qty * multiplier;
             const matName = mat.names[lang] || mat.names['es'];
             const sourceText = mat.source[lang] || mat.source['es'];
-            
+
             const existingInput = document.getElementById(`owned-${index}`);
             const ownedQty = existingInput ? Math.max(0, parseInt(existingInput.value) || 0) : 0;
-            
             const effectiveQty = Math.max(0, requiredQty - ownedQty);
+
+            if (effectiveQty > 0) missingList.push(`${effectiveQty}x ${matName}`);
+
             const subtotal = unitPrice * effectiveQty;
             totalCraftCost += subtotal;
 
@@ -939,21 +370,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const ahTax = salePrice * 0.05;
         const netRevenue = salePrice - ahTax;
         const netProfit = netRevenue - totalCraftCost;
-        const profitColor = netProfit >= 0 ? 'var(--green)' : 'var(--red)';
+        const marginPercent = totalCraftCost > 0 ? (netProfit / totalCraftCost) * 100 : 0;
+
+        let statusBadge = '';
+        if (netProfit < 0) {
+            statusBadge = `<span class="badge-thermometer badge-red">🛑 En Pérdida (${marginPercent.toFixed(1)}%)</span>`;
+        } else if (marginPercent > 25) {
+            statusBadge = `<span class="badge-thermometer badge-green">🔥 Altamente Rentable (+${marginPercent.toFixed(1)}%)</span>`;
+        } else {
+            statusBadge = `<span class="badge-thermometer badge-yellow">⚠️ Margen Moderado (+${marginPercent.toFixed(1)}%)</span>`;
+        }
 
         resultsContainer.innerHTML = `
             <div class="recipe-card">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
                     <div style="display: flex; align-items: center; gap: 12px;">
                         <button class="fav-btn ${isFav ? 'active' : ''}" id="toggle-fav-btn" title="Favorita">⭐</button>
-                        <h2 style="margin: 0; color: #fff; font-size: 1.4rem; font-weight: 700;">${recipeName} <span style="font-size: 0.85em; color: var(--accent-gold);">(x${multiplier})</span></h2>
+                        <div>
+                            <h2 style="margin: 0; color: #fff; font-size: 1.4rem;">${recipeName} (x${multiplier})</h2>
+                            ${statusBadge}
+                        </div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <label style="font-size: 0.85em; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">${t.salePriceLabel}</label>
+                    <div>
+                        <label style="font-size: 0.85em; color: var(--text-muted); font-weight: 600;">${t.salePriceLabel}</label>
                         <input type="number" id="custom-sale-price" class="input-price" value="${salePrice}">
                     </div>
                 </div>
-                <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 20px;">Realm: <strong>${realm.toUpperCase()}</strong> | AH Tax (5%): <strong id="ah-tax-display">${ahTax.toFixed(2)}g</strong></p>
 
                 <table>
                     <thead>
@@ -965,101 +407,144 @@ document.addEventListener('DOMContentLoaded', () => {
                             <th style="text-align: right;">${t.tableSubtotal}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        ${materialsHtml}
-                    </tbody>
+                    <tbody>${materialsHtml}</tbody>
                 </table>
 
                 <div class="summary-grid">
-                    <div class="summary-box">
-                        <span>${t.costMaterials}</span>
-                        <strong style="color: var(--red);" id="total-cost-display">${totalCraftCost.toFixed(2)}g</strong>
-                    </div>
-                    <div class="summary-box">
-                        <span>${t.netSale}</span>
-                        <strong style="color: #fff;" id="net-sale-display">${netRevenue.toFixed(2)}g</strong>
-                    </div>
-                    <div class="summary-box">
-                        <span>${t.netProfit}</span>
-                        <strong style="color: ${profitColor};" id="net-profit-display">${netProfit.toFixed(2)}g</strong>
-                    </div>
+                    <div class="summary-box"><span>${t.costMaterials}</span><strong style="color: var(--red);">${totalCraftCost.toFixed(2)}g</strong></div>
+                    <div class="summary-box"><span>${t.netSale}</span><strong style="color: #fff;">${netRevenue.toFixed(2)}g</strong></div>
+                    <div class="summary-box"><span>${t.netProfit}</span><strong style="color: ${netProfit >= 0 ? 'var(--green)' : 'var(--red)'};">${netProfit.toFixed(2)}g</strong></div>
+                </div>
+
+                <div class="action-row-buttons">
+                    <button id="btn-copy-shopping" class="secondary-btn">📋 Copiar Lista de Compras</button>
+                    <button id="btn-add-session" class="secondary-btn">➕ Sumar a Sesión de Crafteo</button>
                 </div>
             </div>
         `;
 
-        document.getElementById('toggle-fav-btn').addEventListener('click', () => {
+        document.getElementById('toggle-fav-btn')?.addEventListener('click', () => {
             toggleFavorite(recipeKey);
             renderCalculator(recipe, recipeKey, realm, prices, t, customSalePrice);
         });
 
-        document.querySelectorAll('.input-owned').forEach(input => {
-            input.addEventListener('input', () => {
-                recalculateLive(recipe, prices);
-            });
+        document.getElementById('btn-copy-shopping')?.addEventListener('click', () => {
+            const textToCopy = missingList.length > 0 ? missingList.join(', ') : '¡Tienes todos los materiales!';
+            navigator.clipboard.writeText(textToCopy);
+            alert(t.copiedText);
         });
 
-        const customPriceInput = document.getElementById('custom-sale-price');
-        if (customPriceInput) {
-            customPriceInput.addEventListener('input', () => {
-                recalculateLive(recipe, prices);
-            });
-        }
+        document.getElementById('btn-add-session')?.addEventListener('click', () => {
+            craftingSession.push({ name: recipeName, qty: multiplier, cost: totalCraftCost, profit: netProfit });
+            updateSessionUI();
+            alert(t.addedSession);
+        });
     }
 
-    const craftMultiplierSel = document.getElementById('craft-qty-multiplier');
-    if (craftMultiplierSel) {
-        craftMultiplierSel.addEventListener('change', () => {
-            const recipeSel = document.getElementById('recipe-selector');
-            const recipeKey = recipeSel ? recipeSel.value : '';
-            if (recipeKey && cachedPrices) {
-                const recipe = recipesDatabase[recipeKey];
-                const realm = document.getElementById('realm-selector').value;
-                const lang = getLang();
-                const t = translations[lang] || translations.es;
-                renderCalculator(recipe, recipeKey, realm, cachedPrices, t);
+    function updateSessionUI() {
+        const countEl = document.getElementById('session-count');
+        const costEl = document.getElementById('session-cost');
+        const profitEl = document.getElementById('session-profit');
+        const listEl = document.getElementById('session-list');
+
+        let totalCost = 0, totalProfit = 0;
+        let html = '<table><thead><tr><th>Receta</th><th style="text-align:center;">Lotes</th><th style="text-align:right;">Costo</th><th style="text-align:right;">Ganancia Est.</th></tr></thead><tbody>';
+
+        craftingSession.forEach(item => {
+            totalCost += item.cost;
+            totalProfit += item.profit;
+            html += `<tr><td>${item.name}</td><td style="text-align:center;">x${item.qty}</td><td style="text-align:right; color:var(--red);">${item.cost.toFixed(2)}g</td><td style="text-align:right; color:var(--green);">${item.profit.toFixed(2)}g</td></tr>`;
+        });
+
+        html += '</tbody></table>';
+        if (countEl) countEl.textContent = craftingSession.length;
+        if (costEl) costEl.textContent = `${totalCost.toFixed(2)}g`;
+        if (profitEl) profitEl.textContent = `${totalProfit.toFixed(2)}g`;
+        if (listEl) listEl.innerHTML = craftingSession.length > 0 ? html : '<p style="color:var(--text-muted); text-align:center;">No hay crafteos registrados aún en esta sesión.</p>';
+    }
+
+    document.getElementById('btn-clear-session')?.addEventListener('click', () => {
+        craftingSession = [];
+        updateSessionUI();
+    });
+
+    // PRESUPUESTO
+    document.getElementById('btn-run-budget')?.addEventListener('click', async () => {
+        const realm = document.getElementById('realm-selector').value;
+        const budget = parseFloat(document.getElementById('budget-input').value) || 0;
+        const resultsEl = document.getElementById('budget-results');
+
+        if (!realm) return alert('Selecciona un servidor primero.');
+        resultsEl.innerHTML = '<p style="color: var(--accent-gold); text-align: center;">Analizando recetas según tu presupuesto...</p>';
+
+        if (!cachedPrices || currentRealmRegion !== realm) {
+            const res = await fetch(`/api/prices?realm=${realm}`);
+            const data = await res.json();
+            cachedPrices = data.prices;
+            currentRealmRegion = realm;
+        }
+
+        let html = '<table><thead><tr><th>Receta</th><th style="text-align:right;">Costo Crafteo</th><th style="text-align:right;">Ganancia Est.</th></tr></thead><tbody>';
+        const lang = getLang();
+
+        for (const [key, recipe] of Object.entries(recipesDatabase)) {
+            let cost = 0;
+            recipe.materials.forEach(m => cost += (cachedPrices[m.id] || 15) * m.qty);
+            const netRev = recipe.salePrice * 0.95;
+            const profit = netRev - cost;
+
+            if (cost <= budget && profit > 0) {
+                html += `<tr><td><strong>${recipe.names[lang] || recipe.names.es}</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:var(--green); font-weight:700;">+${profit.toFixed(2)}g</td></tr>`;
             }
-        });
-    }
-
-    function recalculateLive(recipe, prices) {
-        const craftMultiplierSel = document.getElementById('craft-qty-multiplier');
-        const multiplier = craftMultiplierSel ? parseInt(craftMultiplierSel.value) || 1 : 1;
-        let totalCraftCost = 0;
-
-        recipe.materials.forEach((mat, index) => {
-            const unitPrice = prices[mat.id] || 15.00;
-            const requiredQty = mat.qty * multiplier;
-            const input = document.getElementById(`owned-${index}`);
-            const ownedQty = input ? Math.max(0, parseInt(input.value) || 0) : 0;
-            const effectiveQty = Math.max(0, requiredQty - ownedQty);
-            const subtotal = unitPrice * effectiveQty;
-            totalCraftCost += subtotal;
-
-            const subtotalEl = document.getElementById(`subtotal-${index}`);
-            if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(2)}g`;
-        });
-
-        const customPriceInput = document.getElementById('custom-sale-price');
-        const currentSalePrice = customPriceInput ? parseFloat(customPriceInput.value) || 0 : (recipe.salePrice * multiplier);
-
-        const ahTax = currentSalePrice * 0.05;
-        const netRevenue = currentSalePrice - ahTax;
-        const netProfit = netRevenue - totalCraftCost;
-        const profitColor = netProfit >= 0 ? 'var(--green)' : 'var(--red)';
-
-        const ahTaxEl = document.getElementById('ah-tax-display');
-        if (ahTaxEl) ahTaxEl.textContent = `${ahTax.toFixed(2)}g`;
-
-        const totalCostEl = document.getElementById('total-cost-display');
-        if (totalCostEl) totalCostEl.textContent = `${totalCraftCost.toFixed(2)}g`;
-
-        const netSaleEl = document.getElementById('net-sale-display');
-        if (netSaleEl) netSaleEl.textContent = `${netRevenue.toFixed(2)}g`;
-
-        const netProfitEl = document.getElementById('net-profit-display');
-        if (netProfitEl) {
-            netProfitEl.textContent = `${netProfit.toFixed(2)}g`;
-            netProfitEl.style.color = profitColor;
         }
-    }
+        html += '</tbody></table>';
+        resultsEl.innerHTML = html;
+    });
+
+    // FLIPS / ARBITRAJE
+    document.getElementById('btn-run-flips')?.addEventListener('click', async () => {
+        const realm = document.getElementById('realm-selector').value;
+        const resultsEl = document.getElementById('flips-results');
+
+        if (!realm) return alert('Selecciona un servidor primero.');
+        resultsEl.innerHTML = '<p style="color: var(--accent-gold); text-align: center;">Buscando oportunidades de transformación directa de materiales...</p>';
+
+        if (!cachedPrices || currentRealmRegion !== realm) {
+            const res = await fetch(`/api/prices?realm=${realm}`);
+            const data = await res.json();
+            cachedPrices = data.prices;
+            currentRealmRegion = realm;
+        }
+
+        let html = '<table><thead><tr><th>Transformación / Flip</th><th style="text-align:right;">Costo Base</th><th style="text-align:right;">Ganancia de Flip</th></tr></thead><tbody>';
+        
+        const flipKey = "alloy_Bismuth";
+        const rec = recipesDatabase[flipKey];
+        let cost = 0;
+        rec.materials.forEach(m => cost += (cachedPrices[m.id] || 12) * m.qty);
+        const profit = (rec.salePrice * 0.95) - cost;
+
+        html += `<tr><td><strong>Transformación: Minería a Lingote de Bismuto Enriquecido</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:${profit >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight:700;">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}g</td></tr>`;
+        html += '</tbody></table>';
+        resultsEl.innerHTML = html;
+    });
+
+    // Botón Calcular Principal
+    document.getElementById('calculate-btn')?.addEventListener('click', async () => {
+        const realm = document.getElementById('realm-selector').value;
+        const recipeKey = document.getElementById('recipe-selector').value;
+        const t = translations[getLang()] || translations.es;
+
+        if (!realm) return alert(t.selectRealmAlert);
+        if (!recipeKey) return alert(t.selectRecipeAlert);
+
+        if (!cachedPrices || currentRealmRegion !== realm) {
+            const res = await fetch(`/api/prices?realm=${realm}`);
+            const data = await res.json();
+            cachedPrices = data.prices;
+            currentRealmRegion = realm;
+        }
+
+        renderCalculator(recipesDatabase[recipeKey], recipeKey, realm, cachedPrices, t);
+    });
 });
