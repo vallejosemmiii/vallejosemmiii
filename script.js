@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Sastrería",
             profEng: "Ingeniería",
             tableMaterial: "Material / Componente",
-            tableSource: "Origen / Drop / Zona",
             tableQty: "Necesario",
             tableOwned: "Tienes",
             tablePrice: "Precio Unit. (AH)",
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectRealmAlert: "Por favor, selecciona un servidor primero.",
             selectRecipeAlert: "Por favor, selecciona una receta del catálogo.",
             errorTitle: "Error:",
-            connectionError: "No se pudo conectar con le servidor backend."
+            connectionError: "No se pudo conectar con el servidor backend."
         },
         en: {
             title: "WoW Crafting & Economy Hub",
@@ -57,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Tailoring",
             profEng: "Engineering",
             tableMaterial: "Material / Component",
-            tableSource: "Source / Drop / Zone",
             tableQty: "Required",
             tableOwned: "Owned",
             tablePrice: "Unit Price (AH)",
@@ -93,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Schneiderei",
             profEng: "Ingenieurskunst",
             tableMaterial: "Material / Komponente",
-            tableSource: "Quelle / Drop / Zone",
             tableQty: "Benötigt",
             tableOwned: "Vorrat",
             tablePrice: "Stückpreis (AH)",
@@ -129,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Couture",
             profEng: "Ingénierie",
             tableMaterial: "Matériau / Composant",
-            tableSource: "Source / Drop / Zone",
             tableQty: "Requis",
             tableOwned: "En stock",
             tablePrice: "Prix Unitaire (HDV)",
@@ -165,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Alfaiataria",
             profEng: "Engenharia",
             tableMaterial: "Material / Componente",
-            tableSource: "Origem / Drop / Zona",
             tableQty: "Necessário",
             tableOwned: "Possui",
             tablePrice: "Preço Unit. (AH)",
@@ -176,37 +171,22 @@ document.addEventListener('DOMContentLoaded', () => {
             salePriceLabel: "Preço de Venta (AH):",
             syncing: "Sincronizando preços em tempo real com a Casa de Leilões da Blizzard...",
             selectRealmAlert: "Por favor, selecione um reino primeiro.",
-            selectRecipeAlert: "Por favor, selecione uma receita do catálogo.",
+            selectRecipeAlert: "Por favor, selecione uma receta del catálogo.",
             errorTitle: "Erro:",
             connectionError: "Não foi possível conectar ao servidor backend."
         }
     };
 
-    // Catálogo con nombres de ítems y fuentes de obtención (Herboristería, Minería, Mobs / Zonas)
+    // Catálogo masivo restaurado y completo con nombres y fuentes de obtención
     const recipesDatabase = {
         "flask_alacrity": {
             prof: "alchemy",
             salePrice: 450,
             names: { es: "Frasco de Pungente Alacridad", en: "Flask of Pungent Alacrity", de: "Fläschchen der beißenden Alacrity", fr: "Flacon d'alacrité piquante", pt: "Frasco de Alacridade Pungente" },
             materials: [
-                { 
-                    id: 210815, 
-                    names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, 
-                    source: { es: "🌱 Herboristería: Isla Dorn / Hallowfall", en: "🌱 Herbalism: Isle of Dorn / Hallowfall", de: "🌱 Kräuterkunde: Insel Dorn", fr: "🌱 Herboristerie : Île de Dorn", pt: "🌱 Herborismo: Ilha de Dorn" },
-                    qty: 5 
-                },
-                { 
-                    id: 210802, 
-                    names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, 
-                    source: { es: "🌱 Herboristería: Zonas Clásicas / TWW", en: "🌱 Herbalism: Classic / TWW Zones", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" },
-                    qty: 3 
-                },
-                { 
-                    id: 210798, 
-                    names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, 
-                    source: { es: "🌱 Herboristería: Val'sharah / TWW", en: "🌱 Herbalism: Val'sharah / TWW", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" },
-                    qty: 2 
-                }
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería: Isla Dorn / Hallowfall", en: "🌱 Herbalism: Isle of Dorn / Hallowfall", de: "🌱 Kräuterkunde: Insel Dorn", fr: "🌱 Herboristerie : Île de Dorn", pt: "🌱 Herborismo: Ilha de Dorn" }, qty: 5 },
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, source: { es: "🌱 Herboristería: Zonas Clásicas / TWW", en: "🌱 Herbalism: Classic / TWW Zones", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 3 },
+                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, source: { es: "🌱 Herboristería: Val'sharah / TWW", en: "🌱 Herbalism: Val'sharah / TWW", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 2 }
             ]
         },
         "flask_tempered": {
@@ -214,18 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
             salePrice: 520,
             names: { es: "Frasco de Furia Templada", en: "Flask of Tempered Fury", de: "Fläschchen der geeichten Wut", fr: "Flacon de fureur tempérée", pt: "Frasco de Fúria Temperada" },
             materials: [
-                { 
-                    id: 210815, 
-                    names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, 
-                    source: { es: "🌱 Herboristería: Isla Dorn / Hallowfall", en: "🌱 Herbalism: Isle of Dorn / Hallowfall", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" },
-                    qty: 6 
-                },
-                { 
-                    id: 211503, 
-                    names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, 
-                    source: { es: "🧪 Proveedor de Alquimia (Ciudad Dornogal)", en: "🧪 Alchemy Vendor (Dornogal)", de: "🧪 Alchemiehändler", fr: "🧪 Vendeur d'alchimie", pt: "🧪 Vendedor de Alquimia" },
-                    qty: 2 
-                }
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería: Isla Dorn / Hallowfall", en: "🌱 Herbalism: Isle of Dorn / Hallowfall", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 6 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, source: { es: "🧪 Proveedor de Alquimia (Ciudad Dornogal)", en: "🧪 Alchemy Vendor (Dornogal)", de: "🧪 Alchemiehändler", fr: "🧪 Vendeur d'alchimie", pt: "🧪 Vendedor de Alquimia" }, qty: 2 }
             ]
         },
         "potion_cauldron": {
@@ -233,24 +203,18 @@ document.addEventListener('DOMContentLoaded', () => {
             salePrice: 3200,
             names: { es: "Caldero de Alquimia de Batalla", en: "Battle Alchemist's Cauldron", de: "Kessel des Alchemisten", fr: "Chaudron d'alchimiste de bataille", pt: "Caldeirão do Alquimista de Batalha" },
             materials: [
-                { 
-                    id: 210815, 
-                    names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, 
-                    source: { es: "🌱 Herboristería: Isla Dorn / Hallowfall", en: "🌱 Herbalism: Isle of Dorn / Hallowfall", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" },
-                    qty: 20 
-                },
-                { 
-                    id: 210802, 
-                    names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, 
-                    source: { es: "🌱 Herboristería general", en: "🌱 General Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" },
-                    qty: 15 
-                },
-                { 
-                    id: 211503, 
-                    names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, 
-                    source: { es: "🧪 Proveedor de Alquimia (Dornogal)", en: "🧪 Alchemy Vendor (Dornogal)", de: "🧪 Alchemiehändler", fr: "🧪 Vendeur d'alchimie", pt: "🧪 Vendedor de Alquimia" },
-                    qty: 5 
-                }
+                { id: 210815, names: { es: "Flor de la peste", en: "Blighted Herb", de: "Pestblume", fr: "Fleur pestiférée", pt: "Erva Podre" }, source: { es: "🌱 Herboristería: Isla Dorn / Hallowfall", en: "🌱 Herbalism: Isle of Dorn / Hallowfall", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 20 },
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, source: { es: "🌱 Herboristería general", en: "🌱 General Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 15 },
+                { id: 211503, names: { es: "Frasco coalescente", en: "Coalesced Vial", de: "Koaleszierte Ampulle", fr: "Fiole coïncidente", pt: "Frasco Coalescente" }, source: { es: "🧪 Proveedor de Alquimia (Dornogal)", en: "🧪 Alchemy Vendor (Dornogal)", de: "🧪 Alchemiehändler", fr: "🧪 Vendeur d'alchimie", pt: "🧪 Vendedor de Alquimia" }, qty: 5 }
+            ]
+        },
+        "potion_tauri": {
+            prof: "alchemy",
+            salePrice: 210,
+            names: { es: "Poción de Velocidad Ciclópea", en: "Cyclopean Speed Potion", de: "Trank der zyklopischen Geschwindigkeit", fr: "Potion de vitesse cyclopéenne", pt: "Poção de Velocidade Ciclópica" },
+            materials: [
+                { id: 210802, names: { es: "Lirio pacífico", en: "Peacebloom", de: "Friedblume", fr: "Pacifique", pt: "Lírio-da-paz" }, source: { es: "🌱 Herboristería general", en: "🌱 General Herbalism", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 4 },
+                { id: 210798, names: { es: "Hoja de Ensueño", en: "Dreamleaf", de: "Traumblatt", fr: "Feuille de rêve", pt: "Folha-onírica" }, source: { es: "🌱 Herboristería: Val'sharah", en: "🌱 Herbalism: Val'sharah", de: "🌱 Kräuterkunde", fr: "🌱 Herboristerie", pt: "🌱 Herborismo" }, qty: 2 }
             ]
         },
         "gem_culminating": {
@@ -258,24 +222,18 @@ document.addEventListener('DOMContentLoaded', () => {
             salePrice: 600,
             names: { es: "Rubí Culpable Deslumbrante", en: "Culminating Blasphemite", de: "Gipfelnde Lästerung", fr: "Blasphémique culminante", pt: "Blasfêmia Culminante" },
             materials: [
-                { 
-                    id: 213744, 
-                    names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, 
-                    source: { es: "⛏️ Minería: Depósitos en The Ringing Deeps", en: "⛏️ Mining: The Ringing Deeps Veins", de: "⛏️ Bergbau: Die Hallenden Tiefen", fr: "⛏️ Minage : Les Abîmes retentissants", pt: "⛏️ Mineração: Profundezas Ressonantes" },
-                    qty: 10 
-                },
-                { 
-                    id: 213750, 
-                    names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, 
-                    source: { es: "🔨 Fundición: Minería clásica", en: "🔨 Smelting: Classic Mining", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" },
-                    qty: 2 
-                },
-                { 
-                    id: 213755, 
-                    names: { es: "Diamante de asedio", en: "Onyx", de: "Onyx", fr: "Onyx", pt: "Ônix" }, 
-                    source: { es: "👾 Drop: Elementales de tierra (Azj-Kahet)", en: "👾 Drop: Earth Elementals (Azj-Kahet)", de: "👾 Drop: Erdelementare", fr: "👾 Butin : Élémentaires de terre", pt: "👾 Drop: Elementais da Terra" },
-                    qty: 1 
-                }
+                { id: 213744, names: { es: "Artesa (Bismuto)", en: "Bismuth", de: "Bismut", fr: "Bismuth", pt: "Bismuto" }, source: { es: "⛏️ Minería: The Ringing Deeps", en: "⛏️ Mining: The Ringing Deeps", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 10 },
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición: Minería clásica", en: "🔨 Smelting: Classic Mining", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 2 },
+                { id: 213755, names: { es: "Diamante de asedio", en: "Onyx", de: "Onyx", fr: "Onyx", pt: "Ônix" }, source: { es: "👾 Drop: Elementales (Azj-Kahet)", en: "👾 Drop: Elementals (Azj-Kahet)", de: "👾 Drop: Elementare", fr: "👾 Butin : Élémentaires", pt: "👾 Drop: Elementais" }, qty: 1 }
+            ]
+        },
+        "neck_azure": {
+            prof: "jewelcrafting",
+            salePrice: 1500,
+            names: { es: "Collar de Veraplata Encantado", en: "Gilded Truesilver Necklace", de: "Vergoldete Echtsilberhalskette", fr: "Collier en vrai-argent doré", pt: "Colar de Veraprata Dourado" },
+            materials: [
+                { id: 213750, names: { es: "Barra de veraplata", en: "Truesilver Bar", de: "Echtsilberbarren", fr: "Barre de vrai-argent", pt: "Barra de Veraprata" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 6 },
+                { id: 213760, names: { es: "Esmeralda viviente", en: "Culminating Gem", de: "Gipfelnder Edelstein", fr: "Gemme culminante", pt: "Gema Culminante" }, source: { es: "⛏️ Minería: Khaz Algar", en: "⛏️ Mining: Khaz Algar", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 2 }
             ]
         },
         "alloy_Bismuth": {
@@ -283,18 +241,17 @@ document.addEventListener('DOMContentLoaded', () => {
             salePrice: 120,
             names: { es: "Lingote de Bismuto Enriquecido", en: "Bismuth Alloy", de: "Bismutlegierung", fr: "Alliage de bismuth", pt: "Liga de Bismuto" },
             materials: [
-                { 
-                    id: 211100, 
-                    names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, 
-                    source: { es: "⛏️ Minería: Venas en Khaz Algar", en: "⛏️ Mining: Khaz Algar Veins", de: "⛏️ Bergbau: Khaz Algar", fr: "⛏️ Minage : Khaz Algar", pt: "⛏️ Mineração: Khaz Algar" },
-                    qty: 10 
-                },
-                { 
-                    id: 211105, 
-                    names: { es: "Mena fundida", en: "Molten Slag", de: "Geschmolzene Schlacke", fr: "Scorie en fusion", pt: "Escória Fundida" }, 
-                    source: { es: "👾 Drop: Minions mecánicos (Isla Dorn)", en: "👾 Drop: Mechanical Minions (Isle of Dorn)", de: "👾 Drop: Mechanische Diener", fr: "👾 Butin : Sbires mécaniques", pt: "👾 Drop: Lacaios Mecânicos" },
-                    qty: 2 
-                }
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería: Khaz Algar", en: "⛏️ Mining: Khaz Algar", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 10 },
+                { id: 211105, names: { es: "Mena fundida", en: "Molten Slag", de: "Geschmolzene Schlacke", fr: "Scorie en fusion", pt: "Escória Fundida" }, source: { es: "👾 Drop: Mobs mecánicos", en: "👾 Drop: Mechanical Mobs", de: "👾 Drop", fr: "👾 Butin", pt: "👾 Drop" }, qty: 2 }
+            ]
+        },
+        "sword_epic": {
+            prof: "blacksmithing",
+            salePrice: 2800,
+            names: { es: "Gran Espada de Saronita Pura", en: "Bismuth Greatsword", de: "Bismut-Großschwert", fr: "Grande épée en bismuth", pt: "Montante de Bismuto" },
+            materials: [
+                { id: 211100, names: { es: "Mineral de Bismuto", en: "Bismuth Ore", de: "Bismuterz", fr: "Minerais de bismuth", pt: "Minério de Bismuto" }, source: { es: "⛏️ Minería: Khaz Algar", en: "⛏️ Mining: Khaz Algar", de: "⛏️ Bergbau", fr: "⛏️ Minage", pt: "⛏️ Mineração" }, qty: 15 },
+                { id: 211200, names: { es: "Barra de titanio", en: "Iron Bar", de: "Eisenbarren", fr: "Barre de fer", pt: "Barra de Ferro" }, source: { es: "🔨 Fundición", en: "🔨 Smelting", de: "🔨 Schmelzen", fr: "🔨 Fonderie", pt: "🔨 Fundição" }, qty: 4 }
             ]
         },
         "enchant_weapon": {
@@ -302,18 +259,34 @@ document.addEventListener('DOMContentLoaded', () => {
             salePrice: 1850,
             names: { es: "Encantamiento de Arma: Divisa Flamígera", en: "Enchant Weapon - Authority", de: "Waffenverzauberung - Autorität", fr: "Ench. d'arme - Autorité", pt: "Encantar Arma - Autoridade" },
             materials: [
-                { 
-                    id: 224001, 
-                    names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, 
-                    source: { es: "✨ Desencantar equipo verde de TWW", en: "✨ Disenchanting TWW Green Gear", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" },
-                    qty: 8 
-                },
-                { 
-                    id: 224005, 
-                    names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, 
-                    source: { es: "✨ Desencantar equipo azul de TWW", en: "✨ Disenchanting TWW Blue Gear", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" },
-                    qty: 4 
-                }
+                { id: 224001, names: { es: "Polvo abisal", en: "Storm Dust", de: "Staub", fr: "Poussière", pt: "Pó" }, source: { es: "✨ Desencantar equipo verde", en: "✨ Disenchanting Green Gear", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 8 },
+                { id: 224005, names: { es: "Esencia cósmica mayor", en: "Shimmering Crystal", de: "Schimmernder Kristall", fr: "Cristal scintillant", pt: "Cristal Cintilante" }, source: { es: "✨ Desencantar equipo azul", en: "✨ Disenchanting Blue Gear", de: "✨ Entzaubern", fr: "✨ Désenchantement", pt: "✨ Desencantar" }, qty: 4 }
+            ]
+        },
+        "armor_kit": {
+            prof: "leatherworking",
+            salePrice: 340,
+            names: { es: "Kit de Armadura Reforzado", en: "Reinforced Armor Kit", de: "Verstärktes Rüstungsset", fr: "Kit d'armure renforcé", pt: "Kit de Armadura Reforçado" },
+            materials: [
+                { id: 218001, names: { es: "Cuero basto", en: "Leather", de: "Leder", fr: "Cuir", pt: "Couro" }, source: { es: "🔪 Desuello: Criaturas de TWW", en: "🔪 Skinning: TWW Beasts", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 8 },
+                { id: 218005, names: { es: "Escama endurecida", en: "Scale", de: "Schuppe", fr: "Écaille", pt: "Escama" }, source: { es: "🔪 Desuello en zonas altas", en: "🔪 Skinning high-level", de: "🔪 Kürschnerei", fr: "🔪 Dépeçage", pt: "🔪 Esfolamento" }, qty: 3 }
+            ]
+        },
+        "cloth_bolt": {
+            prof: "tailoring",
+            salePrice: 180,
+            names: { es: "Rollo de Tela Crepuscular", en: "Bolt of Weavecloth", de: "Stoffballen", fr: "Rouleau d'étoffe", pt: "Fardo de Tecido" },
+            materials: [
+                { id: 219001, names: { es: "Fibra crepuscular", en: "Weavecloth", de: "Webstoff", fr: "Étoffe tissée", pt: "Tecido Tecido" }, source: { es: "👾 Drop: Humanoides (Khaz Algar)", en: "👾 Drop: Humanoids (Khaz Algar)", de: "👾 Drop: Humanoiden", fr: "👾 Butin : Humanoïdes", pt: "👾 Drop: Humanoides" }, qty: 10 }
+            ]
+        },
+        "tinker_item": {
+            prof: "engineering",
+            salePrice: 750,
+            names: { es: "Micro-ajustador Térmico", en: "Scope / Tinker Component", de: "Tüftler-Komponente", fr: "Composant d'ingénieur", pt: "Componente de Engenharia" },
+            materials: [
+                { id: 220001, names: { es: "Tornillo de cobalto", en: "Bolt", de: "Bolzen", fr: "Boulon", pt: "Parafuso" }, source: { es: "⚙️ Ingeniería / Proveedores", en: "⚙️ Engineering / Vendors", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 6 },
+                { id: 220005, names: { es: "Muelle de precisión", en: "Spring", de: "Feder", fr: "Ressort", pt: "Mola" }, source: { es: "⚙️ Ingeniería general", en: "⚙️ General Engineering", de: "⚙️ Ingenieurskunst", fr: "⚙️ Ingénierie", pt: "⚙️ Engenharia" }, qty: 2 }
             ]
         }
     };
