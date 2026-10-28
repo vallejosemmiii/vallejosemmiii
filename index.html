@@ -7,8 +7,8 @@
     <style>
         :root {
             --bg-main: #060913;
-            --bg-card: rgba(15, 23, 42, 0.85);
-            --bg-input: rgba(30, 41, 59, 0.7);
+            --bg-card: rgba(15, 23, 42, 0.88);
+            --bg-input: rgba(30, 41, 59, 0.75);
             --border-color: rgba(51, 65, 85, 0.8);
             --accent-gold: #f59e0b;
             --accent-glow: rgba(245, 158, 11, 0.25);
@@ -18,11 +18,15 @@
             --red: #ef4444;
         }
 
+        /* Temas Dinámicos */
+        body.theme-alliance { --accent-gold: #3b82f6; --accent-glow: rgba(59, 130, 246, 0.25); }
+        body.theme-horde { --accent-gold: #dc2626; --accent-glow: rgba(220, 38, 38, 0.25); }
+        body.theme-fel { --accent-gold: #10b981; --accent-glow: rgba(16, 185, 129, 0.25); }
+
         body {
             background-color: var(--bg-main);
-            /* Fondo inmersivo con viñeta arcana y textura sutil */
             background-image: 
-                radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 50% 10%, var(--accent-glow) 0%, transparent 60%),
                 radial-gradient(circle at 90% 90%, rgba(30, 58, 138, 0.15) 0%, transparent 50%),
                 linear-gradient(rgba(6, 9, 19, 0.92), rgba(6, 9, 19, 0.98));
             background-attachment: fixed;
@@ -41,7 +45,7 @@
             border: 1px solid var(--border-color);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(245, 158, 11, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px var(--accent-glow);
         }
 
         header {
@@ -51,6 +55,8 @@
             margin-bottom: 30px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         h1 {
@@ -59,7 +65,13 @@
             color: var(--accent-gold);
             font-weight: 800;
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+            transition: color 0.3s;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
         }
 
         select, input {
@@ -108,9 +120,15 @@
 
         .tab-btn.active {
             color: var(--accent-gold);
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.1);
+            background: var(--accent-glow);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .realm-config-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            margin-bottom: 25px;
         }
 
         .controls-grid {
@@ -152,7 +170,6 @@
         .prof-btn:hover {
             color: var(--text-main);
             border-color: var(--accent-gold);
-            transform: translateY(-1px);
         }
 
         .prof-btn.active {
@@ -160,11 +177,11 @@
             color: #060913;
             border-color: var(--accent-gold);
             font-weight: 800;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
         .main-action-btn {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
+            background: linear-gradient(135deg, var(--accent-gold), #b45309);
             color: #060913;
             border: none;
             padding: 16px;
@@ -174,14 +191,13 @@
             width: 100%;
             font-size: 1.05rem;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+            box-shadow: 0 4px 20px var(--accent-glow);
             transition: all 0.2s ease;
         }
 
         .main-action-btn:hover { 
             filter: brightness(1.1); 
             transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(245, 158, 11, 0.45);
         }
 
         .recipe-card {
@@ -220,16 +236,14 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        tr:hover td {
-            background: rgba(255, 255, 255, 0.015);
-        }
+        tr:hover td { background: rgba(255, 255, 255, 0.015); }
 
         .summary-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
             background: rgba(6, 9, 19, 0.7);
-            padding: 22px;
+            padding: 20px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             text-align: center;
@@ -237,17 +251,16 @@
         }
 
         .summary-box span {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             display: block;
             margin-bottom: 6px;
             text-transform: uppercase;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
         .summary-box strong {
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             font-weight: 800;
         }
 
@@ -257,7 +270,6 @@
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 800;
-            letter-spacing: 0.5px;
             margin-top: 10px;
         }
 
@@ -286,8 +298,7 @@
         .secondary-btn:hover {
             border-color: var(--accent-gold);
             color: var(--accent-gold);
-            background: rgba(245, 158, 11, 0.05);
-            transform: translateY(-1px);
+            background: var(--accent-glow);
         }
 
         .input-owned {
@@ -321,7 +332,7 @@
             transition: transform 0.2s ease;
         }
         .fav-btn:hover { transform: scale(1.15); }
-        .fav-btn.active { color: var(--accent-gold); text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+        .fav-btn.active { color: var(--accent-gold); text-shadow: 0 0 10px var(--accent-glow); }
 
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
@@ -332,36 +343,55 @@
         }
     </style>
 </head>
-<body>
+<body class="theme-goblin">
     
     <div class="container">
         <header>
             <h1 id="app-title">WoW Crafting & Economy Hub</h1>
-            <select id="lang-selector">
-                <option value="es">Español</option>
-                <option value="en">English</option>
-            </select>
+            <div class="header-controls">
+                <select id="theme-selector" title="Tema Visual">
+                    <option value="goblin">🟡 Goblin Gold</option>
+                    <option value="alliance">🔵 Alliance Blue</option>
+                    <option value="horde">🔴 Horde Red</option>
+                    <option value="fel">🟢 Fel Green</option>
+                </select>
+                <select id="lang-selector">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
         </header>
 
         <!-- Navegación de Pestañas -->
         <div class="nav-tabs">
-            <button class="tab-btn active" data-tab="tab-calculator">🧮 Calculadora</button>
-            <button class="tab-btn" data-tab="tab-budget">💰 Presupuesto</button>
+            <button class="tab-btn active" data-tab="tab-calculator">🧮 Calculadora & ROI</button>
+            <button class="tab-btn" data-tab="tab-budget">💰 Presupuesto & Favoritos</button>
             <button class="tab-btn" data-tab="tab-flips">📈 Detector de Flips</button>
             <button class="tab-btn" data-tab="tab-session">📊 Sesión de Crafteo</button>
         </div>
 
-        <!-- Servidor Global -->
-        <div class="control-group" style="margin-bottom: 25px;">
-            <label id="lbl-realm">Servidor de Juego:</label>
-            <select id="realm-selector" style="width: 100%;">
-                <option value="" id="opt-default-realm">Selecciona tu servidor...</option>
-                <option value="quelthalas">Quel'Thalas (US)</option>
-                <option value="ragnaros">Ragnaros (US)</option>
-                <option value="sanguino">Sanguino (EU - ES)</option>
-                <option value="dun-morogh">Dun Morogh (EU - FR)</option>
-                <option value="blackhand">Blackhand (EU - DE)</option>
-            </select>
+        <!-- Configuración de Servidor y Región -->
+        <div class="realm-config-grid">
+            <div class="control-group">
+                <label>Región:</label>
+                <select id="region-selector" style="width: 100%;">
+                    <option value="us">US (América)</option>
+                    <option value="eu">EU (Europa)</option>
+                    <option value="kr">KR (Corea)</option>
+                    <option value="tw">TW (Taiwán)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label id="lbl-realm">Servidor de Juego:</label>
+                <select id="realm-selector" style="width: 100%;">
+                    <option value="" id="opt-default-realm">Selecciona tu servidor...</option>
+                    <option value="quelthalas">Quel'Thalas (US)</option>
+                    <option value="ragnaros">Ragnaros (US)</option>
+                    <option value="sanguino">Sanguino (EU - ES)</option>
+                    <option value="dun-morogh">Dun Morogh (EU - FR)</option>
+                    <option value="blackhand">Blackhand (EU - DE)</option>
+                </select>
+            </div>
         </div>
 
         <!-- PESTAÑA 1: CALCULADORA -->
@@ -408,7 +438,7 @@
             </div>
         </div>
 
-        <!-- PESTAÑA 2: PRESUPUESTO -->
+        <!-- PESTAÑA 2: PRESUPUESTO & FAVORITOS -->
         <div id="tab-budget" class="tab-content">
             <div class="control-group" style="margin-bottom: 20px;">
                 <label>Ingresa tu Oro Disponible (Golds):</label>
@@ -430,7 +460,7 @@
                 <h3 style="margin: 0; color: var(--accent-gold);">Resumen de la Jornada de Crafteo</h3>
                 <button id="btn-clear-session" class="secondary-btn">Vaciar Sesión</button>
             </div>
-            <div id="session-summary-box" class="summary-grid" style="margin-bottom: 25px;">
+            <div id="session-summary-box" class="summary-grid" style="margin-bottom: 25px; grid-template-columns: repeat(3, 1fr);">
                 <div class="summary-box"><span>Crafteos Registrados</span><strong id="session-count">0</strong></div>
                 <div class="summary-box"><span>Inversión Total</span><strong style="color: var(--red);" id="session-cost">0.00g</strong></div>
                 <div class="summary-box"><span>Ganancia Neta Est.</span><strong style="color: var(--green);" id="session-profit">0.00g</strong></div>
