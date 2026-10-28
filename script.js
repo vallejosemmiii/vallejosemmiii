@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // CATÁLOGO MASIVO COMPLETO DE THE WAR WITHIN
+    // CATÁLOGO MASIVO COMPLETO RESTAURADO Y AMPLIADO DE THE WAR WITHIN
     const recipesDatabase = {
         // --- ALQUIMIA ---
         "flask_alacrity": {
@@ -256,12 +256,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilter = "all";
     let craftingSession = [];
 
-    // Manejo de Pestañas
+    // Cargar configuraciones guardadas en localStorage
+    const savedTheme = localStorage.getItem('wow_theme') || 'goblin';
+    document.body.className = `theme-${savedTheme}`;
+    document.getElementById('theme-selector').value = savedTheme;
+
+    const savedRealm = localStorage.getItem('wow_realm');
+    if (savedRealm) document.getElementById('realm-selector').value = savedRealm;
+
+    const savedRegion = localStorage.getItem('wow_region');
+    if (savedRegion) document.getElementById('region-selector').value = savedRegion;
+
+    // Cambiar Tema
+    document.getElementById('theme-selector').addEventListener('change', (e) => {
+        const theme = e.target.value;
+        document.body.className = `theme-${theme}`;
+        localStorage.setItem('wow_theme', theme);
+    });
+
+    document.getElementById('realm-selector').addEventListener('change', (e) => {
+        localStorage.setItem('wow_realm', e.target.value);
+    });
+
+    document.getElementById('region-selector').addEventListener('change', (e) => {
+        localStorage.setItem('wow_region', e.target.value);
+    });
+
+    // Pestañas
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
             const target = e.target.getAttribute('data-tab');
             e.target.classList.add('active');
             document.getElementById(target).classList.add('active');
@@ -304,7 +329,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Filtros por profesión
     document.querySelectorAll('.prof-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('.prof-btn').forEach(b => b.classList.remove('active'));
@@ -320,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     populateRecipes();
 
-    // RENDERIZAR CALCULADORA
+    // RENDERIZAR CALCULADORA CON ROI Y MÉTRICAS DE LOTE
     function renderCalculator(recipe, recipeKey, realm, prices, t, customSalePrice = null) {
         const resultsContainer = document.getElementById('results-container');
         if (!resultsContainer) return;
@@ -371,15 +395,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const netRevenue = salePrice - ahTax;
         const netProfit = netRevenue - totalCraftCost;
         const marginPercent = totalCraftCost > 0 ? (netProfit / totalCraftCost) * 100 : 0;
+        const roi = totalCraftCost > 0 ? ((netRevenue / totalCraftCost) * 100).toFixed(1) : 0;
 
-        let statusBadge = '';
-        if (netProfit < 0) {
-            statusBadge = `<span class="badge-thermometer badge-red">🛑 En Pérdida (${marginPercent.toFixed(1)}%)</span>`;
-        } else if (marginPercent > 25) {
-            statusBadge = `<span class="badge-thermometer badge-green">🔥 Altamente Rentable (+${marginPercent.toFixed(1)}%)</span>`;
-        } else {
-            statusBadge = `<span class="badge-thermometer badge-yellow">⚠️ Margen Moderado (+${marginPercent.toFixed(1)}%)</span>`;
-        }
+        let statusBadge = netProfit < 0 ? 
+            `<span class="badge-thermometer badge-red">🛑 En Pérdida (${marginPercent.toFixed(1)}%)</span>` :
+            (marginPercent > 25 ? `<span class="badge-thermometer badge-green">🔥 Altamente Rentable (+${marginPercent.toFixed(1)}%)</span>` :
+            `<span class="badge-thermometer badge-yellow">⚠️ Margen Moderado (+${marginPercent.toFixed(1)}%)</span>`);
 
         resultsContainer.innerHTML = `
             <div class="recipe-card">
@@ -414,6 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="summary-box"><span>${t.costMaterials}</span><strong style="color: var(--red);">${totalCraftCost.toFixed(2)}g</strong></div>
                     <div class="summary-box"><span>${t.netSale}</span><strong style="color: #fff;">${netRevenue.toFixed(2)}g</strong></div>
                     <div class="summary-box"><span>${t.netProfit}</span><strong style="color: ${netProfit >= 0 ? 'var(--green)' : 'var(--red)'};">${netProfit.toFixed(2)}g</strong></div>
+                    <div class="summary-box"><span>Retorno (ROI)</span><strong style="color: var(--accent-gold);">${roi}%</strong></div>
                 </div>
 
                 <div class="action-row-buttons">
@@ -429,8 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.getElementById('btn-copy-shopping')?.addEventListener('click', () => {
-            const textToCopy = missingList.length > 0 ? missingList.join(', ') : '¡Tienes todos los materiales!';
-            navigator.clipboard.writeText(textToCopy);
+            navigator.clipboard.writeText(missingList.length > 0 ? missingList.join(', ') : '¡Tienes todos los materiales!');
             alert(t.copiedText);
         });
 
@@ -468,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSessionUI();
     });
 
-    // BOTÓN: PRESUPUESTO
+    // PRESUPUESTO CON ALERTA DE FAVORITOS
     document.getElementById('btn-run-budget')?.addEventListener('click', async () => {
         const realm = document.getElementById('realm-selector').value;
         const budget = parseFloat(document.getElementById('budget-input').value) || 0;
@@ -487,6 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let html = '<table><thead><tr><th>Receta</th><th style="text-align:right;">Costo Crafteo</th><th style="text-align:right;">Ganancia Est.</th></tr></thead><tbody>';
             const lang = getLang();
+            const favs = getFavorites();
             let matched = 0;
 
             for (const [key, recipe] of Object.entries(recipesDatabase)) {
@@ -497,7 +519,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (cost <= budget && profit > 0) {
                     matched++;
-                    html += `<tr><td><strong>${recipe.names[lang] || recipe.names.es}</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:var(--green); font-weight:700;">+${profit.toFixed(2)}g</td></tr>`;
+                    const isFav = favs.includes(key);
+                    html += `<tr><td>${isFav ? '⭐ ' : ''}<strong>${recipe.names[lang] || recipe.names.es}</strong></td><td style="text-align:right;">${cost.toFixed(2)}g</td><td style="text-align:right; color:var(--green); font-weight:700;">+${profit.toFixed(2)}g</td></tr>`;
                 }
             }
             html += '</tbody></table>';
@@ -507,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // BOTÓN: FLIPS / ARBITRAJE MASIVO
+    // DETECTOR DE FLIPS
     document.getElementById('btn-run-flips')?.addEventListener('click', async () => {
         const realm = document.getElementById('realm-selector').value;
         const resultsEl = document.getElementById('flips-results');
@@ -523,51 +546,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentRealmRegion = realm;
             }
 
-            // Lista de recetas de transformación directa (Flips / Refinamiento)
             const flipRecipes = [
                 { key: "alloy_Bismuth", name: "Lingote de Bismuto Enriquecido (Aleación)" },
-                { key: "cloth_bolt", name: "Rollo de Tela Crepuscular (Transformación)" },
-                { key: "tinker_item", name: "Micro-ajustador Térmico (Ingeniería rápida)" },
-                { key: "armor_kit", name: "Kit de Armadura Reforzado (Peletería rápida)" }
+                { key: "armor_kit", name: "Kit de Armadura Reforzado" }
             ];
 
-            let html = '<table><thead><tr><th>Operación de Flip / Transformación</th><th style="text-align:right;">Costo de Materiales</th><th style="text-align:right;">Venta Neta (-5%)</th><th style="text-align:right;">Ganancia Limpia</th></tr></thead><tbody>';
-            let foundCount = 0;
-
+            let html = '<table><thead><tr><th>Operación de Flip / Transformación</th><th style="text-align:right;">Costo</th><th style="text-align:right;">Ganancia Limpia</th></tr></thead><tbody>';
             flipRecipes.forEach(flip => {
                 const rec = recipesDatabase[flip.key];
                 if (!rec) return;
-
                 let cost = 0;
-                rec.materials.forEach(m => {
-                    cost += (cachedPrices[m.id] || 15) * m.qty;
-                });
-
-                const netRev = rec.salePrice * 0.95;
-                const profit = netRev - cost;
-
-                if (profit > 0) foundCount++;
-
-                html += `
-                    <tr>
-                        <td><strong>${flip.name}</strong></td>
-                        <td style="text-align:right; color: var(--red);">${cost.toFixed(2)}g</td>
-                        <td style="text-align:right;">${netRev.toFixed(2)}g</td>
-                        <td style="text-align:right; color: ${profit >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight: 700;">
-                            ${profit >= 0 ? '+' : ''}${profit.toFixed(2)}g
-                        </td>
-                    </tr>
-                `;
+                rec.materials.forEach(m => cost += (cachedPrices[m.id] || 15) * m.qty);
+                const profit = (rec.salePrice * 0.95) - cost;
+                html += `<tr><td><strong>${flip.name}</strong></td><td style="text-align:right; color: var(--red);">${cost.toFixed(2)}g</td><td style="text-align:right; color: ${profit >= 0 ? 'var(--green)' : 'var(--red)'}; font-weight: 700;">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}g</td></tr>`;
             });
-
             html += '</tbody></table>';
             resultsEl.innerHTML = html;
         } catch (err) {
-            resultsEl.innerHTML = '<p style="color: var(--red); text-align: center;">Error al escanear los precios del servidor.</p>';
+            resultsEl.innerHTML = '<p style="color: var(--red); text-align: center;">Error al escanear los precios.</p>';
         }
     });
 
-    // BOTÓN: CALCULAR PRINCIPAL
+    // BOTÓN PRINCIPAL
     document.getElementById('calculate-btn')?.addEventListener('click', async () => {
         const realm = document.getElementById('realm-selector').value;
         const recipeKey = document.getElementById('recipe-selector').value;
@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             renderCalculator(recipesDatabase[recipeKey], recipeKey, realm, cachedPrices, t);
         } catch (err) {
-            document.getElementById('results-container').innerHTML = '<p style="color: var(--red); text-align: center;">No se pudo conectar con el servidor backend.</p>';
+            document.getElementById('results-container').innerHTML = '<p style="color: var(--red); text-align: center;">No se pudo conectar con el servidor.</p>';
         }
     });
 });
