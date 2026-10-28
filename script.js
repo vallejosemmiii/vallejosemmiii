@@ -19,12 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Sastrería",
             profEng: "Ingeniería",
             tableMaterial: "Material / Componente",
-            tableQty: "Cantidad",
+            tableQty: "Necesario",
+            tableOwned: "Tienes",
             tablePrice: "Precio Unit. (AH)",
             tableSubtotal: "Subtotal",
             costMaterials: "Costo de Materiales",
             netSale: "Venta Neta (-5%)",
             netProfit: "Ganancia Neta",
+            salePriceLabel: "Precio de Venta (AH):",
             syncing: "Sincronizando precios en tiempo real con la Casa de Subastas de Blizzard...",
             selectRealmAlert: "Por favor, selecciona un servidor primero.",
             selectRecipeAlert: "Por favor, selecciona una receta del catálogo.",
@@ -50,12 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Tailoring",
             profEng: "Engineering",
             tableMaterial: "Material / Component",
-            tableQty: "Quantity",
+            tableQty: "Required",
+            tableOwned: "Owned",
             tablePrice: "Unit Price (AH)",
             tableSubtotal: "Subtotal",
             costMaterials: "Materials Cost",
             netSale: "Net Sale (-5%)",
             netProfit: "Net Profit",
+            salePriceLabel: "Sale Price (AH):",
             syncing: "Synchronizing real-time prices with the Blizzard Auction House...",
             selectRealmAlert: "Please select a realm first.",
             selectRecipeAlert: "Please select a recipe from the catalog.",
@@ -81,12 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Schneiderei",
             profEng: "Ingenieurskunst",
             tableMaterial: "Material / Komponente",
-            tableQty: "Menge",
+            tableQty: "Benötigt",
+            tableOwned: "Vorrat",
             tablePrice: "Stückpreis (AH)",
             tableSubtotal: "Zwischensumme",
             costMaterials: "Materialkosten",
             netSale: "Nettoverkauf (-5%)",
             netProfit: "Nettogewinn",
+            salePriceLabel: "Verkaufspreis (AH):",
             syncing: "Echtzeitpreise werden mit dem Blizzard-Auktionshaus synchronisiert...",
             selectRealmAlert: "Bitte wähle zuerst einen Server aus.",
             selectRecipeAlert: "Bitte wähle ein Rezept aus dem Katalog aus.",
@@ -112,12 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Couture",
             profEng: "Ingénierie",
             tableMaterial: "Matériau / Composant",
-            tableQty: "Quantité",
+            tableQty: "Requis",
+            tableOwned: "En stock",
             tablePrice: "Prix Unitaire (HDV)",
             tableSubtotal: "Sous-total",
             costMaterials: "Coût des Matériaux",
             netSale: "Vente Nette (-5%)",
             netProfit: "Bénéfice Net",
+            salePriceLabel: "Prix de Vente (HDV):",
             syncing: "Synchronisation des prix en temps réel avec l'Hôtel des Ventes Blizzard...",
             selectRealmAlert: "Veuillez d'abord sélectionner un royaume.",
             selectRecipeAlert: "Veuillez sélectionner une recette dans le catalogue.",
@@ -143,12 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
             profTail: "Alfaiataria",
             profEng: "Engenharia",
             tableMaterial: "Material / Componente",
-            tableQty: "Quantidade",
+            tableQty: "Necessário",
+            tableOwned: "Possui",
             tablePrice: "Preço Unit. (AH)",
             tableSubtotal: "Subtotal",
             costMaterials: "Custo de Materiais",
             netSale: "Venda Líquida (-5%)",
             netProfit: "Lucro Líquido",
+            salePriceLabel: "Preço de Venda (AH):",
             syncing: "Sincronizando preços em tempo real com a Casa de Leilões da Blizzard...",
             selectRealmAlert: "Por favor, selecione um reino primeiro.",
             selectRecipeAlert: "Por favor, selecione uma receita do catálogo.",
@@ -315,66 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const recipe = recipesDatabase[recipeKey];
-                let totalCraftCost = 0;
-                let materialsHtml = '';
-
-                recipe.materials.forEach(mat => {
-                    const unitPrice = cachedPrices[mat.id] || 15.00;
-                    const subtotal = unitPrice * mat.qty;
-                    totalCraftCost += subtotal;
-
-                    materialsHtml += `
-                        <tr>
-                            <td>${mat.name} <span style="font-size: 0.75em; color: var(--text-muted);">(ID: ${mat.id})</span></td>
-                            <td style="text-align: center;">${mat.qty}</td>
-                            <td style="text-align: right;">${unitPrice.toFixed(2)}g</td>
-                            <td style="text-align: right; color: var(--accent);">${subtotal.toFixed(2)}g</td>
-                        </tr>
-                    `;
-                });
-
-                const ahTax = recipe.salePrice * 0.05;
-                const netRevenue = recipe.salePrice - ahTax;
-                const netProfit = netRevenue - totalCraftCost;
-                const profitColor = netProfit >= 0 ? 'var(--green)' : 'var(--red)';
-
-                if (resultsContainer) {
-                    resultsContainer.innerHTML = `
-                        <div class="recipe-card">
-                            <h2 style="margin-top: 0; color: #fff; font-size: 1.3rem;">${recipe.name}</h2>
-                            <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 15px;">Servidor / Realm: <strong>${realm.toUpperCase()}</strong> | AH Tax (5%): <strong>${ahTax.toFixed(2)}g</strong></p>
-
-                            <table>
-                               <thead>
-                                    <tr>
-                                        <th>${t.tableMaterial}</th>
-                                        <th style="text-align: center;">${t.tableQty}</th>
-                                        <th style="text-align: right;">${t.tablePrice}</th>
-                                        <th style="text-align: right;">${t.tableSubtotal}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${materialsHtml}
-                                </tbody>
-                            </table>
-
-                            <div class="summary-grid">
-                                <div class="summary-box">
-                                    <span>${t.costMaterials}</span>
-                                    <strong style="color: var(--red);">${totalCraftCost.toFixed(2)}g</strong>
-                                </div>
-                                <div class="summary-box">
-                                    <span>${t.netSale}</span>
-                                    <strong style="color: #fff;">${netRevenue.toFixed(2)}g</strong>
-                                </div>
-                                <div class="summary-box">
-                                    <span>${t.netProfit}</span>
-                                    <strong style="color: ${profitColor};">${netProfit.toFixed(2)}g</strong>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
+                renderCalculator(recipe, realm, cachedPrices, t);
 
             } catch (err) {
                 if (resultsContainer) {
@@ -382,5 +333,139 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
+
+    function renderCalculator(recipe, realm, prices, t, customSalePrice = null) {
+        const resultsContainer = document.getElementById('results-container');
+        if (!resultsContainer) return;
+
+        const salePrice = customSalePrice !== null ? customSalePrice : recipe.salePrice;
+        let totalCraftCost = 0;
+        let materialsHtml = '';
+
+        recipe.materials.forEach((mat, index) => {
+            const unitPrice = prices[mat.id] || 15.00;
+            
+            // Ver si el usuario ya indicó cantidad en stock (guardamos estado si ya existía el input)
+            const existingInput = document.getElementById(`owned-${index}`);
+            const ownedQty = existingInput ? Math.max(0, parseInt(existingInput.value) || 0) : 0;
+            
+            const effectiveQty = Math.max(0, mat.qty - ownedQty);
+            const subtotal = unitPrice * effectiveQty;
+            totalCraftCost += subtotal;
+
+            materialsHtml += `
+                <tr>
+                    <td>${mat.name} <span style="font-size: 0.75em; color: var(--text-muted);">(ID: ${mat.id})</span></td>
+                    <td style="text-align: center;">${mat.qty}</td>
+                    <td style="text-align: center;">
+                        <input type="number" min="0" value="${ownedQty}" class="input-owned" id="owned-${index}" data-index="${index}">
+                    </td>
+                    <td style="text-align: right;">${unitPrice.toFixed(2)}g</td>
+                    <td style="text-align: right; color: var(--accent);" id="subtotal-${index}">${subtotal.toFixed(2)}g</td>
+                </tr>
+            `;
+        });
+
+        const ahTax = salePrice * 0.05;
+        const netRevenue = salePrice - ahTax;
+        const netProfit = netRevenue - totalCraftCost;
+        const profitColor = netProfit >= 0 ? 'var(--green)' : 'var(--red)';
+
+        resultsContainer.innerHTML = `
+            <div class="recipe-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                    <h2 style="margin: 0; color: #fff; font-size: 1.3rem;">${recipe.name}</h2>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <label style="font-size: 0.9em; color: var(--text-muted);">${t.salePriceLabel}</label>
+                        <input type="number" id="custom-sale-price" class="input-price" value="${salePrice}">
+                    </div>
+                </div>
+                <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 15px;">Servidor / Realm: <strong>${realm.toUpperCase()}</strong> | AH Tax (5%): <strong id="ah-tax-display">${ahTax.toFixed(2)}g</strong></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>${t.tableMaterial}</th>
+                            <th style="text-align: center;">${t.tableQty}</th>
+                            <th style="text-align: center;">${t.tableOwned}</th>
+                            <th style="text-align: right;">${t.tablePrice}</th>
+                            <th style="text-align: right;">${t.tableSubtotal}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${materialsHtml}
+                    </tbody>
+                </table>
+
+                <div class="summary-grid">
+                    <div class="summary-box">
+                        <span>${t.costMaterials}</span>
+                        <strong style="color: var(--red);" id="total-cost-display">${totalCraftCost.toFixed(2)}g</strong>
+                    </div>
+                    <div class="summary-box">
+                        <span>${t.netSale}</span>
+                        <strong style="color: #fff;" id="net-sale-display">${netRevenue.toFixed(2)}g</strong>
+                    </div>
+                    <div class="summary-box">
+                        <span>${t.netProfit}</span>
+                        <strong style="color: ${profitColor};" id="net-profit-display">${netProfit.toFixed(2)}g</strong>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Evento dinámico para recalcular al escribir stock propio o cambiar precio de venta
+        document.querySelectorAll('.input-owned').forEach(input => {
+            input.addEventListener('input', () => {
+                recalculateLive(recipe, prices);
+            });
+        });
+
+        const customPriceInput = document.getElementById('custom-sale-price');
+        if (customPriceInput) {
+            customPriceInput.addEventListener('input', () => {
+                recalculateLive(recipe, prices);
+            });
+        }
+    }
+
+    function recalculateLive(recipe, prices) {
+        let totalCraftCost = 0;
+
+        recipe.materials.forEach((mat, index) => {
+            const unitPrice = prices[mat.id] || 15.00;
+            const input = document.getElementById(`owned-${index}`);
+            const ownedQty = input ? Math.max(0, parseInt(input.value) || 0) : 0;
+            const effectiveQty = Math.max(0, mat.qty - ownedQty);
+            const subtotal = unitPrice * effectiveQty;
+            totalCraftCost += subtotal;
+
+            const subtotalEl = document.getElementById(`subtotal-${index}`);
+            if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(2)}g`;
+        });
+
+        const customPriceInput = document.getElementById('custom-sale-price');
+        const currentSalePrice = customPriceInput ? parseFloat(customPriceInput.value) || 0 : recipe.salePrice;
+
+        const ahTax = currentSalePrice * 0.05;
+        const netRevenue = currentSalePrice - ahTax;
+        const netProfit = netRevenue - totalCraftCost;
+        const profitColor = netProfit >= 0 ? 'var(--green)' : 'var(--red)';
+
+        const ahTaxEl = document.getElementById('ah-tax-display');
+        if (ahTaxEl) ahTaxEl.textContent = `${ahTax.toFixed(2)}g`;
+
+        const totalCostEl = document.getElementById('total-cost-display');
+        if (totalCostEl) totalCostEl.textContent = `${totalCraftCost.toFixed(2)}g`;
+
+        const netSaleEl = document.getElementById('net-sale-display');
+        if (netSaleEl) netSaleEl.textContent = `${netRevenue.toFixed(2)}g`;
+
+        const netProfitEl = document.getElementById('net-profit-display');
+        if (netProfitEl) {
+            netProfitEl.textContent = `${netProfit.toFixed(2)}g`;
+            netProfitEl.style.color = profitColor;
+        }
     }
 });
